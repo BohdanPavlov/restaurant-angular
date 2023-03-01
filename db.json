@@ -1,7 +1,27 @@
 {
   "products": [
-    { "id": 1, "title": "Pizza", "category": "pizza" },
-    { "id": 2, "title": "Burger", "category": "burger" },
-    { "id": 3, "title": "Lemonade", "category": "drinks" }
+    {
+      "id": 1,
+      "title": "Pizza",
+      "category": "pizza"
+    },
+    {
+      "id": 2,
+      "title": "Burger",
+      "category": "burger"
+    },
+    {
+      "id": 3,
+      "title": "Lemonade",
+      "category": "drinks"
+    }
+  ],
+  "users": [
+    {
+      "email": "test@test.com",
+      "password": "$2a$10$v1xMdyqD1gKMsjBn3IWAL.ZrgsRES1CFMDiEtAOPutOHS7fb8qECi",
+      "username": "Bohdan",
+      "id": 1
+    }
   ]
 }
