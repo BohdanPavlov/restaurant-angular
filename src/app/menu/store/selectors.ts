@@ -10,3 +10,18 @@ export const categoriesSelector = createSelector(
   menuFeatureSelector,
   (state: MenuStateInterface) => state.categories
 )
+export const productsSelector = createSelector(
+  menuFeatureSelector,
+  (state: MenuStateInterface) => state.products
+)
+
+export const productsStatusSelector = createSelector(
+  menuFeatureSelector,
+  (state: MenuStateInterface) => state.productsStatus
+)
+
+export const categoriesStatusSelector = createSelector(
+  menuFeatureSelector,
+  (state: MenuStateInterface) => state.categoriesStatus
+)
+

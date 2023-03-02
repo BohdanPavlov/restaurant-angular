@@ -7,6 +7,6 @@
     *ngIf='user$ | async'
   >
     <strong class='user__name'>{{(user$ | async)?.username}}</strong>
-    <button class='user__logout'>Logout</button>
+    <button class='user__logout' (click)='onLogout()'>Logout</button>
   </div>
 </header>

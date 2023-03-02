@@ -18,7 +18,7 @@ export class CategoriesComponent implements OnInit {
 
   constructor (private store: Store<AppStateInterface>) { }
 
-  ngOnInit (): void {
+  public ngOnInit (): void {
     this.categories$ = this.store.pipe(select(categoriesSelector));
   }
 }

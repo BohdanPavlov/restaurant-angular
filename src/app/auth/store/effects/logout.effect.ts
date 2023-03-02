@@ -1,9 +1,9 @@
-import {Actions, createEffect, ofType} from '@ngrx/effects'
-import {tap} from 'rxjs'
-import {Injectable} from '@angular/core'
-import {Router} from '@angular/router'
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { tap } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
-import {logoutAction} from 'src/app/auth/store/actions/logout.action'
+import { logoutAction } from 'src/app/auth/store/actions/logout.action';
 
 @Injectable()
 export class LogoutEffect {
@@ -12,12 +12,13 @@ export class LogoutEffect {
       this.actions$.pipe(
         ofType(logoutAction),
         tap(() => {
-          localStorage.removeItem('accessToken')
-          this.router.navigate(['/auth'])
-        })
+          localStorage.removeItem('accessToken');
+          localStorage.removeItem('user');
+          this.router.navigate(['/auth']);
+        }),
       ),
-    {dispatch: false}
-  )
+    { dispatch: false },
+  );
 
-  constructor(private actions$: Actions, private router: Router) {}
+  constructor (private actions$: Actions, private router: Router) {}
 }

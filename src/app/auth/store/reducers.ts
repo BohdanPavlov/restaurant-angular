@@ -12,8 +12,9 @@ import {
   registerSuccessAction,
 } from 'src/app/auth/store/actions/register.action';
 import {
-  setAuthUserAction
+  setAuthUserAction,
 } from 'src/app/auth/store/actions/setAuthUser.action';
+import { logoutAction } from 'src/app/auth/store/actions/logout.action';
 
 const initialState: AuthStateInterface = {
   user: null,
@@ -50,6 +51,10 @@ const authReducer = createReducer(
     ...state,
     user: action.user,
     isAuth: true,
+  })),
+  on(logoutAction, (state): AuthStateInterface => ({
+    ...state,
+    ...initialState,
   })),
 );
 

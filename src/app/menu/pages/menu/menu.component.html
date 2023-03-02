@@ -1,3 +1,8 @@
 <main class='menu'>
-  <app-categories></app-categories>
+  <app-categories *ngIf='(categoriesStatus$ | async) === "success"'></app-categories>
+  <app-products-list *ngIf='(productsStatus$ | async) === "success"'></app-products-list>
+  <mat-spinner
+    *ngIf='(productsStatus$ | async ) === "loading" || (categoriesStatus$ | async) === "loading"'
+    style='margin: 0 auto'>
+  </mat-spinner>
 </main>

@@ -13,7 +13,7 @@ import {PersistenceService} from 'src/app/shared/services/persistence.service'
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private persistenceService: PersistenceService) {}
 
-  intercept(
+  public intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {

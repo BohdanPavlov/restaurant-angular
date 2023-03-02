@@ -6,5 +6,6 @@ export interface MenuStateInterface {
   products: IProduct[] | null;
   categoriesStatus: 'idle' | 'loading' | 'success' | 'error',
   productsStatus: 'idle' | 'loading' | 'success' | 'error',
-  errorMessage: string;
+  categoriesErrorMessage: string;
+  productsErrorMessage: string;
 }

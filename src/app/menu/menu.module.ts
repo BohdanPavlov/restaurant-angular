@@ -14,12 +14,28 @@ import {
   FetchCategoriesEffect,
 } from 'src/app/menu/store/effects/fetchCategories.effect';
 import { CategoryComponent } from './components/category/category.component';
+import {
+  FetchProductsEffect,
+} from 'src/app/menu/store/effects/fetchProducts.effect';
+import { MatCardModule } from '@angular/material/card';
+import {
+  ProductCardComponent,
+} from './components/product-card/product-card.component';
+import {
+  ProductsListComponent,
+} from './components/products-list/products-list.component';
+import {
+  FetchProductsByCategoryEffect,
+} from 'src/app/menu/store/effects/fetchProductsByCategory.effect';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
     MenuComponent,
     CategoriesComponent,
     CategoryComponent,
+    ProductCardComponent,
+    ProductsListComponent,
   ],
   imports: [
     CommonModule,
@@ -27,7 +43,11 @@ import { CategoryComponent } from './components/category/category.component';
     StoreModule.forFeature('menu', reducer),
     EffectsModule.forFeature([
       FetchCategoriesEffect,
+      FetchProductsEffect,
+      FetchProductsByCategoryEffect,
     ]),
+    MatCardModule,
+    MatProgressSpinnerModule,
   ],
   providers: [MenuService],
 })

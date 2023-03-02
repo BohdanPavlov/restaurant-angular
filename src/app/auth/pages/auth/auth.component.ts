@@ -6,7 +6,14 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
+import {
+  BehaviorSubject,
+  interval,
+  Observable,
+  Subject,
+  Subscription,
+  takeUntil,
+} from 'rxjs';
 
 import { AppStateInterface } from 'src/app/shared/types/appState.interface';
 import {
@@ -34,7 +41,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   public isSubmitting$!: Observable<boolean>;
   public errorMessage$!: Observable<string>;
   public isLoginMode!: boolean;
-  private isLoginModeSub!: Subscription;
+  private destroy = new Subject();
 
   constructor (
     private fb: FormBuilder,
@@ -50,7 +57,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.errorMessage$ = this.store.pipe(
       select(errorMessageSelector),
     );
-    this.isLoginModeSub = this.store.pipe(select(isLoginModeSelector)).
+    this.store.pipe(select(isLoginModeSelector), takeUntil(this.destroy)).
       subscribe(isLoginMode => {
         this.isLoginMode = isLoginMode;
         this.initializeForm(isLoginMode);
@@ -86,6 +93,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy (): void {
-    this.isLoginModeSub.unsubscribe();
+    this.destroy.next('');
+    this.destroy.complete();
   }
 }

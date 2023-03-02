@@ -16,6 +16,7 @@ import {
   AuthInterceptor
 } from 'src/app/shared/services/auth-interceptor.service';
 import { MenuModule } from 'src/app/menu/menu.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MenuModule } from 'src/app/menu/menu.module';
       logOnly: environment.production,
       autoPause: true
     }),
+    BrowserAnimationsModule,
   ],
   providers: [
     {

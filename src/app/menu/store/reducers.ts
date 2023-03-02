@@ -5,13 +5,22 @@ import {
   fetchCategoriesFailureAction,
   fetchCategoriesSuccessAction,
 } from 'src/app/menu/store/actions/fetchCategories.action';
+import {
+  fetchProductsAction, fetchProductsFailureAction, fetchProductsSuccessAction,
+} from 'src/app/menu/store/actions/fetchProducts.action';
+import {
+  fetchProductsByCategoryAction,
+  fetchProductsByCategoryFailureAction,
+  fetchProductsByCategorySuccessAction,
+} from 'src/app/menu/store/actions/fetchProductsByCategory';
 
 const initialState: MenuStateInterface = {
   categories: null,
   products: null,
   categoriesStatus: 'idle',
   productsStatus: 'idle',
-  errorMessage: '',
+  categoriesErrorMessage: '',
+  productsErrorMessage: '',
 };
 
 const menuReducer = createReducer(
@@ -20,16 +29,31 @@ const menuReducer = createReducer(
     ...state,
     categoriesStatus: 'loading',
   })),
+  on(fetchProductsAction, fetchProductsByCategoryAction, (state): MenuStateInterface => ({
+    ...state,
+    productsStatus: 'loading',
+  })),
   on(fetchCategoriesSuccessAction, (state, action): MenuStateInterface => ({
     ...state,
     categoriesStatus: 'success',
     categories: action.categories,
-    errorMessage: '',
+    categoriesErrorMessage: '',
+  })),
+  on(fetchProductsSuccessAction, fetchProductsByCategorySuccessAction,(state, action): MenuStateInterface => ({
+    ...state,
+    productsStatus: 'success',
+    products: action.products,
+    productsErrorMessage: '',
   })),
   on(fetchCategoriesFailureAction, (state, action): MenuStateInterface => ({
     ...state,
     categoriesStatus: 'error',
-    errorMessage: action.errorMessage,
+    categoriesErrorMessage: action.errorMessage,
+  })),
+  on(fetchProductsFailureAction, fetchProductsByCategoryFailureAction, (state, action): MenuStateInterface => ({
+    ...state,
+    productsStatus: 'error',
+    productsErrorMessage: action.errorMessage,
   })),
 );
 
