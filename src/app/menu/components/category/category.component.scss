@@ -1,0 +1,9 @@
+@import "src/variables";
+
+.category {
+  background-color: $mainColor;
+  padding: 5px 15px;
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 1.2em;
+}

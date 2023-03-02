@@ -1,22 +1,34 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { MenuComponent } from './pages/menu/menu.component';
-import { AuthGuard } from 'src/app/shared/guards/auth.guard';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
-const routes: Routes = [
-  {
-    path: 'menu', component: MenuComponent, canActivate: [AuthGuard]
-  }
-]
+import { MenuComponent } from './pages/menu/menu.component';
+import {
+  CategoriesComponent,
+} from './components/categories/categories.component';
+import { MenuService } from 'src/app/menu/services/menu.service';
+import { reducer } from 'src/app/menu/store/reducers';
+import { MenuRoutingModule } from 'src/app/menu/menu-routing.module';
+import {
+  FetchCategoriesEffect,
+} from 'src/app/menu/store/effects/fetchCategories.effect';
+import { CategoryComponent } from './components/category/category.component';
 
 @NgModule({
   declarations: [
-    MenuComponent
+    MenuComponent,
+    CategoriesComponent,
+    CategoryComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
-  ]
+    MenuRoutingModule,
+    StoreModule.forFeature('menu', reducer),
+    EffectsModule.forFeature([
+      FetchCategoriesEffect,
+    ]),
+  ],
+  providers: [MenuService],
 })
-export class MenuModule { }
+export class MenuModule {}

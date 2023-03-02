@@ -15,12 +15,12 @@ import {
 } from 'src/app/shared/services/persistence.service';
 import { RegisterEffect } from 'src/app/auth/store/effects/register.effect';
 import { LogoutEffect } from 'src/app/auth/store/effects/logout.effect';
-import { AuthGuard } from 'src/app/shared/guards/auth.guard';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 const routes: Routes = [
   {
-    path: 'auth', component: AuthComponent, canActivate: [AuthGuard],
+    path: 'auth',
+    component: AuthComponent
   },
 ];
 

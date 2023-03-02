@@ -2,18 +2,108 @@
   "products": [
     {
       "id": 1,
-      "title": "Pizza",
-      "category": "pizza"
+      "title": "Піца 'Баварська'",
+      "category": "pizza",
+      "price": "110 грн",
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/bavarska-1.jpg"
     },
     {
       "id": 2,
-      "title": "Burger",
-      "category": "burger"
+      "title": "Піца 'Фітнес'",
+      "category": "pizza",
+      "price": "100 грн",
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/fitnes-1.jpg"
     },
     {
       "id": 3,
-      "title": "Lemonade",
-      "category": "drinks"
+      "title": "Піца 'Фірмова'",
+      "category": "pizza",
+      "price": "100 грн",
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/firmennaya-1.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Салат 'Цезар'",
+      "category": "salad",
+      "price": "50 грн",
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2020/01/tsezar-2.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Салат 'Весняний'",
+      "category": "salad",
+      "price": "35 грн",
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/salat-vesenii_category.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Салат 'Столичний'",
+      "category": "salad",
+      "price": "45 грн",
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/salat-stolichny_category.jpg"
+    },
+    {
+      "id": 7,
+      "title": "Бургер з куркою",
+      "category": "burgers",
+      "price": "60 грн",
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2022/08/BURGER_category.jpg"
+    },
+    {
+      "id": 8,
+      "title": "Чізбургер",
+      "category": "burgers",
+      "price": "60 грн",
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2019/09/chizburger_category.jpg"
+    },
+    {
+      "id": 9,
+      "title": "Сирники",
+      "category": "bakery",
+      "price": "40 грн",
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2015/08/sirniki.jpg"
+    },
+    {
+      "id": 10,
+      "title": "Кекс шоколадний",
+      "category": "bakery",
+      "price": "60 грн",
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/05/keks_shokolad.jpg"
+    },
+    {
+      "id": 11,
+      "title": "Чізкейк",
+      "category": "bakery",
+      "price": "40 грн",
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/05/cheese-cake-category.jpg"
+    },
+    {
+      "id": 12,
+      "title": "Пиріг 'Пісочний'",
+      "category": "bakery",
+      "price": "20 грн",
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/pirog-pisochniy.jpg"
+    },
+    {
+      "id": 13,
+      "title": "Чай (чорний/зелений)",
+      "category": "drinks",
+      "price": "15 грн",
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/12/tea_green_category.jpg"
+    },
+    {
+      "id": 14,
+      "title": "Лимонад стандартний",
+      "category": "drinks",
+      "price": "20 грн",
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/limonad_b_category.jpg"
+    },
+    {
+      "id": 15,
+      "title": "Cik стандарт (на вибір)",
+      "category": "bakery",
+      "price": "40 грн",
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2015/04/apelsinoviy_sok_b_category.jpg"
     }
   ],
   "users": [
@@ -22,6 +112,23 @@
       "password": "$2a$10$v1xMdyqD1gKMsjBn3IWAL.ZrgsRES1CFMDiEtAOPutOHS7fb8qECi",
       "username": "Bohdan",
       "id": 1
+    }
+  ],
+  "categories": [
+    {
+      "name": "pizza"
+    },
+    {
+      "name": "salad"
+    },
+    {
+      "name": "burgers"
+    },
+    {
+      "name": "bakery"
+    },
+    {
+      "name": "drinks"
     }
   ]
 }

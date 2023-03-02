@@ -41,11 +41,11 @@ export class AuthComponent implements OnInit, OnDestroy {
     private store: Store<AppStateInterface>,
   ) {}
 
-  ngOnInit (): void {
+  public ngOnInit (): void {
     this.initializeValues();
   }
 
-  initializeValues (): void {
+  private initializeValues (): void {
     this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
     this.errorMessage$ = this.store.pipe(
       select(errorMessageSelector),
@@ -57,7 +57,7 @@ export class AuthComponent implements OnInit, OnDestroy {
       });
   }
 
-  initializeForm (isLoginMode: boolean): void {
+  private initializeForm (isLoginMode: boolean): void {
     if (isLoginMode) {
       this.authForm = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
@@ -72,7 +72,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     }
   }
 
-  onSubmit (): void {
+  public onSubmit (): void {
     const requestData: AuthRequestDataInterface = this.authForm.value;
     if (this.isLoginMode) {
       this.store.dispatch(loginAction({ requestData }));
@@ -81,11 +81,11 @@ export class AuthComponent implements OnInit, OnDestroy {
     }
   }
 
-  onToggleAuthMode (): void {
+  public onToggleAuthMode (): void {
     this.store.dispatch(switchAuthModeAction());
   }
 
-  ngOnDestroy (): void {
+  public ngOnDestroy (): void {
     this.isLoginModeSub.unsubscribe();
   }
 }

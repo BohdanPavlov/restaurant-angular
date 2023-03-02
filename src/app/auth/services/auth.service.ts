@@ -14,7 +14,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  auth(data: AuthRequestDataInterface, authMode: string): Observable<AuthResponseInterface> {
+  public auth(data: AuthRequestDataInterface, authMode: string): Observable<AuthResponseInterface> {
     const path = environment.apiBase + authMode;
     return this.http.post<AuthResponseInterface>(path, data)
   }
