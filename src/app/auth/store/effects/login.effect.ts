@@ -24,12 +24,14 @@ export class LoginEffect {
         return this.authService.auth(requestData, 'login').pipe(
           map((response: AuthResponseInterface) => {
             this.persistenceService.set('accessToken', response.accessToken)
+            this.persistenceService.set('user', response.user)
             return loginSuccessAction({user: response.user})
           }),
           catchError((errorResponse: HttpErrorResponse) => {
+            console.log(errorResponse);
             return of(
               loginFailureAction({
-                errorMessage: errorResponse.error.message
+                errorMessage: errorResponse.error
               })
             )
           })

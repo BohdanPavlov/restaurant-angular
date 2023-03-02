@@ -2,6 +2,7 @@
   <div class='container auth-container'>
     <div class='auth-field'>
       <h2 class='auth-field__title'>{{isLoginMode ? 'Login' : 'SignUp'}}</h2>
+      <app-validation-error *ngIf='errorMessage$ | async'>* {{errorMessage$ | async}}</app-validation-error>
       <form class='auth-form' [formGroup]='authForm' (ngSubmit)='onSubmit()'>
         <fieldset class='auth-form__wrapper'>
           <input
@@ -9,7 +10,6 @@
             type='text'
             placeholder='Email'
             formControlName='email'
-            (click)='onClick(authForm.get("email"))'
           >
           <app-validation-error *ngIf='authForm.get("email")?.touched && authForm.get("email")?.errors?.["required"]'>
             Required

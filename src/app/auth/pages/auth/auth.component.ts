@@ -6,7 +6,8 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
-import { Observable, pairwise, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+
 import { AppStateInterface } from 'src/app/shared/types/appState.interface';
 import {
   AuthRequestDataInterface,
@@ -31,7 +32,7 @@ import { registerAction } from 'src/app/auth/store/actions/register.action';
 export class AuthComponent implements OnInit, OnDestroy {
   public authForm!: FormGroup;
   public isSubmitting$!: Observable<boolean>;
-  public errorMessage$!: Observable<string> | null;
+  public errorMessage$!: Observable<string>;
   public isLoginMode!: boolean;
   private isLoginModeSub!: Subscription;
 
@@ -86,9 +87,5 @@ export class AuthComponent implements OnInit, OnDestroy {
 
   ngOnDestroy (): void {
     this.isLoginModeSub.unsubscribe();
-  }
-
-  onClick(formField: any) {
-    console.log(formField);
   }
 }

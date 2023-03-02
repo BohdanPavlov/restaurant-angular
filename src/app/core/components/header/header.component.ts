@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+
+import { IUser } from 'src/app/auth/types/user.interface';
+import { AppStateInterface } from 'src/app/shared/types/appState.interface';
+import { userSelector } from 'src/app/auth/store/selectors';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +12,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  public user$!: Observable<IUser | null>;
 
-  constructor() { }
+  constructor(private store: Store<AppStateInterface>) { }
 
   ngOnInit(): void {
+    this.user$ = this.store.pipe(select(userSelector))
   }
 
 }

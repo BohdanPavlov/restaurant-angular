@@ -1,0 +1,16 @@
+@import "src/variables";
+
+.footer {
+  background-color: $mainColor;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+  padding: 10px;
+
+  &__main {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+}

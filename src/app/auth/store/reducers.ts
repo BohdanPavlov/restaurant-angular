@@ -11,6 +11,9 @@ import {
   registerAction, registerFailureAction,
   registerSuccessAction,
 } from 'src/app/auth/store/actions/register.action';
+import {
+  setAuthUserAction
+} from 'src/app/auth/store/actions/setAuthUser.action';
 
 const initialState: AuthStateInterface = {
   user: null,
@@ -42,6 +45,11 @@ const authReducer = createReducer(
   on(switchAuthModeAction, (state): AuthStateInterface => ({
     ...state,
     isLoginMode: !state.isLoginMode,
+  })),
+  on(setAuthUserAction, (state, action): AuthStateInterface => ({
+    ...state,
+    user: action.user,
+    isAuth: true,
   })),
 );
 

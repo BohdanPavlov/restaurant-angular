@@ -10,4 +10,6 @@ export enum AuthActionTypes {
   LOGOUT = '[Auth] Logout',
 
   SWITCH_MODE = '[Auth] Switch mode',
+
+  SET_AUTH_USER = '[Auth] Set auth user',
 }

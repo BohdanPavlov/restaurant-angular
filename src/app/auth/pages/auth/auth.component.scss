@@ -1,4 +1,11 @@
+:host {
+  flex: 1;
+}
+
 .auth {
+  max-width: 1400px;
+  padding: 0 15px;
+  margin: 0 auto;
 
   &-container {
     display: flex;
@@ -44,7 +51,7 @@
       height: 40px;
       border-radius: 5px;
       border: 1px solid black;
-      background-color: #ff454a;
+      background-color: #FF601F;
       color: #fff;
       cursor: pointer;
 

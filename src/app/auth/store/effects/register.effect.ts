@@ -29,7 +29,7 @@ export class RegisterEffect {
           catchError((errorResponse: HttpErrorResponse) => {
             return of(
               registerFailureAction({
-                errorMessage: errorResponse.error.message
+                errorMessage: errorResponse.error
               })
             )
           })

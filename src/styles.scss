@@ -1,9 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
 input.ng-touched.ng-invalid {
   border: 1px solid red;
 }
 
-.validation-error {
-  color: red;
-  font-style: italic;
+button {
+  transition: .2s;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 5px black;
+  }
 }
