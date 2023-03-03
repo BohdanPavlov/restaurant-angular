@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ICategory } from 'src/app/menu/types/category.interface';
 import { select, Store } from '@ngrx/store';
+
+import { ICategory } from 'src/app/menu/types/category.interface';
 import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
-import {
-  fetchCategoriesAction
-} from 'src/app/menu/store/actions/fetch-categories.action';
 import { categoriesSelector } from 'src/app/menu/store/selectors';
 
 @Component({

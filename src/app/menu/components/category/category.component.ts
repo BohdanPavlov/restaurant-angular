@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input} from '@angular/core';
+import { Store } from '@ngrx/store';
+
 import { ICategory } from 'src/app/menu/types/category.interface';
 import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
-import { Store } from '@ngrx/store';
 import {
   fetchProductsByCategoryAction,
 } from 'src/app/menu/store/actions/fetch-products-by-category.action';

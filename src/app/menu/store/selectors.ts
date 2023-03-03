@@ -1,6 +1,7 @@
+import { createSelector } from '@ngrx/store';
+
 import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
 import { MenuStateInterface } from 'src/app/menu/types/menu-state.interface';
-import { createSelector } from '@ngrx/store';
 
 export const menuFeatureSelector = (
   state: AppStateInterface

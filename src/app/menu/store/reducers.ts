@@ -1,5 +1,6 @@
-import { MenuStateInterface } from 'src/app/menu/types/menu-state.interface';
 import { Action, createReducer, on } from '@ngrx/store';
+
+import { MenuStateInterface } from 'src/app/menu/types/menu-state.interface';
 import {
   fetchCategoriesAction,
   fetchCategoriesFailureAction,

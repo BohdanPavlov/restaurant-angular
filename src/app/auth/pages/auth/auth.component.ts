@@ -7,11 +7,8 @@ import {
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import {
-  BehaviorSubject,
-  interval,
   Observable,
   Subject,
-  Subscription,
   takeUntil,
 } from 'rxjs';
 

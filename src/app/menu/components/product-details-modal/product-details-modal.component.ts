@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 
 import { IProduct } from 'src/app/menu/types/product.interface';

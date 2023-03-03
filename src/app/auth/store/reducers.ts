@@ -1,5 +1,6 @@
-import { AuthStateInterface } from 'src/app/auth/types/auth-state.interface';
 import { Action, createReducer, on } from '@ngrx/store';
+
+import { AuthStateInterface } from 'src/app/auth/types/auth-state.interface';
 import {
   switchAuthModeAction,
 } from 'src/app/auth/store/actions/switch-auth-mode.action';

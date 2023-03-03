@@ -34,7 +34,6 @@ import {
 import {
   ProductDetailsModalComponent,
 } from './components/product-details-modal/product-details-modal.component';
-import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
