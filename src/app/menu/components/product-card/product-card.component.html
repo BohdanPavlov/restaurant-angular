@@ -5,7 +5,7 @@
       <h3>{{product.title}}</h3>
       <p>{{product.price}}</p>
     </div>
-    <button class='product-card__details-btn'>Детальніше</button>
+    <button class='product-card__details-btn' (click)='onShowProductDetails()'>Детальніше</button>
     <button class='product-card__category' (click)='onGetProductsByCategory()'>
       {{product.category}}
     </button>

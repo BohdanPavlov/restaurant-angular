@@ -9,7 +9,7 @@ import {
   fetchProductsByCategoryAction,
   fetchProductsByCategoryFailureAction,
   fetchProductsByCategorySuccessAction,
-} from 'src/app/menu/store/actions/fetchProductsByCategory';
+} from 'src/app/menu/store/actions/fetch-products-by-category.action';
 
 @Injectable()
 export class FetchProductsByCategoryEffect {

@@ -5,7 +5,7 @@ import {Router} from '@angular/router'
 import {HttpErrorResponse} from '@angular/common/http'
 
 import {AuthService} from 'src/app/auth/services/auth.service'
-import {PersistenceService} from 'src/app/shared/services/persistence.service'
+import {PersistenceService} from 'src/app/auth/services/persistence.service'
 import {
   loginAction,
   loginFailureAction,
@@ -13,7 +13,7 @@ import {
 } from 'src/app/auth/store/actions/login.action'
 import {
   AuthResponseInterface
-} from 'src/app/auth/types/authResponse.interface';
+} from 'src/app/auth/types/auth-response.interface';
 
 @Injectable()
 export class LoginEffect {

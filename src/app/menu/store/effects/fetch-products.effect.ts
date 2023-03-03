@@ -6,7 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { MenuService } from 'src/app/menu/services/menu.service';
 import {
   fetchProductsAction, fetchProductsFailureAction, fetchProductsSuccessAction,
-} from 'src/app/menu/store/actions/fetchProducts.action';
+} from 'src/app/menu/store/actions/fetch-products.action';
 import { IProduct } from 'src/app/menu/types/product.interface';
 
 @Injectable()

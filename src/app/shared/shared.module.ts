@@ -2,18 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
-  ValidationErrorComponent
+  ValidationErrorComponent,
 } from 'src/app/shared/components/validation-error/validation-error.component';
-
-
 
 @NgModule({
   declarations: [
-    ValidationErrorComponent
+    ValidationErrorComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
-  exports: [ValidationErrorComponent]
+  exports: [ValidationErrorComponent],
 })
-export class SharedModule { }
+export class SharedModule {}

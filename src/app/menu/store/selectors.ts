@@ -1,5 +1,5 @@
-import { AppStateInterface } from 'src/app/shared/types/appState.interface';
-import { MenuStateInterface } from 'src/app/menu/types/menuState.interface';
+import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
+import { MenuStateInterface } from 'src/app/menu/types/menu-state.interface';
 import { createSelector } from '@ngrx/store';
 
 export const menuFeatureSelector = (
@@ -23,5 +23,15 @@ export const productsStatusSelector = createSelector(
 export const categoriesStatusSelector = createSelector(
   menuFeatureSelector,
   (state: MenuStateInterface) => state.categoriesStatus
+)
+
+export const isDetailsModalOpenedSelector = createSelector(
+  menuFeatureSelector,
+  (state: MenuStateInterface) => state.isDetailsModalOpened
+)
+
+export const selectedProductSelector = createSelector(
+  menuFeatureSelector,
+  (state: MenuStateInterface) => state.selectedProduct
 )
 

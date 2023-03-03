@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { MenuActionTypes } from 'src/app/menu/store/actionTypes';
+import { MenuActionTypes } from 'src/app/menu/store/action-types';
 import { ICategory } from 'src/app/menu/types/category.interface';
 
 export const fetchCategoriesAction = createAction(

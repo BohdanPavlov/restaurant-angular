@@ -8,4 +8,6 @@ export interface MenuStateInterface {
   productsStatus: 'idle' | 'loading' | 'success' | 'error',
   categoriesErrorMessage: string;
   productsErrorMessage: string;
+  isDetailsModalOpened: boolean;
+  selectedProduct: IProduct | null;
 }

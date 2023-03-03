@@ -11,6 +11,11 @@
     margin: 0;
   }
 
+  &__image {
+    width: 270px;
+    height: 200px;
+  }
+
   &__content {
     padding: 10px;
     display: flex;
@@ -59,7 +64,7 @@
     color: #CCCCCC;
     border: 1px solid #CCCCCC;
     padding: 2px 5px;
-    border-radius: 5px;
+    border-radius: 10px;
     font-weight: bold;
 
     &:hover {

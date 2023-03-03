@@ -7,7 +7,7 @@ import {
   fetchCategoriesAction,
   fetchCategoriesFailureAction,
   fetchCategoriesSuccessAction,
-} from 'src/app/menu/store/actions/fetchCategories.action';
+} from 'src/app/menu/store/actions/fetch-categories.action';
 import { MenuService } from 'src/app/menu/services/menu.service';
 import { ICategory } from 'src/app/menu/types/category.interface';
 

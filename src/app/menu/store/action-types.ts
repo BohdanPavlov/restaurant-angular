@@ -10,4 +10,12 @@ export enum MenuActionTypes {
   FETCH_PRODUCTS_BY_CATEGORY = '[Menu] Fetch products by category',
   FETCH_PRODUCTS_BY_CATEGORY_SUCCESS = '[Menu] Fetch products by category success',
   FETCH_PRODUCTS_BY_CATEGORY_FAILURE = '[Menu] Fetch products by category failure',
+
+  SEARCH_PRODUCTS = '[Menu] Search products',
+  SEARCH_PRODUCTS_SUCCESS = '[Menu] Search products success',
+  SEARCH_PRODUCTS_FAILURE = '[Menu] Search products failure',
+
+  SET_DETAILS_MODAL_OPENED = '[Menu] Set details modal opened',
+
+  SET_SELECTED_PRODUCT = '[Menu] Set selected product',
 }

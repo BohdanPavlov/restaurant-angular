@@ -15,13 +15,13 @@ import {
   takeUntil,
 } from 'rxjs';
 
-import { AppStateInterface } from 'src/app/shared/types/appState.interface';
+import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
 import {
   AuthRequestDataInterface,
-} from 'src/app/auth/types/authRequestData.interface';
+} from 'src/app/auth/types/auth-request-data.interface';
 import {
   switchAuthModeAction,
-} from 'src/app/auth/store/actions/switchAuthMode.action';
+} from 'src/app/auth/store/actions/switch-auth-mode.action';
 import {
   errorMessageSelector,
   isLoginModeSelector,

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { MenuComponent } from './pages/menu/menu.component';
 import {
@@ -12,12 +14,11 @@ import { reducer } from 'src/app/menu/store/reducers';
 import { MenuRoutingModule } from 'src/app/menu/menu-routing.module';
 import {
   FetchCategoriesEffect,
-} from 'src/app/menu/store/effects/fetchCategories.effect';
+} from 'src/app/menu/store/effects/fetch-categories.effect';
 import { CategoryComponent } from './components/category/category.component';
 import {
   FetchProductsEffect,
-} from 'src/app/menu/store/effects/fetchProducts.effect';
-import { MatCardModule } from '@angular/material/card';
+} from 'src/app/menu/store/effects/fetch-products.effect';
 import {
   ProductCardComponent,
 } from './components/product-card/product-card.component';
@@ -26,8 +27,14 @@ import {
 } from './components/products-list/products-list.component';
 import {
   FetchProductsByCategoryEffect,
-} from 'src/app/menu/store/effects/fetchProductsByCategory.effect';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+} from 'src/app/menu/store/effects/fetch-products-by-category.effect';
+import {
+  SearchProductsEffect,
+} from 'src/app/menu/store/effects/search-products.effect';
+import {
+  ProductDetailsModalComponent,
+} from './components/product-details-modal/product-details-modal.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +43,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     CategoryComponent,
     ProductCardComponent,
     ProductsListComponent,
+    ProductDetailsModalComponent,
   ],
   imports: [
     CommonModule,
@@ -45,6 +53,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
       FetchCategoriesEffect,
       FetchProductsEffect,
       FetchProductsByCategoryEffect,
+      SearchProductsEffect,
     ]),
     MatCardModule,
     MatProgressSpinnerModule,

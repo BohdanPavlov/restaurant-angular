@@ -1,8 +1,8 @@
-import { AuthStateInterface } from 'src/app/auth/types/authState.interface';
+import { AuthStateInterface } from 'src/app/auth/types/auth-state.interface';
 import { Action, createReducer, on } from '@ngrx/store';
 import {
   switchAuthModeAction,
-} from 'src/app/auth/store/actions/switchAuthMode.action';
+} from 'src/app/auth/store/actions/switch-auth-mode.action';
 import {
   loginAction, loginFailureAction,
   loginSuccessAction,
@@ -13,7 +13,7 @@ import {
 } from 'src/app/auth/store/actions/register.action';
 import {
   setAuthUserAction,
-} from 'src/app/auth/store/actions/setAuthUser.action';
+} from 'src/app/auth/store/actions/set-auth-user.action';
 import { logoutAction } from 'src/app/auth/store/actions/logout.action';
 
 const initialState: AuthStateInterface = {

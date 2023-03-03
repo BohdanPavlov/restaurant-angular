@@ -1,9 +1,16 @@
 :host {
   flex: 1;
-}
-
-.menu {
   max-width: 1400px;
   padding: 0 15px;
   margin: 0 auto;
+}
+
+.mat-spinner {
+  margin: 0 auto;
+}
+
+.products-not-found {
+  margin-top: 30px;
+  font-size: 2em;
+  text-align: center;
 }

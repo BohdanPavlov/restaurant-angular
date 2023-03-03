@@ -9,24 +9,33 @@ import { IProduct } from 'src/app/menu/types/product.interface';
 @Injectable()
 export class MenuService {
 
-  constructor(private http: HttpClient) { }
+  constructor (private http: HttpClient) { }
 
-  public fetchCategories(): Observable<ICategory[]> {
+  public fetchCategories (): Observable<ICategory[]> {
     const path = environment.apiBase + 'categories';
-    return this.http.get<ICategory[]>(path)
+    return this.http.get<ICategory[]>(path);
   }
 
-  public fetchProducts(): Observable<IProduct[]> {
+  public fetchProducts (): Observable<IProduct[]> {
     const path = environment.apiBase + 'products';
-    return this.http.get<IProduct[]>(path)
+    return this.http.get<IProduct[]>(path);
   }
 
-  public fetchProductsByCategory(category: string): Observable<IProduct[]> {
+  public fetchProductsByCategory (category: string): Observable<IProduct[]> {
     const path = environment.apiBase + 'products';
     return this.http.get<IProduct[]>(path, {
       params: {
-        category: category
-      }
-    })
+        category: category,
+      },
+    });
+  }
+
+  public searchProducts (searchTerm: string): Observable<IProduct[]> {
+    const path = environment.apiBase + 'products';
+    return this.http.get<IProduct[]>(path, {
+      params: {
+        'title_like': searchTerm,
+      },
+    });
   }
 }

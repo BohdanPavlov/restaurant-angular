@@ -8,7 +8,7 @@ import {
 } from '@angular/router'
 import {Observable} from 'rxjs'
 
-import {PersistenceService} from 'src/app/shared/services/persistence.service'
+import {PersistenceService} from 'src/app/auth/services/persistence.service'
 
 @Injectable({
   providedIn: 'root'

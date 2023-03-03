@@ -1,6 +1,7 @@
 @import "src/variables";
 
-.footer {
+:host {
+  flex: 0 0 100%;
   background-color: $mainColor;
   color: #ffffff;
   display: flex;
@@ -8,9 +9,9 @@
   gap: 3px;
   align-items: center;
   padding: 10px;
+}
 
-  &__main {
-    font-size: 1.5em;
-    font-weight: bold;
-  }
+.footer-title {
+  font-size: 1.5em;
+  font-weight: bold;
 }

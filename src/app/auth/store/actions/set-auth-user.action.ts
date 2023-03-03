@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { AuthActionTypes } from 'src/app/auth/store/actionTypes';
+import { AuthActionTypes } from 'src/app/auth/store/action-types';
 import { IUser } from 'src/app/auth/types/user.interface';
 
 export const setAuthUserAction = createAction(

@@ -5,105 +5,265 @@
       "title": "Піца 'Баварська'",
       "category": "pizza",
       "price": "110 грн",
-      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/bavarska-1.jpg"
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/bavarska-1.jpg",
+      "info": {
+        "description": "Унікальна відмінність піци «Баварська» – це відсутність у ній майонезу! Приготована піца на тонкому тісті.",
+        "ingredients": [
+          "Ковбаса сирокопчена",
+          "Огірки солоні",
+          "Помідор",
+          "Сир",
+          "Олива",
+          "Томатный соус",
+          "Спеції “Трави Італії”"
+        ]
+      }
     },
     {
       "id": 2,
-      "title": "Піца 'Фітнес'",
+      "title": "Піца Фітнес",
       "category": "pizza",
       "price": "100 грн",
-      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/fitnes-1.jpg"
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/fitnes-1.jpg",
+      "info": {
+        "description": "За рахунок ідеального підбору легкого соусу, соковитого перцю й ніжного курячого філе вона не тільки корисна, але й має бездоганний смак. Навіть найсправжнісінький гурман оцінить її належним чином!",
+        "ingredients": [
+          "Курка",
+          "Перець болгарський",
+          "Помідор",
+          "Сир",
+          "Кріп",
+          "Томатный соус",
+          "Солодкий соус чілі"
+        ]
+      }
     },
     {
       "id": 3,
-      "title": "Піца 'Фірмова'",
+      "title": "Піца Фірмова",
       "category": "pizza",
       "price": "100 грн",
-      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/firmennaya-1.jpg"
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/firmennaya-1.jpg",
+      "info": {
+        "description": "Можна казати багато, але назва каже сама за себе. Піца «Фірмова» від нашого кухаря – спеціально для Вас!",
+        "ingredients": [
+          "Курка",
+          "Шинка",
+          "Майонез",
+          "Сир",
+          "Печериці",
+          "Томатный соус",
+          "Маслини"
+        ]
+      }
     },
     {
       "id": 4,
-      "title": "Салат 'Цезар'",
+      "title": "Салат Цезар",
       "category": "salad",
       "price": "50 грн",
-      "imageUrl": "https://bufet.ua/wp-content/uploads/2020/01/tsezar-2.jpg"
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2020/01/tsezar-2.jpg",
+      "info": {
+        "description": "Легкий салат які всі знають!",
+        "ingredients": [
+          "Медальйони з курячого філе",
+          "Свіжий помідор",
+          "Мікс листя салату",
+          "Сухарики",
+          "Пікантний соус"
+        ]
+      }
     },
     {
       "id": 5,
-      "title": "Салат 'Весняний'",
+      "title": "Салат Весняний",
       "category": "salad",
       "price": "35 грн",
-      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/salat-vesenii_category.jpg"
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/salat-vesenii_category.jpg",
+      "info": {
+        "description": "Свіжий салат зі свіжих овочей!",
+        "ingredients": [
+          "Капуста",
+          "Морква",
+          "Крабові палички",
+          "Кукурудза",
+          "Майонез"
+        ]
+      }
     },
     {
       "id": 6,
-      "title": "Салат 'Столичний'",
+      "title": "Салат Столичний",
       "category": "salad",
       "price": "45 грн",
-      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/salat-stolichny_category.jpg"
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/salat-stolichny_category.jpg",
+      "info": {
+        "description": "Усім відоме олів'є, але ми назвали його столичний:)",
+        "ingredients": [
+          "Курка",
+          "Яловичина",
+          "Картопля",
+          "Огірки солені",
+          "Яйця",
+          "Горошок",
+          "Майонез"
+        ]
+      }
     },
     {
       "id": 7,
       "title": "Бургер з куркою",
       "category": "burgers",
       "price": "60 грн",
-      "imageUrl": "https://bufet.ua/wp-content/uploads/2022/08/BURGER_category.jpg"
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2022/08/BURGER_category.jpg",
+      "info": {
+        "description": "Соковитий бургер, який краще, ніж в Макдональдс!",
+        "ingredients": [
+          "Булка",
+          "Філе курки",
+          "Салат айсберг",
+          "Сир",
+          "Свіжий помідор",
+          "Солоний огірок",
+          "Соуси Кетчуп та Карі"
+        ]
+      }
     },
     {
       "id": 8,
       "title": "Чізбургер",
       "category": "burgers",
       "price": "60 грн",
-      "imageUrl": "https://bufet.ua/wp-content/uploads/2019/09/chizburger_category.jpg"
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2019/09/chizburger_category.jpg",
+      "info": {
+        "description": "Пікантний чізбургер з яловичиною та салатом айсбер",
+        "ingredients": [
+          "Булка з кунжутом",
+          "Помідор",
+          "Огірок солоний",
+          "Салат Айсберг",
+          "Яловичина відварна",
+          "Сир",
+          "Соуси Бургер",
+          "Майонез"
+        ]
+      }
     },
     {
       "id": 9,
       "title": "Сирники",
       "category": "bakery",
       "price": "40 грн",
-      "imageUrl": "https://bufet.ua/wp-content/uploads/2015/08/sirniki.jpg"
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2015/08/sirniki.jpg",
+      "info": {
+        "description": "Пухкі сирники з родзинками, посипані цукровою пудрою",
+        "ingredients": [
+          "Сир кисломолочний",
+          "Мука",
+          "Яйця",
+          "Родзинки",
+          "Цукор"
+        ]
+      }
     },
     {
       "id": 10,
       "title": "Кекс шоколадний",
       "category": "bakery",
       "price": "60 грн",
-      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/05/keks_shokolad.jpg"
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/05/keks_shokolad.jpg",
+      "info": {
+        "description": "Шоколадний кекс з волоським горіхом",
+        "ingredients": [
+          "Вершкове масло",
+          "Цукор",
+          "Яйця",
+          "Волоський горіх",
+          "Сіль",
+          "Борошно",
+          "Сода харчова",
+          "Кондитерська глазур"
+        ]
+      }
     },
     {
       "id": 11,
       "title": "Чізкейк",
       "category": "bakery",
       "price": "40 грн",
-      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/05/cheese-cake-category.jpg"
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/05/cheese-cake-category.jpg",
+      "info": {
+        "description": "Модне слово чізкейк, а насправді це сирна запіканка на пісочному тісті",
+        "ingredients": [
+          "Сир кисломолочний",
+          "Сметана",
+          "Масло вершкове",
+          "Ванілін",
+          "Яйце",
+          "Сіль",
+          "Борошно",
+          "Сода харчова",
+          "Топінг"
+        ]
+      }
     },
     {
       "id": 12,
-      "title": "Пиріг 'Пісочний'",
+      "title": "Пиріг Пісочний",
       "category": "bakery",
       "price": "20 грн",
-      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/pirog-pisochniy.jpg"
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/pirog-pisochniy.jpg",
+      "info": {
+        "description": "Тертий пиріг з чорною смородиною, цукрова пудра",
+        "ingredients": [
+          "Чорна смородина",
+          "Сметана",
+          "Маргарин",
+          "Борошно",
+          "Сода харчова",
+          "Яйце"
+        ]
+      }
     },
     {
       "id": 13,
       "title": "Чай (чорний/зелений)",
       "category": "drinks",
       "price": "15 грн",
-      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/12/tea_green_category.jpg"
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/12/tea_green_category.jpg",
+      "info": {
+        "description": "Гарячий чай на Ваш вибір",
+        "ingredients": [
+          "Чай пакетованйи",
+          "Цукор 10 г"
+        ]
+      }
     },
     {
       "id": 14,
       "title": "Лимонад стандартний",
       "category": "drinks",
       "price": "20 грн",
-      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/limonad_b_category.jpg"
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/limonad_b_category.jpg",
+      "info": {
+        "description": "Чувак, ти серйозно? Нашо тобі деталі про лимонад, це ж лимонад:)",
+        "ingredients": [
+          "Лимонад"
+        ]
+      }
     },
     {
       "id": 15,
-      "title": "Cik стандарт (на вибір)",
+      "title": "Cik стандартний",
       "category": "bakery",
       "price": "40 грн",
-      "imageUrl": "https://bufet.ua/wp-content/uploads/2015/04/apelsinoviy_sok_b_category.jpg"
+      "imageUrl": "https://bufet.ua/wp-content/uploads/2015/04/apelsinoviy_sok_b_category.jpg",
+      "info": {
+        "description": "Сік свіжовижатий в асортименті",
+        "ingredients": [
+          "Сік (на вибір)"
+        ]
+      }
     }
   ],
   "users": [
@@ -116,22 +276,22 @@
   ],
   "categories": [
     {
-      "name": "all"
+      "id": "all"
     },
     {
-      "name": "pizza"
+      "id": "pizza"
     },
     {
-      "name": "salad"
+      "id": "salad"
     },
     {
-      "name": "burgers"
+      "id": "burgers"
     },
     {
-      "name": "bakery"
+      "id": "bakery"
     },
     {
-      "name": "drinks"
+      "id": "drinks"
     }
   ]
 }

@@ -1,8 +1,9 @@
-<main class='menu'>
-  <app-categories *ngIf='(categoriesStatus$ | async) === "success"'></app-categories>
-  <app-products-list *ngIf='(productsStatus$ | async) === "success"'></app-products-list>
-  <mat-spinner
-    *ngIf='(productsStatus$ | async ) === "loading" || (categoriesStatus$ | async) === "loading"'
-    style='margin: 0 auto'>
-  </mat-spinner>
-</main>
+<app-categories></app-categories>
+<app-products-list *ngIf='(products$ | async)'></app-products-list>
+<mat-spinner *ngIf='(productsStatus$ | async) === "loading"'></mat-spinner>
+<div
+  *ngIf='!(products$ | async) && (productsStatus$ | async) === "success"'
+  class='products-not-found'>
+  No products was found!
+</div>
+<app-product-details-modal *ngIf='isDetailsModalOpened | async'></app-product-details-modal>

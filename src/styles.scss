@@ -18,11 +18,16 @@ input.ng-touched.ng-invalid {
 
 button {
   transition: .2s;
+
   &:hover {
     cursor: pointer;
     box-shadow: 0 0 5px black;
   }
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
