@@ -3,26 +3,41 @@
 :host {
   background-color: #fff;
   display: flex;
-  justify-content: space-between;
   padding: 10px;
-  gap: 50px;
+  gap: 30px;
+
+  @media (max-width: 720px) {
+    justify-content: space-between;
+    position: relative;
+    gap: 15px;
+  }
 }
 
 .logo {
-  flex: 1 0 200px;
-  max-width: 200px;
+  flex: 0 0 200px;
+  @media (max-width: 720px) {
+    flex: 0 0 170px;
+  }
+  @media (max-width: 450px) {
+    flex: 0 0 150px;
+  }
 }
 
 .user {
-  flex: 0 1 15%;
   display: flex;
   gap: 30px;
   align-items: center;
+  @media (max-width: 410px) {
+    gap: 10px;
+  }
 
   &__name {
     font-size: 1.5em;
     color: $mainColor;
     font-weight: bold;
+    @media (max-width: 450px) {
+      font-size: 1.3em;
+    }
   }
 
   &__logout {
@@ -30,7 +45,16 @@
     padding: 5px 15px;
     border-radius: 5px;
     border: 1px solid black;
-    background-color: $mainColor;
+    background-color: #f64141;
     color: #ffffff;
+
+    &:hover {
+      background-color: #fc2222;
+    }
+
+    @media (max-width: 410px) {
+      font-size: 1em;
+      padding: 5px 10px;
+    }
   }
 }

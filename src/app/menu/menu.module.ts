@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { MatCardModule } from '@angular/material/card';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { MenuComponent } from './pages/menu/menu.component';
 import {
@@ -34,6 +32,7 @@ import {
 import {
   ProductDetailsModalComponent,
 } from './components/product-details-modal/product-details-modal.component';
+import { MaterialModule } from 'src/app/shared/material.module';
 
 @NgModule({
   declarations: [
@@ -54,8 +53,7 @@ import {
       FetchProductsByCategoryEffect,
       SearchProductsEffect,
     ]),
-    MatCardModule,
-    MatProgressSpinnerModule,
+    MaterialModule,
   ],
   providers: [MenuService],
 })

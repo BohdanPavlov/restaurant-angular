@@ -1,11 +1,10 @@
 <div class='logo'>
   <img src='assets/images/logo.jpg' alt='Main Logo'>
 </div>
-<app-search></app-search>
+<app-search *ngIf='user$ | async'></app-search>
 <div
   class='user'
-  *ngIf='user$ | async'
->
+  *ngIf='user$ | async'>
   <strong class='user__name'>{{(user$ | async)?.username}}</strong>
   <button class='user__logout' (click)='onLogout()'>Logout</button>
 </div>

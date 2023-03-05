@@ -6,6 +6,13 @@
   &:hover {
     cursor: pointer;
   }
+  @media (max-width: 600px) {
+    width: 220px;
+  }
+  @media (max-width:490px) {
+    margin: 0 auto;
+    width: 270px;
+  }
 
   .mat-card-image:first-child {
     margin: 0;
@@ -14,6 +21,14 @@
   &__image {
     width: 270px;
     height: 200px;
+    @media (max-width: 600px) {
+      width: 220px;
+      height: 130px;
+    }
+    @media (max-width: 490px) {
+      width: 270px;
+      height: 150px;
+    }
   }
 
   &__content {
