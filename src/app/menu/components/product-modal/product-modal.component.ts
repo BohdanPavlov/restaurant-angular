@@ -7,28 +7,38 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
-import { filter, map, Observable, Subject, takeUntil } from 'rxjs';
+import { map, Observable, Subject, takeUntil } from 'rxjs';
 
-import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
-import { ICategory } from 'src/app/menu/types/category.interface';
-import {
-  categoriesSelector,
-  newProductIngredientsSelector,
-} from 'src/app/menu/store/selectors';
 import {
   addIngredientAction,
 } from 'src/app/menu/store/actions/add-ingredient.action';
 import {
-  deleteIngredientAction,
-} from 'src/app/menu/store/actions/delete-ingredient.action';
-import { IProduct } from 'src/app/menu/types/product.interface';
-import {
   createNewProductAction,
 } from 'src/app/menu/store/actions/create-new-product.action';
 import {
+  deleteIngredientAction,
+} from 'src/app/menu/store/actions/delete-ingredient.action';
+import {
+  setProductIngredientsAction,
+} from 'src/app/menu/store/actions/set-product-ingredients.action';
+import {
   setProductModalStatusAction,
 } from 'src/app/menu/store/actions/set-product-modal-status.action';
-import { fill } from 'json-server-auth';
+import {
+  setSelectedProductAction,
+} from 'src/app/menu/store/actions/set-selected-product.action';
+import {
+  updateProductAction,
+} from 'src/app/menu/store/actions/update-product.action';
+import {
+  categoriesSelector,
+  newProductIngredientsSelector,
+  selectedProductSelector,
+} from 'src/app/menu/store/selectors';
+import { ICategory } from 'src/app/menu/types/category.interface';
+import { IProduct } from 'src/app/menu/types/product.interface';
+
+import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
 
 @Component({
   selector: 'app-product-modal',
@@ -39,6 +49,7 @@ export class ProductModalComponent implements OnInit, OnDestroy {
   public productForm!: FormGroup;
   public categories$!: Observable<ICategory[] | null>;
   public newProductsIngredients!: string[];
+  public selectedProduct!: IProduct | null;
   private destroy$: Subject<any> = new Subject<any>();
 
   @ViewChild('ingredient') public ingredientFieldRef!: ElementRef;
@@ -66,15 +77,32 @@ export class ProductModalComponent implements OnInit, OnDestroy {
       subscribe(ingredients => {
         this.newProductsIngredients = ingredients;
       });
+    this.store.
+      pipe(select(selectedProductSelector), takeUntil(this.destroy$)).
+      subscribe(selectedProduct => {
+        this.selectedProduct = selectedProduct;
+      });
   }
 
   private initializeForm () {
     this.productForm = this.fb.group({
-      title: ['', [Validators.required, Validators.minLength(6)]],
-      description: ['', [Validators.required, Validators.minLength(20)]],
-      price: ['', Validators.required],
-      category: ['', Validators.required],
-      imageUrl: ['', Validators.required],
+      title: [
+        this.selectedProduct
+          ? this.selectedProduct.title
+          : '', [Validators.required, Validators.minLength(6)]],
+      description: [
+        this.selectedProduct
+          ? this.selectedProduct.info.description
+          : '', [Validators.required, Validators.minLength(20)]],
+      price: [
+        this.selectedProduct ? this.selectedProduct.price.split(' ')[0] : '',
+        Validators.required],
+      category: [
+        this.selectedProduct ? this.selectedProduct.category : '',
+        Validators.required],
+      imageUrl: [
+        this.selectedProduct ? this.selectedProduct.imageUrl : '',
+        Validators.required],
     });
   }
 
@@ -100,12 +128,23 @@ export class ProductModalComponent implements OnInit, OnDestroy {
       },
     };
 
-    this.store.dispatch(createNewProductAction({ newProduct }));
+    if (this.selectedProduct) {
+      this.store.dispatch(updateProductAction({
+        product: newProduct,
+        id: this.selectedProduct.id ? this.selectedProduct.id : 0,
+      }));
+    } else {
+      this.store.dispatch(createNewProductAction({ newProduct }));
+    }
   }
 
   public onProductModalClose (event: MouseEvent): void {
     if (event.target === event.currentTarget) {
       this.store.dispatch(setProductModalStatusAction({ value: false }));
+      if (this.selectedProduct) {
+        this.store.dispatch(setSelectedProductAction({ product: null }));
+        this.store.dispatch(setProductIngredientsAction({ ingredients: [] }));
+      }
     }
   }
 

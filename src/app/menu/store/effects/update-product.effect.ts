@@ -5,24 +5,25 @@ import { catchError, map, of, switchMap } from 'rxjs';
 
 import { MenuService } from 'src/app/menu/services/menu.service';
 import {
-  createNewProductAction,
-  createNewProductFailureAction,
-  createNewProductSuccessAction,
-} from 'src/app/menu/store/actions/create-new-product.action';
+  updateProductAction,
+  updateProductFailureAction,
+  updateProductSuccessAction,
+} from 'src/app/menu/store/actions/update-product.action';
 
 @Injectable()
-export class CreateNewProductEffect {
-  createProduct$ = createEffect(() =>
+export class UpdateProductEffect {
+  updateProduct$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(createNewProductAction),
-      switchMap(({ newProduct }) => {
-        return this.menuService.createProduct(newProduct).pipe(
+      ofType(updateProductAction),
+      switchMap(({ product, id }) => {
+        return this.menuService.updateProduct(product, id).pipe(
           map((product) => {
-            return createNewProductSuccessAction({ product });
+            alert('Successfully updated!');
+            return updateProductSuccessAction({ product });
           }),
           catchError((errorResponse: HttpErrorResponse) => {
             return of(
-              createNewProductFailureAction({
+              updateProductFailureAction({
                 errorMessage: errorResponse.message,
               }),
             );

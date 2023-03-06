@@ -1,19 +1,29 @@
 import { Action, createReducer, on } from '@ngrx/store';
-
-import { MenuStateInterface } from 'src/app/menu/types/menu-state.interface';
+import { logoutAction } from 'src/app/auth/store/actions/logout.action';
+import {
+  addIngredientAction,
+} from 'src/app/menu/store/actions/add-ingredient.action';
+import {
+  createNewProductSuccessAction,
+} from 'src/app/menu/store/actions/create-new-product.action';
+import {
+  deleteIngredientAction,
+} from 'src/app/menu/store/actions/delete-ingredient.action';
 import {
   fetchCategoriesAction,
   fetchCategoriesFailureAction,
   fetchCategoriesSuccessAction,
 } from 'src/app/menu/store/actions/fetch-categories.action';
 import {
-  fetchProductsAction, fetchProductsFailureAction, fetchProductsSuccessAction,
-} from 'src/app/menu/store/actions/fetch-products.action';
-import {
   fetchProductsByCategoryAction,
   fetchProductsByCategoryFailureAction,
   fetchProductsByCategorySuccessAction,
 } from 'src/app/menu/store/actions/fetch-products-by-category.action';
+import {
+  fetchProductsAction,
+  fetchProductsFailureAction,
+  fetchProductsSuccessAction,
+} from 'src/app/menu/store/actions/fetch-products.action';
 import {
   searchProductsAction,
   searchProductsFailureAction,
@@ -23,20 +33,19 @@ import {
   setDetailsModalStatusAction,
 } from 'src/app/menu/store/actions/set-details-modal-status.action';
 import {
-  setSelectedProductAction,
-} from 'src/app/menu/store/actions/set-selected-product.action';
+  setProductIngredientsAction,
+} from 'src/app/menu/store/actions/set-product-ingredients.action';
 import {
   setProductModalStatusAction,
 } from 'src/app/menu/store/actions/set-product-modal-status.action';
 import {
-  addIngredientAction,
-} from 'src/app/menu/store/actions/add-ingredient.action';
+  setSelectedProductAction,
+} from 'src/app/menu/store/actions/set-selected-product.action';
 import {
-  deleteIngredientAction,
-} from 'src/app/menu/store/actions/delete-ingredient.action';
-import {
-  createNewProductSuccessAction,
-} from 'src/app/menu/store/actions/create-new-product.action';
+  updateProductSuccessAction,
+} from 'src/app/menu/store/actions/update-product.action';
+
+import { MenuStateInterface } from 'src/app/menu/types/menu-state.interface';
 
 const initialState: MenuStateInterface = {
   categories: null,
@@ -49,6 +58,7 @@ const initialState: MenuStateInterface = {
   isProductModalOpened: false,
   selectedProduct: null,
   newProductIngredients: [],
+  isEditProductMode: false,
 };
 
 const menuReducer = createReducer(
@@ -122,6 +132,33 @@ const menuReducer = createReducer(
       ...state,
       products: state.products ? [...state.products, action.product] : null,
       isProductModalOpened: false,
+    })),
+  on(updateProductSuccessAction,
+    (state, action): MenuStateInterface => {
+      if (state.products) {
+        const updatedProductIndex = state.products.findIndex(
+          product => product.id === action.product.id);
+        const updatedProducts = [...state.products];
+        updatedProducts[updatedProductIndex] = action.product;
+        return {
+          ...state,
+          products: updatedProducts,
+          isProductModalOpened: false,
+          selectedProduct: null,
+          newProductIngredients: [],
+        };
+      }
+      return state;
+    }),
+  on(setProductIngredientsAction,
+    (state, action): MenuStateInterface => ({
+      ...state,
+      newProductIngredients: action.ingredients,
+    })),
+  on(logoutAction,
+    (state): MenuStateInterface => ({
+      ...state,
+      ...initialState,
     })),
 );
 

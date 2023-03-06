@@ -6,16 +6,9 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
-import {
-  Observable,
-  Subject,
-  takeUntil,
-} from 'rxjs';
-
-import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
-import {
-  AuthRequestDataInterface,
-} from 'src/app/auth/types/auth-request-data.interface';
+import { Observable, Subject, takeUntil } from 'rxjs';
+import { loginAction } from 'src/app/auth/store/actions/login.action';
+import { registerAction } from 'src/app/auth/store/actions/register.action';
 import {
   switchAuthModeAction,
 } from 'src/app/auth/store/actions/switch-auth-mode.action';
@@ -24,8 +17,11 @@ import {
   isLoginModeSelector,
   isSubmittingSelector,
 } from 'src/app/auth/store/selectors';
-import { loginAction } from 'src/app/auth/store/actions/login.action';
-import { registerAction } from 'src/app/auth/store/actions/register.action';
+import {
+  AuthRequestDataInterface,
+} from 'src/app/auth/types/auth-request-data.interface';
+
+import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
 
 @Component({
   selector: 'app-auth',
@@ -65,7 +61,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     if (isLoginMode) {
       this.authForm = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
+        password: ['', Validators.required],
       });
     } else {
       this.authForm = this.fb.group({

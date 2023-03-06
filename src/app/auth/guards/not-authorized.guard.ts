@@ -13,7 +13,7 @@ import { PersistenceService } from 'src/app/auth/services/persistence.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class NotAuthorizedGuard implements CanActivate {
   constructor (
     private persistenceService: PersistenceService,
     private router: Router,
@@ -28,6 +28,6 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     const token = this.persistenceService.get('accessToken');
-    return token ? true : this.router.createUrlTree(['/auth']);
+    return token ? this.router.createUrlTree(['/menu']) : true;
   }
 }

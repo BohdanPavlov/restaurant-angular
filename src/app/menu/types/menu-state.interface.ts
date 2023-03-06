@@ -12,4 +12,5 @@ export interface MenuStateInterface {
   isProductModalOpened: boolean;
   selectedProduct: IProduct | null;
   newProductIngredients: string[];
+  isEditProductMode: boolean;
 }

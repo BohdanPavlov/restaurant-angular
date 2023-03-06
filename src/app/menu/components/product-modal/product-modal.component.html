@@ -1,6 +1,6 @@
 <div class='modal' (click)='onProductModalClose($event)'>
   <div class='modal-content content'>
-    <h2 class='content__title'>Add new product</h2>
+    <h2 class='content__title'>{{selectedProduct ? 'Update' : 'Add new'}} product</h2>
     <form
       [formGroup]='productForm'
       (ngSubmit)='onSubmit()'
@@ -12,6 +12,14 @@
           formControlName='title'
           placeholder='Title...'
           class='product-form__control'>
+        <app-validation-error
+          *ngIf='productForm.get("title")?.touched && productForm.get("title")?.errors?.["required"]'>
+          Required
+        </app-validation-error>
+        <app-validation-error
+          *ngIf='productForm.get("title")?.touched && productForm.get("title")?.errors?.["minlength"]'>
+          Should be longer than 6 symbols
+        </app-validation-error>
       </label>
       <label class='product-form__field'>
         Description
@@ -20,6 +28,14 @@
           placeholder='Description...'
           class='product-form__control'
         ></textarea>
+        <app-validation-error
+          *ngIf='productForm.get("description")?.touched && productForm.get("description")?.errors?.["required"]'>
+          Required
+        </app-validation-error>
+        <app-validation-error
+          *ngIf='productForm.get("description")?.touched && productForm.get("description")?.errors?.["minlength"]'>
+          Should be longer than 20 symbols
+        </app-validation-error>
       </label>
       <label class='product-form__field'>
         Price
@@ -29,21 +45,34 @@
           placeholder='Price...'
           class='product-form__control'
         >
+        <app-validation-error
+          *ngIf='productForm.get("price")?.touched && productForm.get("price")?.errors?.["required"]'>
+          Required
+        </app-validation-error>
       </label>
       <label class='product-form__field'>
         Category
-        <select formControlName='category' class='product-form__control'>
+        <select
+          formControlName='category'
+          class='product-form__control'>
           <option value='' selected disabled hidden>Select category</option>
           <option *ngFor='let category of categories$ | async' [value]='category.id' selected>{{category.id}}</option>
         </select>
+        <app-validation-error
+          *ngIf='productForm.get("category")?.touched && productForm.get("category")?.errors?.["required"]'>
+          Required
+        </app-validation-error>
       </label>
       <label class='product-form__field'>
         Image Url
         <input
           formControlName='imageUrl'
           placeholder='Image Url...'
-          class='product-form__control'
-        >
+          class='product-form__control'>
+        <app-validation-error
+          *ngIf='productForm.get("imageUrl")?.touched && productForm.get("imageUrl")?.errors?.["required"]'>
+          Required
+        </app-validation-error>
       </label>
       <div class='ingredient'>
         <label class='product-form__field ingredient__field'>
@@ -73,9 +102,9 @@
           delete
         </button>
       </div>
-      <button class='product-form__submit-btn'
-        [disabled]='productForm.invalid || newProductsIngredients.length === 0'>
-        Create
+      <button class='product-form__submit-btn'>
+        <!--              [disabled]='productForm.invalid || newProductsIngredients.length === 0'>-->
+        {{selectedProduct ? 'Update' : 'Create'}}
       </button>
     </form>
   </div>

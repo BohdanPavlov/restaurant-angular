@@ -24,12 +24,28 @@
             placeholder='Username'
             formControlName='username'
           >
+          <app-validation-error
+            *ngIf='authForm.get("username")?.touched && authForm.get("username")?.errors?.["required"]'>
+            Required
+          </app-validation-error>
+          <app-validation-error
+            *ngIf='authForm.get("username")?.touched && authForm.get("username")?.errors?.["minlength"]'>
+            Should be longer than 3 symbols
+          </app-validation-error>
           <input
             class='auth-form__input'
             type='password'
             placeholder='Password'
             formControlName='password'
           >
+          <app-validation-error
+            *ngIf='authForm.get("password")?.touched && authForm.get("password")?.errors?.["required"]'>
+            Required
+          </app-validation-error>
+          <app-validation-error
+            *ngIf='authForm.get("password")?.touched && authForm.get("password")?.errors?.["minlength"]'>
+            Should be longer than 6 symbols
+          </app-validation-error>
           <div class='auth-form__buttons'>
             <button
               type='button'

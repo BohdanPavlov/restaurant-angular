@@ -1,10 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-
-import { environment } from 'src/environments/environment';
 import { ICategory } from 'src/app/menu/types/category.interface';
 import { IProduct } from 'src/app/menu/types/product.interface';
+
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class MenuService {
@@ -42,5 +42,10 @@ export class MenuService {
   public createProduct (product: IProduct): Observable<IProduct> {
     const path = environment.apiBase + 'products';
     return this.http.post<IProduct>(path, product);
+  }
+
+  public updateProduct (product: IProduct, id: number): Observable<IProduct> {
+    const path = environment.apiBase + `products/${id}`;
+    return this.http.put<IProduct>(path, product);
   }
 }
