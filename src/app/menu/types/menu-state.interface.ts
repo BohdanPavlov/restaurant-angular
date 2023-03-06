@@ -9,5 +9,7 @@ export interface MenuStateInterface {
   categoriesErrorMessage: string;
   productsErrorMessage: string;
   isDetailsModalOpened: boolean;
+  isProductModalOpened: boolean;
   selectedProduct: IProduct | null;
+  newProductIngredients: string[];
 }

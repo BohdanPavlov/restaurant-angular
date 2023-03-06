@@ -15,7 +15,17 @@ export enum MenuActionTypes {
   SEARCH_PRODUCTS_SUCCESS = '[Menu] Search products success',
   SEARCH_PRODUCTS_FAILURE = '[Menu] Search products failure',
 
-  SET_DETAILS_MODAL_OPENED = '[Menu] Set details modal opened',
+  CREATE_NEW_PRODUCT = '[Menu] Create new product',
+  CREATE_NEW_PRODUCT_SUCCESS = '[Menu] Create new product success',
+  CREATE_NEW_PRODUCT_FAILURE = '[Menu] Create new product failure',
+
+  SET_DETAILS_MODAL_STATUS = '[Menu] Set details modal status',
+
+  SET_PRODUCT_MODAL_STATUS = '[Menu] Set product modal status',
 
   SET_SELECTED_PRODUCT = '[Menu] Set selected product',
+
+  ADD_INGREDIENT = '[Menu] Add ingredient',
+
+  DELETE_INGREDIENT = '[Menu] Delete ingredient'
 }

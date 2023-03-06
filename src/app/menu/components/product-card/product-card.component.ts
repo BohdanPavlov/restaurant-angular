@@ -7,8 +7,8 @@ import {
   fetchProductsByCategoryAction,
 } from 'src/app/menu/store/actions/fetch-products-by-category.action';
 import {
-  setDetailsModalOpenedAction
-} from 'src/app/menu/store/actions/set-details-modal-opened.action';
+  setDetailsModalStatusAction
+} from 'src/app/menu/store/actions/set-details-modal-status.action';
 import {
   setSelectedProductAction
 } from 'src/app/menu/store/actions/set-selected-product.action';
@@ -29,7 +29,7 @@ export class ProductCardComponent {
   }
 
   public onShowProductDetails() {
-    this.store.dispatch(setDetailsModalOpenedAction({value: true}));
+    this.store.dispatch(setDetailsModalStatusAction({value: true}));
     this.store.dispatch(setSelectedProductAction({product: this.product}))
   }
 }

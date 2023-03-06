@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   gap: 50px;
+  position: relative;
   @media (max-width: 760px) {
     justify-content: flex-start;
     gap: 30px;

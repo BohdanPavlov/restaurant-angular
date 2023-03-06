@@ -38,4 +38,9 @@ export class MenuService {
       },
     });
   }
+
+  public createProduct (product: IProduct): Observable<IProduct> {
+    const path = environment.apiBase + 'products';
+    return this.http.post<IProduct>(path, product);
+  }
 }

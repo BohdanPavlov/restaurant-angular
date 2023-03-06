@@ -3,27 +3,27 @@ import { Injectable } from '@angular/core';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
-import {
-  fetchCategoriesAction,
-  fetchCategoriesFailureAction,
-  fetchCategoriesSuccessAction,
-} from 'src/app/menu/store/actions/fetch-categories.action';
 import { MenuService } from 'src/app/menu/services/menu.service';
-import { ICategory } from 'src/app/menu/types/category.interface';
+import {
+  createNewProductAction,
+  createNewProductFailureAction,
+  createNewProductSuccessAction,
+} from 'src/app/menu/store/actions/create-new-product.action';
 
 @Injectable()
-export class FetchCategoriesEffect {
-  fetchCategories$ = createEffect(() =>
+export class CreateNewProductEffect {
+  createProduct$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(fetchCategoriesAction),
-      switchMap(() => {
-        return this.menuService.fetchCategories().pipe(
-          map((categories: ICategory[]) => {
-            return fetchCategoriesSuccessAction({categories})
+      ofType(createNewProductAction),
+      switchMap(({newProduct}) => {
+        return this.menuService.createProduct(newProduct).pipe(
+          tap(data => console.log(data)),
+          map((product) => {
+            return createNewProductSuccessAction({product})
           }),
           catchError((errorResponse: HttpErrorResponse) => {
             return of(
-              fetchCategoriesFailureAction({
+              createNewProductFailureAction({
                 errorMessage: errorResponse.message
               })
             )

@@ -1,10 +1,10 @@
 <div class='modal' (click)='onCloseModal($event)'>
-  <div class='modal-content'>
-    <h2 class='modal-content__title'>Details</h2>
-    <div class='modal-content__name'>{{selectedProduct?.title}}</div>
-    <p class='modal-content__description'>{{selectedProduct?.info?.description}}</p>
-    <h3 class='modal-content__title'>Ingredients</h3>
-    <div class='modal-content__ingredient' *ngFor='let ingredient of selectedProduct?.info?.ingredients'>
+  <div class='modal-content content'>
+    <h2 class='content__title'>Details</h2>
+    <div class='content__name'>{{selectedProduct?.title}}</div>
+    <p class='content__description'>{{selectedProduct?.info?.description}}</p>
+    <h3 class='content__title'>Ingredients</h3>
+    <div class='content__ingredient' *ngFor='let ingredient of selectedProduct?.info?.ingredients'>
       {{ingredient}}
     </div>
   </div>

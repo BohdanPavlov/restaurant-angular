@@ -20,11 +20,23 @@ import {
   searchProductsSuccessAction,
 } from 'src/app/menu/store/actions/search-products.action';
 import {
-  setDetailsModalOpenedAction,
-} from 'src/app/menu/store/actions/set-details-modal-opened.action';
+  setDetailsModalStatusAction,
+} from 'src/app/menu/store/actions/set-details-modal-status.action';
 import {
-  setSelectedProductAction
+  setSelectedProductAction,
 } from 'src/app/menu/store/actions/set-selected-product.action';
+import {
+  setProductModalStatusAction,
+} from 'src/app/menu/store/actions/set-product-modal-status.action';
+import {
+  addIngredientAction,
+} from 'src/app/menu/store/actions/add-ingredient.action';
+import {
+  deleteIngredientAction,
+} from 'src/app/menu/store/actions/delete-ingredient.action';
+import {
+  createNewProductSuccessAction,
+} from 'src/app/menu/store/actions/create-new-product.action';
 
 const initialState: MenuStateInterface = {
   categories: null,
@@ -34,7 +46,9 @@ const initialState: MenuStateInterface = {
   categoriesErrorMessage: '',
   productsErrorMessage: '',
   isDetailsModalOpened: false,
-  selectedProduct: null
+  isProductModalOpened: false,
+  selectedProduct: null,
+  newProductIngredients: [],
 };
 
 const menuReducer = createReducer(
@@ -75,15 +89,39 @@ const menuReducer = createReducer(
       productsStatus: 'error',
       productsErrorMessage: action.errorMessage,
     })),
-  on(setDetailsModalOpenedAction,
+  on(setDetailsModalStatusAction,
     (state, action): MenuStateInterface => ({
       ...state,
       isDetailsModalOpened: action.value,
     })),
+  on(setProductModalStatusAction,
+    (state, action): MenuStateInterface => ({
+      ...state,
+      isProductModalOpened: action.value,
+    })),
   on(setSelectedProductAction,
     (state, action): MenuStateInterface => ({
       ...state,
-      selectedProduct: action.product
+      selectedProduct: action.product,
+    })),
+  on(addIngredientAction,
+    (state, action): MenuStateInterface => ({
+      ...state,
+      newProductIngredients: [
+        ...state.newProductIngredients,
+        action.ingredient],
+    })),
+  on(deleteIngredientAction,
+    (state, action): MenuStateInterface => ({
+      ...state,
+      newProductIngredients: state.newProductIngredients.filter(
+        ingredient => ingredient !== action.ingredient),
+    })),
+  on(createNewProductSuccessAction,
+    (state, action): MenuStateInterface => ({
+      ...state,
+      products: state.products ? [...state.products, action.product] : null,
+      isProductModalOpened: false,
     })),
 );
 

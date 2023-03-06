@@ -6,8 +6,13 @@
       <p>{{product.price}}</p>
     </div>
     <button class='product-card__details-btn' (click)='onShowProductDetails()'>Детальніше</button>
-    <button class='product-card__category' (click)='onGetProductsByCategory()'>
-      {{product.category}}
-    </button>
+    <div class='product-card__buttons'>
+      <button class='product-card__btn product-card__btn_category' (click)='onGetProductsByCategory()'>
+        {{product.category}}
+      </button>
+      <button class='product-card__btn product-card__btn_edit' (click)='onGetProductsByCategory()'>
+        Edit
+      </button>
+    </div>
   </mat-card-content>
 </mat-card>

@@ -33,6 +33,16 @@ import {
   ProductDetailsModalComponent,
 } from './components/product-details-modal/product-details-modal.component';
 import { MaterialModule } from 'src/app/shared/material.module';
+import {
+  ProductModalComponent,
+} from './components/product-modal/product-modal.component';
+import {
+  AddProductButtonComponent,
+} from './components/add-product-button/add-product-button.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  CreateNewProductEffect,
+} from 'src/app/menu/store/effects/create-new-product.effect';
 
 @NgModule({
   declarations: [
@@ -42,6 +52,8 @@ import { MaterialModule } from 'src/app/shared/material.module';
     ProductCardComponent,
     ProductsListComponent,
     ProductDetailsModalComponent,
+    ProductModalComponent,
+    AddProductButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -52,8 +64,11 @@ import { MaterialModule } from 'src/app/shared/material.module';
       FetchProductsEffect,
       FetchProductsByCategoryEffect,
       SearchProductsEffect,
+      CreateNewProductEffect,
     ]),
     MaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [MenuService],
 })

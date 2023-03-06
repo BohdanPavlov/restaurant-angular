@@ -1,0 +1,82 @@
+<div class='modal' (click)='onProductModalClose($event)'>
+  <div class='modal-content content'>
+    <h2 class='content__title'>Add new product</h2>
+    <form
+      [formGroup]='productForm'
+      (ngSubmit)='onSubmit()'
+      class='product-form'>
+      <label class='product-form__field'>
+        Title
+        <input
+          type='text'
+          formControlName='title'
+          placeholder='Title...'
+          class='product-form__control'>
+      </label>
+      <label class='product-form__field'>
+        Description
+        <textarea
+          formControlName='description'
+          placeholder='Description...'
+          class='product-form__control'
+        ></textarea>
+      </label>
+      <label class='product-form__field'>
+        Price
+        <input
+          type='number'
+          formControlName='price'
+          placeholder='Price...'
+          class='product-form__control'
+        >
+      </label>
+      <label class='product-form__field'>
+        Category
+        <select formControlName='category' class='product-form__control'>
+          <option value='' selected disabled hidden>Select category</option>
+          <option *ngFor='let category of categories$ | async' [value]='category.id' selected>{{category.id}}</option>
+        </select>
+      </label>
+      <label class='product-form__field'>
+        Image Url
+        <input
+          formControlName='imageUrl'
+          placeholder='Image Url...'
+          class='product-form__control'
+        >
+      </label>
+      <div class='ingredient'>
+        <label class='product-form__field ingredient__field'>
+          Add Ingredient
+          <input
+            type='text'
+            #ingredient
+            class='product-form__control'
+          >
+        </label>
+        <button
+          (click)='onAddIngredient()'
+          type='button'
+          class='ingredient__button'
+        >Add
+        </button>
+      </div>
+      <h2 class='product-form__text'>Ingredients</h2>
+      <p class='product-form__text' *ngIf='newProductsIngredients.length === 0'>Please add ingredients for this
+        product!</p>
+      <div class='new-ingredient' *ngFor='let ingredient of newProductsIngredients'>
+        <p class='new-ingredient__name'>{{ingredient}}</p>
+        <button
+          type='button'
+          (click)='onDeleteIngredient(ingredient)'
+          class='new-ingredient__btn'>
+          delete
+        </button>
+      </div>
+      <button class='product-form__submit-btn'
+        [disabled]='productForm.invalid || newProductsIngredients.length === 0'>
+        Create
+      </button>
+    </form>
+  </div>
+</div>

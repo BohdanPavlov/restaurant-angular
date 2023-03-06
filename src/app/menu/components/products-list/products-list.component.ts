@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 import { productsSelector} from 'src/app/menu/store/selectors';
 import { IProduct } from 'src/app/menu/types/product.interface';

@@ -6,8 +6,8 @@ import { IProduct } from 'src/app/menu/types/product.interface';
 import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
 import { selectedProductSelector } from 'src/app/menu/store/selectors';
 import {
-  setDetailsModalOpenedAction
-} from 'src/app/menu/store/actions/set-details-modal-opened.action';
+  setDetailsModalStatusAction
+} from 'src/app/menu/store/actions/set-details-modal-status.action';
 import {
   setSelectedProductAction
 } from 'src/app/menu/store/actions/set-selected-product.action';
@@ -28,13 +28,11 @@ export class ProductDetailsModalComponent implements OnInit, OnDestroy {
       subscribe(product => this.selectedProduct = product);
   }
 
-  public onCloseModal (event: MouseEvent): void | null {
+  public onCloseModal (event: MouseEvent): void {
     if (event.target === event.currentTarget) {
-      this.store.dispatch(setDetailsModalOpenedAction({value: false}));
+      this.store.dispatch(setDetailsModalStatusAction({value: false}));
       this.store.dispatch(setSelectedProductAction({product: null}));
     }
-
-    return null;
   }
 
   public ngOnDestroy (): void {

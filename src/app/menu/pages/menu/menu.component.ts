@@ -4,8 +4,11 @@ import { select, Store } from '@ngrx/store';
 
 import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
 import {
-  categoriesStatusSelector, isDetailsModalOpenedSelector,
-  productsSelector, productsStatusSelector,
+  categoriesStatusSelector,
+  isDetailsModalOpenedSelector,
+  isProductModalOpenedSelector,
+  productsSelector,
+  productsStatusSelector,
 } from 'src/app/menu/store/selectors';
 import {
   fetchCategoriesAction,
@@ -24,7 +27,8 @@ export class MenuComponent implements OnInit {
   public categoriesStatus$!: Observable<string>;
   public productsStatus$!: Observable<string>;
   public products$!: Observable<IProduct[] | null>;
-  public isDetailsModalOpened!: Observable<boolean>;
+  public isDetailsModalOpened$!: Observable<boolean>;
+  public isProductModalOpened$!: Observable<boolean>;
 
   constructor (private store: Store<AppStateInterface>) { }
 
@@ -38,8 +42,10 @@ export class MenuComponent implements OnInit {
     this.categoriesStatus$ = this.store.pipe(select(categoriesStatusSelector));
     this.productsStatus$ = this.store.pipe(select(productsStatusSelector));
     this.products$ = this.store.pipe(select(productsSelector));
-    this.isDetailsModalOpened = this.store.pipe(
+    this.isDetailsModalOpened$ = this.store.pipe(
       select(isDetailsModalOpenedSelector));
+    this.isProductModalOpened$ = this.store.pipe(
+      select(isProductModalOpenedSelector));
   }
 
 }

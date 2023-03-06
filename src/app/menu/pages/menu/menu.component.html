@@ -6,4 +6,5 @@
   class='products-not-found'>
   No products was found!
 </div>
-<app-product-details-modal *ngIf='isDetailsModalOpened | async'></app-product-details-modal>
+<app-product-details-modal *ngIf='isDetailsModalOpened$ | async'></app-product-details-modal>
+<app-product-modal *ngIf='isProductModalOpened$ | async'></app-product-modal>
