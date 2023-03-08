@@ -14,6 +14,11 @@
   @media (max-width: 450px) {
     top: 60px;
   }
+
+  ::ng-deep .search-btn {
+    padding: 5px 10px;
+    font-size: 1.1em;
+  }
 }
 
 .search-form {
@@ -33,15 +38,5 @@
   &__field {
     width: 100%;
     font-size: 1.2em;
-  }
-
-  &__button {
-    background-color: transparent;
-    padding: 3px 10px;
-    font-size: 1.2em;
-    font-weight: bold;
-    border: 1px solid #000;
-    border-radius: 5px;
-    color: $mainColor;
   }
 }

@@ -1,3 +1,6 @@
-<button class='category' (click)='onGetProductsByCategory()'>
-  {{category.id | titlecase}}
-</button>
+<app-button
+  type='button'
+  classes='category'
+  (click)='onGetProductsByCategory()'
+  [text]='category.id'
+></app-button>

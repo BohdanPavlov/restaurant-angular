@@ -1,11 +1,13 @@
 @import "src/variables";
 
-.category {
-  background-color: $mainColor;
+:host {
+  flex: 0 0 100px;
+}
+
+::ng-deep .category {
+  width: 100%;
   padding: 5px 15px;
   color: #ffffff;
-  border: 1px solid #000;
-  border-radius: 5px;
   font-size: 1.2em;
   @media (max-width: 645px) {
     padding: 5px 10px;

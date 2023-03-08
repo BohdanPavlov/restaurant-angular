@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
-
-import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
+import { Observable } from 'rxjs';
+import {
+  fetchCategoriesAction,
+} from 'src/app/menu/store/actions/fetch-categories.action';
+import {
+  fetchProductsAction,
+} from 'src/app/menu/store/actions/fetch-products.action';
 import {
   categoriesStatusSelector,
   isDetailsModalOpenedSelector,
@@ -10,13 +14,9 @@ import {
   productsSelector,
   productsStatusSelector,
 } from 'src/app/menu/store/selectors';
-import {
-  fetchCategoriesAction,
-} from 'src/app/menu/store/actions/fetch-categories.action';
-import {
-  fetchProductsAction,
-} from 'src/app/menu/store/actions/fetch-products.action';
 import { IProduct } from 'src/app/menu/types/product.interface';
+
+import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
 
 @Component({
   selector: 'app-menu',

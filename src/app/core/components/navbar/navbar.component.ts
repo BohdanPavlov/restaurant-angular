@@ -1,25 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-
 import { isAuthSelector } from 'src/app/auth/store/selectors';
-import { categoriesSelector } from 'src/app/menu/store/selectors';
-import { ICategory } from 'src/app/menu/types/category.interface';
+
+import {
+  setProductModalStatusAction,
+} from 'src/app/menu/store/actions/set-product-modal-status.action';
 import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
 
 @Component({
-  selector: 'app-categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.scss'],
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss'],
 })
-export class CategoriesComponent implements OnInit {
-  public categories$!: Observable<ICategory[] | null>;
+export class NavbarComponent implements OnInit {
   public isAuth$!: Observable<boolean>;
 
   constructor (private store: Store<AppStateInterface>) { }
 
   public ngOnInit (): void {
-    this.categories$ = this.store.pipe(select(categoriesSelector));
     this.isAuth$ = this.store.pipe(select(isAuthSelector));
+  }
+
+  onSetProductModalOpened () {
+    this.store.dispatch(setProductModalStatusAction({ value: true }));
   }
 }

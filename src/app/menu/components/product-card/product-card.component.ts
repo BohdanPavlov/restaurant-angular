@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Component, Input, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { isAuthSelector } from 'src/app/auth/store/selectors';
 import {
   fetchProductsByCategoryAction,
 } from 'src/app/menu/store/actions/fetch-products-by-category.action';
@@ -24,10 +26,16 @@ import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.scss'],
 })
-export class ProductCardComponent {
+export class ProductCardComponent implements OnInit {
   @Input() public product!: IProduct;
 
+  public isAuth$!: Observable<boolean>;
+
   constructor (private store: Store<AppStateInterface>) { }
+
+  public ngOnInit (): void {
+    this.isAuth$ = this.store.pipe(select(isAuthSelector));
+  }
 
   public onGetProductsByCategory () {
     this.store.dispatch(

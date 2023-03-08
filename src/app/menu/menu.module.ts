@@ -3,6 +3,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import {
+  CategoriesComponent,
+} from 'src/app/menu/components/categories/categories.component';
+import {
+  CategoryComponent,
+} from 'src/app/menu/components/category/category.component';
 
 import { MenuRoutingModule } from 'src/app/menu/menu-routing.module';
 import { MenuService } from 'src/app/menu/services/menu.service';
@@ -28,13 +34,6 @@ import { reducer } from 'src/app/menu/store/reducers';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import {
-  AddProductButtonComponent,
-} from './components/add-product-button/add-product-button.component';
-import {
-  CategoriesComponent,
-} from './components/categories/categories.component';
-import { CategoryComponent } from './components/category/category.component';
-import {
   ProductCardComponent,
 } from './components/product-card/product-card.component';
 import {
@@ -52,13 +51,12 @@ import { MenuComponent } from './pages/menu/menu.component';
 @NgModule({
   declarations: [
     MenuComponent,
-    CategoriesComponent,
-    CategoryComponent,
     ProductCardComponent,
     ProductsListComponent,
     ProductDetailsModalComponent,
     ProductModalComponent,
-    AddProductButtonComponent,
+    CategoriesComponent,
+    CategoryComponent,
   ],
   imports: [
     CommonModule,

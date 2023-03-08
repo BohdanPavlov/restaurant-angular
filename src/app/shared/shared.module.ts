@@ -1,7 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import {
+  ButtonComponent,
+} from 'src/app/shared/components/button/button.component';
 
+import {
+  InputComponent,
+} from 'src/app/shared/components/input/input.component';
 import {
   SearchComponent,
 } from 'src/app/shared/components/search/search.component';
@@ -14,6 +20,8 @@ import { MaterialModule } from 'src/app/shared/material.module';
   declarations: [
     ValidationErrorComponent,
     SearchComponent,
+    InputComponent,
+    ButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -23,6 +31,8 @@ import { MaterialModule } from 'src/app/shared/material.module';
   exports: [
     ValidationErrorComponent,
     SearchComponent,
+    InputComponent,
+    ButtonComponent,
   ],
 })
 export class SharedModule {}

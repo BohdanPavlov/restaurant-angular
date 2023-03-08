@@ -1,11 +1,11 @@
 <div class='logo'>
   <img src='assets/images/logo.jpg' alt='Main Logo'>
 </div>
-<app-search *ngIf='user$ | async'></app-search>
+<app-search *ngIf='currentRoute?.url === "/menu"'></app-search>
 <div
   class='user'
   *ngIf='user$ | async'>
   <strong class='user__name'>{{(user$ | async)?.username}}</strong>
-  <button class='user__logout' (click)='onLogout()'>Logout</button>
+  <app-button type='button' classes='logout-btn' (click)='onLogout()' text='Logout'></app-button>
 </div>
-
+<app-button [routerLink]='["/auth"]' *ngIf='!(user$ | async)' text='Authorize'></app-button>

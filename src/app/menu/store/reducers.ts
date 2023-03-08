@@ -1,5 +1,4 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { logoutAction } from 'src/app/auth/store/actions/logout.action';
 import {
   addIngredientAction,
 } from 'src/app/menu/store/actions/add-ingredient.action';
@@ -154,11 +153,6 @@ const menuReducer = createReducer(
     (state, action): MenuStateInterface => ({
       ...state,
       newProductIngredients: action.ingredients,
-    })),
-  on(logoutAction,
-    (state): MenuStateInterface => ({
-      ...state,
-      ...initialState,
     })),
 );
 

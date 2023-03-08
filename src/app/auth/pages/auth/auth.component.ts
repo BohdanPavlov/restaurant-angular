@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { Observable, Subject, takeUntil } from 'rxjs';
@@ -27,7 +22,6 @@ import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthComponent implements OnInit, OnDestroy {
   public authForm!: FormGroup;
@@ -53,6 +47,9 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.store.pipe(select(isLoginModeSelector), takeUntil(this.destroy)).
       subscribe(isLoginMode => {
         this.isLoginMode = isLoginMode;
+        if (this.authForm) {
+          this.authForm.reset();
+        }
         this.initializeForm(isLoginMode);
       });
   }

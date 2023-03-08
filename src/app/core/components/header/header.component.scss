@@ -3,11 +3,12 @@
 :host {
   background-color: #fff;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 10px;
   gap: 30px;
 
   @media (max-width: 720px) {
-    justify-content: space-between;
     position: relative;
     gap: 15px;
   }

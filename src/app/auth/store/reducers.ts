@@ -1,21 +1,23 @@
 import { Action, createReducer, on } from '@ngrx/store';
-
-import { AuthStateInterface } from 'src/app/auth/types/auth-state.interface';
 import {
-  switchAuthModeAction,
-} from 'src/app/auth/store/actions/switch-auth-mode.action';
-import {
-  loginAction, loginFailureAction,
+  loginAction,
+  loginFailureAction,
   loginSuccessAction,
 } from 'src/app/auth/store/actions/login.action';
+import { logoutAction } from 'src/app/auth/store/actions/logout.action';
 import {
-  registerAction, registerFailureAction,
+  registerAction,
+  registerFailureAction,
   registerSuccessAction,
 } from 'src/app/auth/store/actions/register.action';
 import {
   setAuthUserAction,
 } from 'src/app/auth/store/actions/set-auth-user.action';
-import { logoutAction } from 'src/app/auth/store/actions/logout.action';
+import {
+  switchAuthModeAction,
+} from 'src/app/auth/store/actions/switch-auth-mode.action';
+
+import { AuthStateInterface } from 'src/app/auth/types/auth-state.interface';
 
 const initialState: AuthStateInterface = {
   user: null,
@@ -47,6 +49,7 @@ const authReducer = createReducer(
   on(switchAuthModeAction, (state): AuthStateInterface => ({
     ...state,
     isLoginMode: !state.isLoginMode,
+    errorMessage: '',
   })),
   on(setAuthUserAction, (state, action): AuthStateInterface => ({
     ...state,
@@ -55,7 +58,9 @@ const authReducer = createReducer(
   })),
   on(logoutAction, (state): AuthStateInterface => ({
     ...state,
-    ...initialState,
+    user: null,
+    isAuth: false,
+    isSubmitting: false,
   })),
 );
 

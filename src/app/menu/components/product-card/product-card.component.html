@@ -10,7 +10,11 @@
       <button class='product-card__btn product-card__btn_category' (click)='onGetProductsByCategory()'>
         {{product.category}}
       </button>
-      <button class='product-card__btn product-card__btn_edit' (click)='onEditProduct()'>
+      <button
+        class='product-card__btn product-card__btn_edit'
+        (click)='onEditProduct()'
+        *ngIf='isAuth$ | async'
+      >
         Edit
       </button>
     </div>

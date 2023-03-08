@@ -3,11 +3,7 @@
 .product-card {
   padding: 0;
   box-shadow: 0 0 5px black;
-
-  &:hover {
-    cursor: pointer;
-  }
-
+  
   @media (max-width: 600px) {
     width: 220px;
   }

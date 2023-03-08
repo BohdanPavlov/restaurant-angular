@@ -1,0 +1,8 @@
+<a [routerLink]='["/menu"]' routerLinkActive='active' class='menu-item'>Menu</a>
+<a [routerLink]='["/news"]' routerLinkActive='active' class='menu-item'>News</a>
+<div
+  *ngIf='isAuth$ | async'
+  class='menu-item'
+  (click)='onSetProductModalOpened()'>
+  Add Product
+</div>

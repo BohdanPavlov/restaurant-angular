@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/auth/guards/auth.guard';
 
-import { NotAuthorizedGuard } from 'src/app/auth/guards/not-authorized.guard';
 import { AuthComponent } from 'src/app/auth/pages/auth/auth.component';
+import { NewsComponent } from 'src/app/news/pages/news/news.component';
 
 const routes: Routes = [
   {
@@ -16,12 +17,16 @@ const routes: Routes = [
   {
     path: 'auth',
     component: AuthComponent,
-    canActivate: [NotAuthorizedGuard],
+    canActivate: [AuthGuard],
   },
   {
-    path: '**',
-    redirectTo: '/menu',
+    path: 'news',
+    component: NewsComponent,
   },
+  // {
+  //   path: '**',
+  //   redirectTo: '/menu',
+  // },
 ];
 
 @NgModule({

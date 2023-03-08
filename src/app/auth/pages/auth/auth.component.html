@@ -1,63 +1,71 @@
 <div class='auth'>
   <div class='container auth-container'>
     <div class='auth-field'>
-      <h2 class='auth-field__title'>{{isLoginMode ? 'Login' : 'SignUp'}}</h2>
+      <h2 class='auth-field__title'>{{isLoginMode ? 'Login' : 'Sign Up'}}</h2>
       <app-validation-error *ngIf='errorMessage$ | async'>* {{errorMessage$ | async}}</app-validation-error>
       <form class='auth-form' [formGroup]='authForm' (ngSubmit)='onSubmit()'>
         <fieldset class='auth-form__wrapper'>
-          <input
-            class='auth-form__input'
-            type='text'
-            placeholder='Email'
-            formControlName='email'
-          >
-          <app-validation-error *ngIf='authForm.get("email")?.touched && authForm.get("email")?.errors?.["required"]'>
-            Required
-          </app-validation-error>
-          <app-validation-error *ngIf='authForm.get("email")?.touched && authForm.get("email")?.errors?.["email"]'>
-            Invalid Email
-          </app-validation-error>
-          <input
-            *ngIf='!isLoginMode'
-            class='auth-form__input'
-            type='text'
-            placeholder='Username'
-            formControlName='username'
-          >
-          <app-validation-error
-            *ngIf='authForm.get("username")?.touched && authForm.get("username")?.errors?.["required"]'>
-            Required
-          </app-validation-error>
-          <app-validation-error
-            *ngIf='authForm.get("username")?.touched && authForm.get("username")?.errors?.["minlength"]'>
-            Should be longer than 3 symbols
-          </app-validation-error>
-          <input
-            class='auth-form__input'
-            type='password'
-            placeholder='Password'
-            formControlName='password'
-          >
-          <app-validation-error
-            *ngIf='authForm.get("password")?.touched && authForm.get("password")?.errors?.["required"]'>
-            Required
-          </app-validation-error>
-          <app-validation-error
-            *ngIf='authForm.get("password")?.touched && authForm.get("password")?.errors?.["minlength"]'>
-            Should be longer than 6 symbols
-          </app-validation-error>
+          <div>
+            <app-input
+              type='email'
+              placeholder='Email'
+              formControlName='email'>
+            </app-input>
+            <div class='validation'>
+              <app-validation-error
+                *ngIf='authForm.get("email")?.touched && authForm.get("email")?.errors?.["required"]'>
+                * Required
+              </app-validation-error>
+              <app-validation-error *ngIf='authForm.get("email")?.touched && authForm.get("email")?.errors?.["email"]'>
+                * Invalid Email
+              </app-validation-error>
+            </div>
+          </div>
+          <div *ngIf='!isLoginMode'>
+            <app-input
+              type='text'
+              placeholder='Username'
+              formControlName='username'>
+            </app-input>
+            <div class='validation'>
+              <app-validation-error
+                *ngIf='authForm.get("username")?.touched && authForm.get("username")?.errors?.["required"]'>
+                * Required
+              </app-validation-error>
+              <app-validation-error
+                *ngIf='authForm.get("username")?.touched && authForm.get("username")?.errors?.["minlength"]'>
+                * Should be longer than 3 symbols
+              </app-validation-error>
+            </div>
+          </div>
+          <div>
+            <app-input
+              type='password'
+              placeholder='Password'
+              formControlName='password'>
+            </app-input>
+            <div class='validation'>
+              <app-validation-error
+                *ngIf='authForm.get("password")?.touched && authForm.get("password")?.errors?.["required"]'>
+                * Required
+              </app-validation-error>
+              <app-validation-error
+                *ngIf='authForm.get("password")?.touched && authForm.get("password")?.errors?.["minlength"]'>
+                * Should be longer than 6 symbols
+              </app-validation-error>
+            </div>
+          </div>
           <div class='auth-form__buttons'>
-            <button
+            <app-button
               type='button'
-              class='auth-form__button auth-form__button_toggle'
+              classes='success-btn'
               (click)='onToggleAuthMode()'
-            >Switch to {{isLoginMode ? 'Sign Up' : 'Login'}}</button>
-            <button
-              type='submit'
-              class='auth-form__button'
-              [disabled]='authForm.invalid || (isSubmitting$ | async)'
-            >{{isLoginMode ? 'Login' : 'Sign Up'}}
-            </button>
+              [text]='isLoginMode ? "Sign Up" : "Login"'>
+            </app-button>
+            <app-button
+              [disabled]='!!(authForm.invalid) || !!(isSubmitting$ | async)'
+              [text]='isLoginMode ? "Login" : "Sign Up"'>
+            </app-button>
           </div>
         </fieldset>
       </form>

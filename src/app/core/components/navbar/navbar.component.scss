@@ -1,0 +1,26 @@
+@import 'src/variables';
+
+:host {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 15px 30px;
+  font-size: 1.5em;
+  background-color: $mainColor;
+  color: #ffffff;
+  position: relative;
+  @media (max-width: 720px) {
+    margin-top: 50px;
+  }
+
+  .menu-item {
+    cursor: pointer;
+    position: relative;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .active {
+    color: $successColor;
+  }
+}

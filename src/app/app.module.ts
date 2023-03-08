@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 import { AuthModule } from 'src/app/auth/auth.module';
 import { PersistenceService } from 'src/app/auth/services/persistence.service';
 import { CoreModule } from 'src/app/core/core.module';
