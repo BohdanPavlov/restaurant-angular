@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable, Subject, takeUntil } from 'rxjs';
+
 import { loginAction } from 'src/app/auth/store/actions/login.action';
 import { registerAction } from 'src/app/auth/store/actions/register.action';
 import {
@@ -15,6 +17,9 @@ import {
 import {
   AuthRequestDataInterface,
 } from 'src/app/auth/types/auth-request-data.interface';
+import {
+  matchPasswordValidator,
+} from 'src/app/auth/validators/match-password.validator';
 
 import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
 
@@ -28,11 +33,12 @@ export class AuthComponent implements OnInit, OnDestroy {
   public isSubmitting$!: Observable<boolean>;
   public errorMessage$!: Observable<string>;
   public isLoginMode!: boolean;
-  private destroy = new Subject();
+  private destroy$ = new Subject();
 
   constructor (
     private fb: FormBuilder,
     private store: Store<AppStateInterface>,
+    private router: Router,
   ) {}
 
   public ngOnInit (): void {
@@ -44,13 +50,10 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.errorMessage$ = this.store.pipe(
       select(errorMessageSelector),
     );
-    this.store.pipe(select(isLoginModeSelector), takeUntil(this.destroy)).
+    this.store.pipe(select(isLoginModeSelector), takeUntil(this.destroy$)).
       subscribe(isLoginMode => {
         this.isLoginMode = isLoginMode;
-        if (this.authForm) {
-          this.authForm.reset();
-        }
-        this.initializeForm(isLoginMode);
+        this.initializeForm(this.isLoginMode);
       });
   }
 
@@ -65,7 +68,8 @@ export class AuthComponent implements OnInit, OnDestroy {
         email: ['', [Validators.required, Validators.email]],
         username: ['', [Validators.required, Validators.minLength(3)]],
         password: ['', [Validators.required, Validators.minLength(6)]],
-      });
+        confirmPassword: ['', Validators.required],
+      }, { validators: matchPasswordValidator });
     }
   }
 
@@ -74,16 +78,23 @@ export class AuthComponent implements OnInit, OnDestroy {
     if (this.isLoginMode) {
       this.store.dispatch(loginAction({ requestData }));
     } else {
-      this.store.dispatch(registerAction({ requestData }));
+      this.store.dispatch(registerAction({
+        requestData: {
+          email: requestData.email,
+          password: requestData.password,
+          username: requestData.username,
+        },
+      }));
     }
   }
 
   public onToggleAuthMode (): void {
+    this.router.navigate([(this.isLoginMode ? '/register' : '/login')]);
     this.store.dispatch(switchAuthModeAction());
   }
 
   public ngOnDestroy (): void {
-    this.destroy.next('');
-    this.destroy.complete();
+    this.destroy$.next('');
+    this.destroy$.complete();
   }
 }

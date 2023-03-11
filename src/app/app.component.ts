@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { filter, Subject, takeUntil } from 'rxjs';
 
 import { PersistenceService } from 'src/app/auth/services/persistence.service';
 import {
@@ -12,17 +14,32 @@ import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
-  title = 'restaurant-angular';
+export class AppComponent implements OnInit, OnDestroy {
+  public title = 'restaurant-angular';
+  public currentRoute!: any;
+  private destroy$: Subject<void> = new Subject<void>();
 
   constructor (
     private persistenceService: PersistenceService,
-    private store: Store<AppStateInterface>) {}
+    private store: Store<AppStateInterface>,
+    private router: Router,
+  ) {}
 
   public ngOnInit (): void {
     const user = this.persistenceService.get('user');
     if (user) {
       this.store.dispatch(setAuthUserAction({ user }));
     }
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd),
+      takeUntil(this.destroy$)).
+      subscribe(event => {
+        this.currentRoute = event;
+        console.log(this.currentRoute);
+      });
+  }
+
+  public ngOnDestroy (): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

@@ -33,8 +33,8 @@ export class MenuComponent implements OnInit {
   constructor (private store: Store<AppStateInterface>) { }
 
   public ngOnInit (): void {
-    this.store.dispatch(fetchCategoriesAction());
     this.store.dispatch(fetchProductsAction());
+    this.store.dispatch(fetchCategoriesAction());
     this.initializeValues();
   }
 

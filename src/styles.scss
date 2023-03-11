@@ -30,6 +30,13 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
 .modal {
   position: fixed;
   z-index: 1;
@@ -50,5 +57,3 @@ body {
   border-radius: 10px;
   background-color: #fff;
 }
-
-

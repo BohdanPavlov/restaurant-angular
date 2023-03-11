@@ -15,7 +15,12 @@ const routes: Routes = [
       m => m.MenuModule),
   },
   {
-    path: 'auth',
+    path: 'login',
+    component: AuthComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'register',
     component: AuthComponent,
     canActivate: [AuthGuard],
   },

@@ -28,6 +28,6 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     const token = this.persistenceService.get('accessToken');
-    return token ? this.router.createUrlTree(['/menu']) : true;
+    return token ? this.router.createUrlTree(['/login']) : true;
   }
 }

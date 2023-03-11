@@ -4,12 +4,10 @@
   gap: 50px;
   margin-top: 20px;
   position: relative;
-  @media (max-width: 760px) {
-    justify-content: flex-start;
+  @media (max-width: 950px) {
     gap: 30px;
   }
-  @media (max-width: 550px) {
-    gap: 20px;
+  @media (max-width: 800px) {
     flex-wrap: wrap;
   }
 }

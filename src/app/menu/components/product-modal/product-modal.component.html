@@ -54,7 +54,7 @@
         Category
         <select
           formControlName='category'
-          class='product-form__control'>
+          class='product-form__control product-form__control_select'>
           <option value='' selected disabled hidden>Select category</option>
           <option *ngFor='let category of categories$ | async' [value]='category.id' selected>{{category.id}}</option>
         </select>
@@ -83,12 +83,13 @@
             class='product-form__control'
           >
         </label>
-        <button
+        <app-button
           (click)='onAddIngredient()'
           type='button'
-          class='ingredient__button'
-        >Add
-        </button>
+          classes='add-ingredient-btn'
+          text='Add'
+        >
+        </app-button>
       </div>
       <h2 class='product-form__text'>Ingredients</h2>
       <p class='product-form__text' *ngIf='newProductsIngredients.length === 0'>Please add ingredients for this

@@ -1,4 +1,4 @@
 <app-header></app-header>
-<app-navbar></app-navbar>
+<app-navbar *ngIf='currentRoute?.url !== "/login" && currentRoute?.url !== "/register"'></app-navbar>
 <router-outlet></router-outlet>
 <app-footer></app-footer>

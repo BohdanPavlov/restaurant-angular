@@ -302,6 +302,12 @@
       "password": "$2a$10$.gO3f5nYLXNOT.APTfzWjeJIBVqcHjr3ahBQj1oqClNHeobsqapjy",
       "username": "qwe",
       "id": 3
+    },
+    {
+      "email": "user@user.com",
+      "password": "$2a$10$wTIm4HEkYbxe33NseROrkOwmXhS/Kng4srx2TEegzFEQDUSeLLDL.",
+      "username": "User",
+      "id": 4
     }
   ],
   "categories": [

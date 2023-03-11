@@ -1,6 +1,6 @@
 <app-categories></app-categories>
 <app-products-list *ngIf='products$ | async'></app-products-list>
-<mat-spinner *ngIf='(productsStatus$ | async) === "loading"'></mat-spinner>
+<mat-spinner *ngIf='(productsStatus$ | async) === "loading"' color='accent'></mat-spinner>
 <div
   *ngIf='!(products$ | async) && (productsStatus$ | async) === "success"'
   class='products-not-found'>
