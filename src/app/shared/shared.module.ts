@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import {
@@ -37,6 +37,7 @@ import { MaterialModule } from 'src/app/shared/material.module';
     ReactiveFormsModule,
     MaterialModule,
     FontAwesomeModule,
+    FormsModule,
   ],
   exports: [
     ValidationErrorComponent,

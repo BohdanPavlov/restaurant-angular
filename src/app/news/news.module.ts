@@ -6,6 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import { FetchNewsEffect } from 'src/app/news/store/effects/fetch-news.effect';
 
 import { reducer } from 'src/app/news/store/reducers';
+import { MaterialModule } from 'src/app/shared/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { BannerComponent } from './components/banner/banner.component';
 import { NewsItemComponent } from './components/news-item/news-item.component';
@@ -27,6 +28,7 @@ import { NewsComponent } from './pages/news/news.component';
       FetchNewsEffect,
     ]),
     SharedModule,
+    MaterialModule,
   ],
 })
 export class NewsModule {}

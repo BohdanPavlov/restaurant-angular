@@ -34,7 +34,6 @@ export class AppComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$)).
       subscribe(event => {
         this.currentRoute = event;
-        console.log(this.currentRoute);
       });
   }
 

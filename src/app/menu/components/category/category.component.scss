@@ -2,15 +2,24 @@
 
 :host {
   flex: 0 0 100px;
-}
 
-::ng-deep .category {
-  width: 100%;
-  padding: 5px 15px;
-  color: #ffffff;
-  font-size: 1.2em;
-  @media (max-width: 645px) {
-    padding: 5px 10px;
-    font-size: 1.1em;
+  @media (max-width: 400px) {
+    flex: 0 0 75px;
+  }
+
+  ::ng-deep .category {
+    width: 100%;
+    padding: 5px 15px;
+    color: $whiteColor;
+    font-size: 1.2em;
+    @media (max-width: 780px) {
+      font-size: 1.1em;
+    }
+    @media (max-width: 645px) {
+      padding: 5px 10px;
+    }
+    @media (max-width: 400px) {
+      padding: 3px 5px;
+    }
   }
 }

@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "start-server": "json-server-auth --watch db.json",
+    "start-websocket-server": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -27,7 +28,9 @@
     "@ngrx/effects": "^14.3.3",
     "@ngrx/store": "^14.3.3",
     "@ngrx/store-devtools": "^14.3.3",
+    "cors": "^2.8.5",
     "rxjs": "~7.5.0",
+    "socket.io-client": "^4.6.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
@@ -44,6 +47,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "socket.io": "^4.6.1",
     "typescript": "~4.7.2"
   }
 }

@@ -1,15 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { io, Socket } from 'socket.io-client';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+  styleUrls: ['./chat.component.scss'],
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, OnDestroy {
+  private socket!: Socket;
+  private destroy$: Subject<void> = new Subject<void>();
 
-  constructor() { }
+  public isVisible: boolean = false;
+  public message!: string;
+  public messages: { message: string }[] | [] = [];
 
-  ngOnInit(): void {
+  public ngOnInit () {
+    this.socket = io('http://localhost:3030');
+
+    this.socket.on('update', (messages: { message: string }[] | []) => {
+      this.messages = messages;
+    });
+
+    setTimeout(() => {
+      this.isVisible = true;
+    }, 1);
   }
 
+  public sendMessage () {
+    this.socket.emit('create', { message: this.message });
+    this.message = '';
+  }
+
+  public closeChat () {
+    this.isVisible = false;
+  }
+
+  public ngOnDestroy (): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }

@@ -16,12 +16,12 @@ input {
   width: 100%;
   font-size: 1.2rem;
   padding: 10px 15px;
-  border: 1px solid #000000;
+  border: 1px solid $blackColor;
 
   &:focus {
     border: none;
     outline: 2px solid $successColor;
-    box-shadow: 0 0 5px #000000;
+    box-shadow: 0 0 5px $blackColor;
   }
 }
 

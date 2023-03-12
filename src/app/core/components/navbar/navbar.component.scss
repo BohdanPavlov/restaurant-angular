@@ -7,7 +7,7 @@
   padding: 15px 30px;
   font-size: 1.5em;
   background-color: $mainColor;
-  color: #ffffff;
+  color: $whiteColor;
   position: relative;
   @media (max-width: 720px) {
     margin-top: 50px;
@@ -16,7 +16,7 @@
   .menu-item {
     cursor: pointer;
     position: relative;
-    color: #ffffff;
+    color: $whiteColor;
     text-decoration: none;
   }
 

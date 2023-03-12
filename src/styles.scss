@@ -18,7 +18,7 @@ button {
 
   &:hover {
     cursor: pointer;
-    box-shadow: 0 0 5px black;
+    box-shadow: 0 0 5px $blackColor;
   }
 }
 
@@ -56,5 +56,5 @@ input:focus {
   width: 80%;
   max-width: 600px;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: $whiteColor;
 }

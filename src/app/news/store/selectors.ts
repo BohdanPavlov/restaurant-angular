@@ -11,3 +11,8 @@ export const newsSelector = createSelector(
   (state) => state.news,
 );
 
+export const newsStatusSelector = createSelector(
+  newsFeatureSelector,
+  (state) => state.status,
+);
+

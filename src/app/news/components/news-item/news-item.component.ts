@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { INews } from 'src/app/news/types/news.interface';
 
 @Component({
@@ -6,13 +6,6 @@ import { INews } from 'src/app/news/types/news.interface';
   templateUrl: './news-item.component.html',
   styleUrls: ['./news-item.component.scss'],
 })
-export class NewsItemComponent implements OnInit {
+export class NewsItemComponent {
   @Input() news!: INews;
-
-  constructor () { }
-
-  ngOnInit (): void {
-    console.log(this.news);
-  }
-
 }

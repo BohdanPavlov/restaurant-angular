@@ -1,7 +1,7 @@
 @import "src/variables";
 
 :host {
-  background-color: #fff;
+  background-color: $whiteColor;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -45,9 +45,9 @@
     font-size: 1.1em;
     padding: 5px 15px;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid $blackColor;
     background-color: #f64141;
-    color: #ffffff;
+    color: $whiteColor;
 
     &:hover {
       background-color: #fc2222;
