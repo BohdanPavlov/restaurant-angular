@@ -1,6 +1,6 @@
 <app-categories></app-categories>
 <app-products-list *ngIf='products$ | async'></app-products-list>
-<mat-spinner *ngIf='(productsStatus$ | async) === "loading"' color='accent'></mat-spinner>
+<mat-spinner *ngIf='(productsStatus$ | async) === "loading"' color='primary'></mat-spinner>
 <div
   *ngIf='!(products$ | async) && (productsStatus$ | async) === "success"'
   class='products-not-found'>
@@ -8,3 +8,4 @@
 </div>
 <app-product-details-modal *ngIf='isDetailsModalOpened$ | async'></app-product-details-modal>
 <app-product-modal *ngIf='isProductModalOpened$ | async'></app-product-modal>
+<app-scroll-up></app-scroll-up>

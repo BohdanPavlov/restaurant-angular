@@ -9,12 +9,14 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AuthModule } from 'src/app/auth/auth.module';
 import { PersistenceService } from 'src/app/auth/services/persistence.service';
 import { CoreModule } from 'src/app/core/core.module';
+import { NewsModule } from 'src/app/news/news.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { AppComponent } from './app.component';
     CoreModule,
     SharedModule,
     AuthModule,
+    NewsModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
@@ -35,6 +38,7 @@ import { AppComponent } from './app.component';
       logOnly: environment.production,
       autoPause: true,
     }),
+    FontAwesomeModule,
   ],
   providers: [PersistenceService],
   bootstrap: [AppComponent],

@@ -1,11 +1,13 @@
-:host {
+@import 'src/variables';
+
+.form-control {
   position: relative;
 
   &::after {
     content: '*';
     position: absolute;
-    top: -10px;
-    right: 10px;
+    top: 0;
+    right: 3px;
     color: red;
   }
 }
@@ -13,6 +15,21 @@
 input {
   width: 100%;
   font-size: 1.2rem;
-  padding: 10px 20px;
-  position: relative;
+  padding: 10px 15px;
+  border: 1px solid #000000;
+
+  &:focus {
+    border: none;
+    outline: 2px solid $successColor;
+    box-shadow: 0 0 5px #000000;
+  }
+}
+
+.validation {
+  height: 17px;
+}
+
+.error {
+  border: 1px solid red;
+  outline: none;
 }

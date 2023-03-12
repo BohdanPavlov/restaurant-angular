@@ -1,0 +1,13 @@
+@import 'src/styles';
+
+.date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-size: 1.5em;
+  font-weight: bold;
+  background-color: $mainColor;
+  color: #ffffff;
+  border-radius: 5px;
+}

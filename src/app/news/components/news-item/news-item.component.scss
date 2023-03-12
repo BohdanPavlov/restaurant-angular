@@ -1,0 +1,41 @@
+@import 'src/styles';
+
+:host {
+  display: flex;
+  gap: 20px;
+  max-width: 1400px;
+  margin: 50px auto;
+  padding: 0 15px;
+}
+
+.info {
+  flex: 0 1 60%;
+
+  &__title {
+    margin: 15px 0;
+    color: $mainColor;
+  }
+
+  &__description {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #555555;
+  }
+
+  &__authors {
+    margin: 10px 0;
+    display: flex;
+    gap: 10px;
+  }
+
+  &__span {
+    font-size: 1.1em;
+  }
+
+  &__selected-span {
+    color: $mainColor;
+    border-right: 2px solid grey;
+    padding-right: 10px;
+    font-size: 1.2em;
+  }
+}

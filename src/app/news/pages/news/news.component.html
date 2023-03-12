@@ -1,1 +1,6 @@
-<p>news works!</p>
+<app-banner></app-banner>
+<app-news-item
+  *ngFor='let news of news$ | async'
+  [news]='news'
+></app-news-item>
+<app-scroll-up></app-scroll-up>

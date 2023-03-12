@@ -1,0 +1,23 @@
+:host {
+  flex: 1 1 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    font-size: 1.4em;
+  }
+
+  &__radio {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+  }
+}

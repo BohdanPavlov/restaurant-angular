@@ -8,6 +8,9 @@ import {
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { map, Observable, Subject, takeUntil } from 'rxjs';
+import {
+  numberInputValidator,
+} from 'src/app/auth/validators/number-input.validator';
 
 import {
   addIngredientAction,
@@ -96,7 +99,7 @@ export class ProductModalComponent implements OnInit, OnDestroy {
           : '', [Validators.required, Validators.minLength(20)]],
       price: [
         this.selectedProduct ? this.selectedProduct.price.split(' ')[0] : '',
-        Validators.required],
+        [Validators.required, numberInputValidator]],
       category: [
         this.selectedProduct ? this.selectedProduct.category : '',
         Validators.required],

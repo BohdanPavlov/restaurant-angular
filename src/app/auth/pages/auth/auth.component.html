@@ -9,68 +9,33 @@
             <app-input
               type='email'
               placeholder='Email'
-              formControlName='email'>
+              formControlName='email'
+              [control]='authForm.get("email")'>
             </app-input>
-            <div class='validation'>
-              <app-validation-error
-                *ngIf='authForm.get("email")?.touched && authForm.get("email")?.errors?.["required"]'>
-                * Required
-              </app-validation-error>
-              <app-validation-error *ngIf='authForm.get("email")?.touched && authForm.get("email")?.errors?.["email"]'>
-                * Invalid Email
-              </app-validation-error>
-            </div>
           </div>
           <div *ngIf='!isLoginMode'>
             <app-input
               type='text'
               placeholder='Username'
-              formControlName='username'>
+              formControlName='username'
+              [control]='authForm.get("username")'>
             </app-input>
-            <div class='validation'>
-              <app-validation-error
-                *ngIf='authForm.get("username")?.touched && authForm.get("username")?.errors?.["required"]'>
-                * Required
-              </app-validation-error>
-              <app-validation-error
-                *ngIf='authForm.get("username")?.touched && authForm.get("username")?.errors?.["minlength"]'>
-                * Should be longer than 3 symbols
-              </app-validation-error>
-            </div>
           </div>
           <div>
             <app-input
               type='password'
               placeholder='Password'
-              formControlName='password'>
+              formControlName='password'
+              [control]='authForm.get("password")'>
             </app-input>
-            <div class='validation'>
-              <app-validation-error
-                *ngIf='authForm.get("password")?.touched && authForm.get("password")?.errors?.["required"]'>
-                * Required
-              </app-validation-error>
-              <app-validation-error
-                *ngIf='authForm.get("password")?.touched && authForm.get("password")?.errors?.["minlength"]'>
-                * Should be longer than 6 symbols
-              </app-validation-error>
-            </div>
           </div>
           <div *ngIf='!isLoginMode'>
             <app-input
               type='password'
               placeholder='Confirm Password'
-              formControlName='confirmPassword'>
+              formControlName='confirmPassword'
+              [control]='authForm.get("confirmPassword")'>
             </app-input>
-            <div class='validation'>
-              <app-validation-error
-                *ngIf='authForm.get("confirmPassword")?.touched && authForm.get("confirmPassword")?.errors?.["required"]'>
-                * Required
-              </app-validation-error>
-              <app-validation-error
-                *ngIf='authForm.get("confirmPassword")?.touched && authForm.get("confirmPassword")?.hasError("passwordMismatch")'>
-                * Passwords do not match
-              </app-validation-error>
-            </div>
           </div>
           <div class='auth-form__buttons'>
             <app-button

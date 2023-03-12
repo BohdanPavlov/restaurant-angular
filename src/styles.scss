@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "src/theme";
+@import "src/variables";
 
 *, *:before, *:after {
   margin: 0;
@@ -10,10 +11,6 @@
 img {
   display: block;
   max-width: 100%;
-}
-
-input.ng-touched.ng-invalid, textarea.ng-touched.ng-invalid {
-  border: 1px solid red;
 }
 
 button {
@@ -35,6 +32,10 @@ button,
 textarea,
 select {
   font: inherit;
+}
+
+input:focus {
+  outline: none;
 }
 
 .modal {

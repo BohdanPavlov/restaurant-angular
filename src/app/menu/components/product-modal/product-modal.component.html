@@ -1,5 +1,6 @@
 <div class='modal' (click)='onProductModalClose($event)'>
   <div class='modal-content content'>
+    <button class='content__close-btn' (click)='onProductModalClose($event)'>X</button>
     <h2 class='content__title'>{{selectedProduct ? 'Update' : 'Add new'}} product</h2>
     <form
       [formGroup]='productForm'
@@ -7,72 +8,69 @@
       class='product-form'>
       <label class='product-form__field'>
         Title
-        <input
+        <app-input
           type='text'
           formControlName='title'
           placeholder='Title...'
-          class='product-form__control'>
-        <app-validation-error
-          *ngIf='productForm.get("title")?.touched && productForm.get("title")?.errors?.["required"]'>
-          Required
-        </app-validation-error>
-        <app-validation-error
-          *ngIf='productForm.get("title")?.touched && productForm.get("title")?.errors?.["minlength"]'>
-          Should be longer than 6 symbols
-        </app-validation-error>
+          classes='product-field'
+          [control]='productForm.get("title")'>
+        </app-input>
       </label>
       <label class='product-form__field'>
         Description
         <textarea
+          [ngClass]='productForm.get("description")?.touched && productForm.get("description")?.invalid ? "error" : null'
           formControlName='description'
           placeholder='Description...'
           class='product-form__control'
         ></textarea>
+      </label>
+      <div class='validation'>
         <app-validation-error
           *ngIf='productForm.get("description")?.touched && productForm.get("description")?.errors?.["required"]'>
-          Required
+          * This field is required
         </app-validation-error>
         <app-validation-error
           *ngIf='productForm.get("description")?.touched && productForm.get("description")?.errors?.["minlength"]'>
-          Should be longer than 20 symbols
+          * Should be longer than 20 symbols
         </app-validation-error>
-      </label>
+      </div>
       <label class='product-form__field'>
         Price
-        <input
+        <app-input
           type='number'
           formControlName='price'
-          placeholder='Price...'
-          class='product-form__control'
+          placeholder='Price'
+          classes='product-field'
+          [control]='productForm.get("price")'
         >
-        <app-validation-error
-          *ngIf='productForm.get("price")?.touched && productForm.get("price")?.errors?.["required"]'>
-          Required
-        </app-validation-error>
+        </app-input>
       </label>
       <label class='product-form__field'>
         Category
         <select
+          [ngClass]='productForm.get("category")?.touched && productForm.get("category")?.invalid ? "error" : null'
           formControlName='category'
           class='product-form__control product-form__control_select'>
           <option value='' selected disabled hidden>Select category</option>
           <option *ngFor='let category of categories$ | async' [value]='category.id' selected>{{category.id}}</option>
         </select>
+      </label>
+      <div class='validation'>
         <app-validation-error
           *ngIf='productForm.get("category")?.touched && productForm.get("category")?.errors?.["required"]'>
-          Required
+          * This field is required!
         </app-validation-error>
-      </label>
+      </div>
       <label class='product-form__field'>
         Image Url
-        <input
+        <app-input
+          type='text'
           formControlName='imageUrl'
           placeholder='Image Url...'
-          class='product-form__control'>
-        <app-validation-error
-          *ngIf='productForm.get("imageUrl")?.touched && productForm.get("imageUrl")?.errors?.["required"]'>
-          Required
-        </app-validation-error>
+          classes='product-field'
+          [control]='productForm.get("imageUrl")'>
+        </app-input>
       </label>
       <div class='ingredient'>
         <label class='product-form__field ingredient__field'>
@@ -103,10 +101,10 @@
           delete
         </button>
       </div>
-      <button class='product-form__submit-btn'>
-        <!--              [disabled]='productForm.invalid || newProductsIngredients.length === 0'>-->
-        {{selectedProduct ? 'Update' : 'Create'}}
-      </button>
+      <app-button
+        [disabled]='productForm.invalid || newProductsIngredients.length === 0'
+        [text]='selectedProduct ? "Update" : "Create"'>
+      </app-button>
     </form>
   </div>
 </div>
