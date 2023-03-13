@@ -8,9 +8,8 @@ describe('NewsVoteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewsVoteComponent ]
-    })
-    .compileComponents();
+      declarations: [NewsVoteComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(NewsVoteComponent);
     component = fixture.componentInstance;

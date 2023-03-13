@@ -1,11 +1,19 @@
-<div class='logo'>
-  <img src='assets/images/logo.jpg' alt='Main Logo'>
+<div class="logo">
+  <img src="assets/images/logo.jpg" alt="Main Logo" />
 </div>
-<app-search *ngIf='currentRoute?.url === "/menu" || currentRoute?.url === "/"'></app-search>
-<div
-  class='user'
-  *ngIf='user$ | async'>
-  <strong class='user__name'>{{(user$ | async)?.username}}</strong>
-  <app-button type='button' classes='logout-btn' (click)='onLogout()' text='Logout'></app-button>
+<app-search
+  *ngIf="
+    currentRoute?.url === '/menu' || currentRoute?.url === '/'
+  "></app-search>
+<div class="user" *ngIf="user$ | async">
+  <strong class="user__name">{{ (user$ | async)?.username }}</strong>
+  <app-button
+    type="button"
+    classes="logout-btn"
+    (click)="onLogout()"
+    text="Logout"></app-button>
 </div>
-<app-button [routerLink]='["/login"]' *ngIf='!(user$ | async)' text='Authorize'></app-button>
+<app-button
+  [routerLink]="['/login']"
+  *ngIf="(user$ | async) === null"
+  text="Authorize"></app-button>

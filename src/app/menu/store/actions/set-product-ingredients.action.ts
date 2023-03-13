@@ -3,5 +3,5 @@ import { MenuActionTypes } from 'src/app/menu/store/action-types';
 
 export const setProductIngredientsAction = createAction(
   MenuActionTypes.SET_PRODUCT_INGREDIENTS,
-  props<{ ingredients: string[] }>(),
+  props<{ ingredients: string[] }>()
 );

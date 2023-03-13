@@ -14,20 +14,22 @@ import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
 export class ProductsListComponent implements OnInit {
   public products$!: Observable<IProduct[] | null>;
 
-  constructor (private store: Store<AppStateInterface>) { }
+  public constructor(private store: Store<AppStateInterface>) {}
 
-  public ngOnInit (): void {
-    this.products$ = this.store.pipe(select(productsSelector), map(products => {
-      if (products) {
-        const productsCopy = [...products];
-        productsCopy.sort(
-          (a, b) => (a.category > b.category) ? 1 : ((b.category > a.category)
-            ? -1
-            : 0));
-        return productsCopy;
-      }
+  public ngOnInit(): void {
+    this.products$ = this.store.pipe(
+      select(productsSelector),
+      map(products => {
+        if (products) {
+          const productsCopy = [...products];
+          productsCopy.sort((a, b) =>
+            a.category > b.category ? 1 : b.category > a.category ? -1 : 0
+          );
+          return productsCopy;
+        }
 
-      return products;
-    }));
+        return products;
+      })
+    );
   }
 }

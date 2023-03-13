@@ -19,6 +19,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatInputModule,
     MatCardModule,
     MatProgressSpinnerModule,
-  ]
+  ],
 })
 export class MaterialModule {}

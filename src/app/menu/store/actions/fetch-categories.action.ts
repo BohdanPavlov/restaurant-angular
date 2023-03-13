@@ -4,15 +4,15 @@ import { MenuActionTypes } from 'src/app/menu/store/action-types';
 import { ICategory } from 'src/app/menu/types/category.interface';
 
 export const fetchCategoriesAction = createAction(
-  MenuActionTypes.FETCH_CATEGORIES,
+  MenuActionTypes.FETCH_CATEGORIES
 );
 
 export const fetchCategoriesSuccessAction = createAction(
   MenuActionTypes.FETCH_CATEGORIES_SUCCESS,
-  props<{ categories: ICategory[] }>(),
+  props<{ categories: ICategory[] }>()
 );
 
 export const fetchCategoriesFailureAction = createAction(
   MenuActionTypes.FETCH_CATEGORIES_FAILURE,
-  props<{ errorMessage: string }>(),
+  props<{ errorMessage: string }>()
 );

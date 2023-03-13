@@ -1,16 +1,16 @@
-<div class='form-control'>
+<div class="form-control">
   <input
-    [ngClass]='(control?.invalid && control?.touched) ? "error" : null'
-    [type]='type'
-    [placeholder]='placeholder'
-    [value]='value'
-    [class]='classes'
-    (input)='onInputValueChange($event)'
-    (blur)='onTouched()'/>
-  <div class='validation'>
-    <ng-container *ngIf='control?.invalid && control?.touched'>
-      <app-validation-error *ngFor='let err of control?.errors | keyvalue'>
-        {{errorMessages[err.key]}}
+    [ngClass]="control?.invalid && control?.touched ? 'error' : null"
+    [type]="type"
+    [placeholder]="placeholder"
+    [value]="value"
+    [class]="classes"
+    (input)="onInputValueChange($event)"
+    (blur)="onTouched()" />
+  <div class="validation">
+    <ng-container *ngIf="control?.invalid && control?.touched">
+      <app-validation-error *ngFor="let err of control?.errors | keyvalue">
+        {{ errorMessages[err.key] }}
       </app-validation-error>
     </ng-container>
   </div>

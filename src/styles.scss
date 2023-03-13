@@ -1,8 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-@import "src/theme";
-@import "src/variables";
+@import 'src/theme';
+@import 'src/variables';
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -14,7 +16,7 @@ img {
 }
 
 button {
-  transition: .2s;
+  transition: 0.2s;
 
   &:hover {
     cursor: pointer;
@@ -24,7 +26,7 @@ button {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 input,

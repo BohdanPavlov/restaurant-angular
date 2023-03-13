@@ -7,5 +7,5 @@ import { INews } from 'src/app/news/types/news.interface';
   styleUrls: ['./news-item.component.scss'],
 })
 export class NewsItemComponent {
-  @Input() news!: INews;
+  @Input() public news!: INews;
 }

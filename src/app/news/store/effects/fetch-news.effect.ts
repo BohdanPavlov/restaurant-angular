@@ -13,7 +13,7 @@ import { INews } from 'src/app/news/types/news.interface';
 
 @Injectable()
 export class FetchNewsEffect {
-  fetchNews$ = createEffect(() =>
+  private fetchNews$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fetchNewsAction),
       switchMap(() => {
@@ -25,13 +25,16 @@ export class FetchNewsEffect {
             return of(
               fetchNewsFailureAction({
                 errorMessage: errorResponse.message,
-              }),
+              })
             );
-          }),
+          })
         );
-      }),
-    ),
+      })
+    )
   );
 
-  constructor (private actions$: Actions, private newsService: NewsService) {}
+  public constructor(
+    private actions$: Actions,
+    private newsService: NewsService
+  ) {}
 }

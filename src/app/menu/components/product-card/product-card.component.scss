@@ -1,4 +1,4 @@
-@import "src/variables";
+@import 'src/variables';
 
 .product-card {
   padding: 0;
@@ -49,7 +49,7 @@
 
   &__details-btn {
     padding: 5px 15px;
-    background-color: #B0CB1F;
+    background-color: #b0cb1f;
     color: $whiteColor;
     border: none;
     border-radius: 10px;
@@ -57,7 +57,7 @@
 
     &:hover {
       background-color: $whiteColor;
-      color: #B0CB1F;
+      color: #b0cb1f;
     }
   }
 
@@ -66,17 +66,17 @@
     justify-content: space-between;
 
     .product-card__btn {
-      border: 1px solid #CCCCCC;
+      border: 1px solid #cccccc;
       padding: 2px 5px;
       border-radius: 10px;
       font-weight: bold;
 
       &_category {
         background-color: $whiteColor;
-        color: #CCCCCC;
+        color: #cccccc;
 
         &:hover {
-          background-color: #CCCCCC;
+          background-color: #cccccc;
           color: $whiteColor;
           border: 1px solid $whiteColor;
         }

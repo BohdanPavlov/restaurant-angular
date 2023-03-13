@@ -8,20 +8,19 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class MenuService {
+  public constructor(private http: HttpClient) {}
 
-  constructor (private http: HttpClient) { }
-
-  public fetchCategories (): Observable<ICategory[]> {
+  public fetchCategories(): Observable<ICategory[]> {
     const path = environment.apiBase + 'categories';
     return this.http.get<ICategory[]>(path);
   }
 
-  public fetchProducts (): Observable<IProduct[]> {
+  public fetchProducts(): Observable<IProduct[]> {
     const path = environment.apiBase + 'products';
     return this.http.get<IProduct[]>(path);
   }
 
-  public fetchProductsByCategory (category: string): Observable<IProduct[]> {
+  public fetchProductsByCategory(category: string): Observable<IProduct[]> {
     const path = environment.apiBase + 'products';
     return this.http.get<IProduct[]>(path, {
       params: {
@@ -30,21 +29,21 @@ export class MenuService {
     });
   }
 
-  public searchProducts (searchTerm: string): Observable<IProduct[]> {
+  public searchProducts(searchTerm: string): Observable<IProduct[]> {
     const path = environment.apiBase + 'products';
     return this.http.get<IProduct[]>(path, {
       params: {
-        'title_like': searchTerm,
+        title_like: searchTerm,
       },
     });
   }
 
-  public createProduct (product: IProduct): Observable<IProduct> {
+  public createProduct(product: IProduct): Observable<IProduct> {
     const path = environment.apiBase + 'products';
     return this.http.post<IProduct>(path, product);
   }
 
-  public updateProduct (product: IProduct, id: number): Observable<IProduct> {
+  public updateProduct(product: IProduct, id: number): Observable<IProduct> {
     const path = environment.apiBase + `products/${id}`;
     return this.http.put<IProduct>(path, product);
   }

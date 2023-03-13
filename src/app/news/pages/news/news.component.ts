@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+
 import { fetchNewsAction } from 'src/app/news/store/actions/fetch-news.action';
 import { newsSelector, newsStatusSelector } from 'src/app/news/store/selectors';
 import { INews } from 'src/app/news/types/news.interface';
@@ -15,12 +16,11 @@ export class NewsComponent implements OnInit {
   public news$!: Observable<INews[] | null>;
   public status$!: Observable<string>;
 
-  constructor (private store: Store<AppStateInterface>) { }
+  public constructor(private store: Store<AppStateInterface>) {}
 
-  ngOnInit (): void {
+  public ngOnInit(): void {
     this.store.dispatch(fetchNewsAction());
     this.news$ = this.store.pipe(select(newsSelector));
     this.status$ = this.store.pipe(select(newsStatusSelector));
   }
-
 }

@@ -1,15 +1,20 @@
-<app-date [date]='news.date'></app-date>
-<div class='info'>
+<app-date [date]="news.date"></app-date>
+<div class="info">
   <div>
-    <img [src]='news.imgUrl' [alt]='news.title'>
+    <img [src]="news.imgUrl" [alt]="news.title" />
   </div>
-  <h2 class='info__title'>{{news.title}}</h2>
-  <p class='info__description'>{{news.description}}</p>
-  <hr>
-  <div class='info__authors'>
-    <span class='info__span'>Author: <span class='info__selected-span'>{{news.author}}</span></span>
-    <span class='info__span'>Category: <span class='info__selected-span'>{{news.category}}</span></span>
+  <h2 class="info__title">{{ news.title }}</h2>
+  <p class="info__description">{{ news.description }}</p>
+  <hr />
+  <div class="info__authors">
+    <span class="info__span"
+      >Author: <span class="info__selected-span">{{ news.author }}</span></span
+    >
+    <span class="info__span"
+      >Category:
+      <span class="info__selected-span">{{ news.category }}</span></span
+    >
   </div>
-  <hr>
+  <hr />
 </div>
 <app-news-vote></app-news-vote>

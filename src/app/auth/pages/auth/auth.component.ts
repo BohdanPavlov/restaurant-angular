@@ -6,20 +6,14 @@ import { Observable, Subject, takeUntil } from 'rxjs';
 
 import { loginAction } from 'src/app/auth/store/actions/login.action';
 import { registerAction } from 'src/app/auth/store/actions/register.action';
-import {
-  switchAuthModeAction,
-} from 'src/app/auth/store/actions/switch-auth-mode.action';
+import { switchAuthModeAction } from 'src/app/auth/store/actions/switch-auth-mode.action';
 import {
   errorMessageSelector,
   isLoginModeSelector,
   isSubmittingSelector,
 } from 'src/app/auth/store/selectors';
-import {
-  AuthRequestDataInterface,
-} from 'src/app/auth/types/auth-request-data.interface';
-import {
-  matchPasswordValidator,
-} from 'src/app/auth/validators/match-password.validator';
+import { AuthRequestDataInterface } from 'src/app/auth/types/auth-request-data.interface';
+import { matchPasswordValidator } from 'src/app/auth/validators/match-password.validator';
 
 import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
 
@@ -35,65 +29,69 @@ export class AuthComponent implements OnInit, OnDestroy {
   public isLoginMode!: boolean;
   private destroy$ = new Subject();
 
-  constructor (
+  public constructor(
     private fb: FormBuilder,
     private store: Store<AppStateInterface>,
-    private router: Router,
+    private router: Router
   ) {}
 
-  public ngOnInit (): void {
+  public ngOnInit(): void {
     this.initializeValues();
   }
 
-  private initializeValues (): void {
+  private initializeValues(): void {
     this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
-    this.errorMessage$ = this.store.pipe(
-      select(errorMessageSelector),
-    );
-    this.store.pipe(select(isLoginModeSelector), takeUntil(this.destroy$)).
-      subscribe(isLoginMode => {
+    this.errorMessage$ = this.store.pipe(select(errorMessageSelector));
+    this.store
+      .pipe(select(isLoginModeSelector), takeUntil(this.destroy$))
+      .subscribe(isLoginMode => {
         this.isLoginMode = isLoginMode;
         this.initializeForm(this.isLoginMode);
       });
   }
 
-  private initializeForm (isLoginMode: boolean): void {
+  private initializeForm(isLoginMode: boolean): void {
     if (isLoginMode) {
       this.authForm = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
         password: ['', Validators.required],
       });
     } else {
-      this.authForm = this.fb.group({
-        email: ['', [Validators.required, Validators.email]],
-        username: ['', [Validators.required, Validators.minLength(3)]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['', [Validators.required]],
-      }, { validators: matchPasswordValidator });
+      this.authForm = this.fb.group(
+        {
+          email: ['', [Validators.required, Validators.email]],
+          username: ['', [Validators.required, Validators.minLength(3)]],
+          password: ['', [Validators.required, Validators.minLength(6)]],
+          confirmPassword: ['', [Validators.required]],
+        },
+        { validators: matchPasswordValidator }
+      );
     }
   }
 
-  public onSubmit (): void {
+  public onSubmit(): void {
     const requestData: AuthRequestDataInterface = this.authForm.value;
     if (this.isLoginMode) {
       this.store.dispatch(loginAction({ requestData }));
     } else {
-      this.store.dispatch(registerAction({
-        requestData: {
-          email: requestData.email,
-          password: requestData.password,
-          username: requestData.username,
-        },
-      }));
+      this.store.dispatch(
+        registerAction({
+          requestData: {
+            email: requestData.email,
+            password: requestData.password,
+            username: requestData.username,
+          },
+        })
+      );
     }
   }
 
-  public onToggleAuthMode (): void {
-    this.router.navigate([(this.isLoginMode ? '/register' : '/login')]);
+  public onToggleAuthMode(): void {
+    this.router.navigate([this.isLoginMode ? '/register' : '/login']);
     this.store.dispatch(switchAuthModeAction());
   }
 
-  public ngOnDestroy (): void {
+  public ngOnDestroy(): void {
     this.destroy$.next('');
     this.destroy$.complete();
   }

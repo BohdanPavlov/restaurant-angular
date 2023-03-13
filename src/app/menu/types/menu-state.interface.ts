@@ -4,8 +4,8 @@ import { IProduct } from 'src/app/menu/types/product.interface';
 export interface MenuStateInterface {
   categories: ICategory[] | null;
   products: IProduct[] | null;
-  categoriesStatus: 'idle' | 'loading' | 'success' | 'error',
-  productsStatus: 'idle' | 'loading' | 'success' | 'error',
+  categoriesStatus: 'idle' | 'loading' | 'success' | 'error';
+  productsStatus: 'idle' | 'loading' | 'success' | 'error';
   categoriesErrorMessage: string;
   productsErrorMessage: string;
   isDetailsModalOpened: boolean;

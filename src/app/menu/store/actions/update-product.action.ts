@@ -5,15 +5,15 @@ import { IProduct } from 'src/app/menu/types/product.interface';
 
 export const updateProductAction = createAction(
   MenuActionTypes.UPDATE_PRODUCT,
-  props<{ product: IProduct, id: number }>(),
+  props<{ product: IProduct; id: number }>()
 );
 
 export const updateProductSuccessAction = createAction(
   MenuActionTypes.UPDATE_PRODUCT_SUCCESS,
-  props<{ product: IProduct }>(),
+  props<{ product: IProduct }>()
 );
 
 export const updateProductFailureAction = createAction(
   MenuActionTypes.UPDATE_PRODUCT_FAILURE,
-  props<{ errorMessage: string }>(),
+  props<{ errorMessage: string }>()
 );

@@ -12,25 +12,28 @@ import {
 
 @Injectable()
 export class CreateNewProductEffect {
-  createProduct$ = createEffect(() =>
+  private createProduct$ = createEffect(() =>
     this.actions$.pipe(
       ofType(createNewProductAction),
       switchMap(({ newProduct }) => {
         return this.menuService.createProduct(newProduct).pipe(
-          map((product) => {
+          map(product => {
             return createNewProductSuccessAction({ product });
           }),
           catchError((errorResponse: HttpErrorResponse) => {
             return of(
               createNewProductFailureAction({
                 errorMessage: errorResponse.message,
-              }),
+              })
             );
-          }),
+          })
         );
-      }),
-    ),
+      })
+    )
   );
 
-  constructor (private actions$: Actions, private menuService: MenuService) {}
+  public constructor(
+    private actions$: Actions,
+    private menuService: MenuService
+  ) {}
 }

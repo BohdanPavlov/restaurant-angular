@@ -11,13 +11,11 @@ import {
   registerFailureAction,
   registerSuccessAction,
 } from 'src/app/auth/store/actions/register.action';
-import {
-  AuthResponseInterface,
-} from 'src/app/auth/types/auth-response.interface';
+import { AuthResponseInterface } from 'src/app/auth/types/auth-response.interface';
 
 @Injectable()
 export class RegisterEffect {
-  register$ = createEffect(() =>
+  private register$ = createEffect(() =>
     this.actions$.pipe(
       ofType(registerAction),
       switchMap(({ requestData }) => {
@@ -31,29 +29,29 @@ export class RegisterEffect {
             return of(
               registerFailureAction({
                 errorMessage: errorResponse.error,
-              }),
+              })
             );
-          }),
+          })
         );
-      }),
-    ),
+      })
+    )
   );
 
-  redirectAfterSubmit$ = createEffect(
+  private redirectAfterSubmit$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(registerSuccessAction),
         tap(() => {
           this.router.navigate(['/menu']);
-        }),
+        })
       ),
-    { dispatch: false },
+    { dispatch: false }
   );
 
-  constructor (
+  public constructor(
     private actions$: Actions,
     private authService: AuthService,
     private persistenceService: PersistenceService,
-    private router: Router,
+    private router: Router
   ) {}
 }

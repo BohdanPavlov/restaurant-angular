@@ -15,7 +15,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   public message!: string;
   public messages: { message: string }[] | [] = [];
 
-  public ngOnInit () {
+  public ngOnInit() {
     this.socket = io('http://localhost:3030');
 
     this.socket.on('update', (messages: { message: string }[] | []) => {
@@ -27,16 +27,16 @@ export class ChatComponent implements OnInit, OnDestroy {
     }, 1);
   }
 
-  public sendMessage () {
+  public sendMessage() {
     this.socket.emit('create', { message: this.message });
     this.message = '';
   }
 
-  public closeChat () {
+  public closeChat() {
     this.isVisible = false;
   }
 
-  public ngOnDestroy (): void {
+  public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }

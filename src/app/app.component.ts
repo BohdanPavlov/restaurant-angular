@@ -4,9 +4,7 @@ import { Store } from '@ngrx/store';
 import { filter, Subject, takeUntil } from 'rxjs';
 
 import { PersistenceService } from 'src/app/auth/services/persistence.service';
-import {
-  setAuthUserAction,
-} from 'src/app/auth/store/actions/set-auth-user.action';
+import { setAuthUserAction } from 'src/app/auth/store/actions/set-auth-user.action';
 import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
 
 @Component({
@@ -19,25 +17,28 @@ export class AppComponent implements OnInit, OnDestroy {
   public currentRoute!: any;
   private destroy$: Subject<void> = new Subject<void>();
 
-  constructor (
+  public constructor(
     private persistenceService: PersistenceService,
     private store: Store<AppStateInterface>,
-    private router: Router,
+    private router: Router
   ) {}
 
-  public ngOnInit (): void {
+  public ngOnInit(): void {
     const user = this.persistenceService.get('user');
     if (user) {
       this.store.dispatch(setAuthUserAction({ user }));
     }
-    this.router.events.pipe(filter(event => event instanceof NavigationEnd),
-      takeUntil(this.destroy$)).
-      subscribe(event => {
+    this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd),
+        takeUntil(this.destroy$)
+      )
+      .subscribe(event => {
         this.currentRoute = event;
       });
   }
 
-  public ngOnDestroy (): void {
+  public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }

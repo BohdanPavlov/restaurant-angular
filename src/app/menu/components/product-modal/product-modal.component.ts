@@ -8,31 +8,15 @@ import {
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { map, Observable, Subject, takeUntil } from 'rxjs';
-import {
-  numberInputValidator,
-} from 'src/app/auth/validators/number-input.validator';
+import { numberInputValidator } from 'src/app/auth/validators/number-input.validator';
 
-import {
-  addIngredientAction,
-} from 'src/app/menu/store/actions/add-ingredient.action';
-import {
-  createNewProductAction,
-} from 'src/app/menu/store/actions/create-new-product.action';
-import {
-  deleteIngredientAction,
-} from 'src/app/menu/store/actions/delete-ingredient.action';
-import {
-  setProductIngredientsAction,
-} from 'src/app/menu/store/actions/set-product-ingredients.action';
-import {
-  setProductModalStatusAction,
-} from 'src/app/menu/store/actions/set-product-modal-status.action';
-import {
-  setSelectedProductAction,
-} from 'src/app/menu/store/actions/set-selected-product.action';
-import {
-  updateProductAction,
-} from 'src/app/menu/store/actions/update-product.action';
+import { addIngredientAction } from 'src/app/menu/store/actions/add-ingredient.action';
+import { createNewProductAction } from 'src/app/menu/store/actions/create-new-product.action';
+import { deleteIngredientAction } from 'src/app/menu/store/actions/delete-ingredient.action';
+import { setProductIngredientsAction } from 'src/app/menu/store/actions/set-product-ingredients.action';
+import { setProductModalStatusAction } from 'src/app/menu/store/actions/set-product-modal-status.action';
+import { setSelectedProductAction } from 'src/app/menu/store/actions/set-selected-product.action';
+import { updateProductAction } from 'src/app/menu/store/actions/update-product.action';
 import {
   categoriesSelector,
   newProductIngredientsSelector,
@@ -57,69 +41,77 @@ export class ProductModalComponent implements OnInit, OnDestroy {
 
   @ViewChild('ingredient') public ingredientFieldRef!: ElementRef;
 
-  constructor (
+  public constructor(
     private store: Store<AppStateInterface>,
-    private fb: FormBuilder,
+    private fb: FormBuilder
   ) {}
 
-  ngOnInit (): void {
+  public ngOnInit(): void {
     this.initializeValues();
     this.initializeForm();
   }
 
-  private initializeValues () {
-    this.categories$ = this.store.pipe(select(categoriesSelector),
+  private initializeValues() {
+    this.categories$ = this.store.pipe(
+      select(categoriesSelector),
       map(categories => {
         if (categories) {
           return categories.filter(c => c.id !== 'all');
         }
         return categories;
-      }));
-    this.store.pipe(
-      select(newProductIngredientsSelector), takeUntil(this.destroy$)).
-      subscribe(ingredients => {
+      })
+    );
+    this.store
+      .pipe(select(newProductIngredientsSelector), takeUntil(this.destroy$))
+      .subscribe(ingredients => {
         this.newProductsIngredients = ingredients;
       });
-    this.store.
-      pipe(select(selectedProductSelector), takeUntil(this.destroy$)).
-      subscribe(selectedProduct => {
+    this.store
+      .pipe(select(selectedProductSelector), takeUntil(this.destroy$))
+      .subscribe(selectedProduct => {
         this.selectedProduct = selectedProduct;
       });
   }
 
-  private initializeForm () {
+  private initializeForm() {
     this.productForm = this.fb.group({
       title: [
-        this.selectedProduct
-          ? this.selectedProduct.title
-          : '', [Validators.required, Validators.minLength(6)]],
+        this.selectedProduct ? this.selectedProduct.title : '',
+        [Validators.required, Validators.minLength(6)],
+      ],
       description: [
-        this.selectedProduct
-          ? this.selectedProduct.info.description
-          : '', [Validators.required, Validators.minLength(20)]],
+        this.selectedProduct ? this.selectedProduct.info.description : '',
+        [Validators.required, Validators.minLength(20)],
+      ],
       price: [
         this.selectedProduct ? this.selectedProduct.price.split(' ')[0] : '',
-        [Validators.required, numberInputValidator]],
+        [Validators.required, numberInputValidator],
+      ],
       category: [
         this.selectedProduct ? this.selectedProduct.category : '',
-        Validators.required],
+        Validators.required,
+      ],
       imageUrl: [
         this.selectedProduct ? this.selectedProduct.imageUrl : '',
-        Validators.required],
+        Validators.required,
+      ],
     });
   }
 
-  public onAddIngredient () {
-    this.store.dispatch(addIngredientAction(
-      { ingredient: this.ingredientFieldRef.nativeElement.value }));
+  public onAddIngredient() {
+    this.store.dispatch(
+      addIngredientAction({
+        ingredient: this.ingredientFieldRef.nativeElement.value,
+      })
+    );
     this.ingredientFieldRef.nativeElement.value = '';
   }
 
-  public onDeleteIngredient (ingredient: string) {
+  public onDeleteIngredient(ingredient: string) {
     this.store.dispatch(deleteIngredientAction({ ingredient }));
   }
 
-  public onSubmit () {
+  public onSubmit() {
     const newProduct: IProduct = {
       title: this.productForm.value.title,
       category: this.productForm.value.category,
@@ -132,16 +124,18 @@ export class ProductModalComponent implements OnInit, OnDestroy {
     };
 
     if (this.selectedProduct) {
-      this.store.dispatch(updateProductAction({
-        product: newProduct,
-        id: this.selectedProduct.id ? this.selectedProduct.id : 0,
-      }));
+      this.store.dispatch(
+        updateProductAction({
+          product: newProduct,
+          id: this.selectedProduct.id ? this.selectedProduct.id : 0,
+        })
+      );
     } else {
       this.store.dispatch(createNewProductAction({ newProduct }));
     }
   }
 
-  public onProductModalClose (event: MouseEvent): void {
+  public onProductModalClose(event: MouseEvent): void {
     if (event.target === event.currentTarget) {
       this.store.dispatch(setProductModalStatusAction({ value: false }));
       if (this.selectedProduct) {
@@ -151,7 +145,7 @@ export class ProductModalComponent implements OnInit, OnDestroy {
     }
   }
 
-  public ngOnDestroy (): void {
+  public ngOnDestroy(): void {
     this.destroy$.next('');
     this.destroy$.complete();
   }

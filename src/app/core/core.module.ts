@@ -14,11 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    FooterComponent,
-    NavbarComponent,
-  ],
+  declarations: [HeaderComponent, FooterComponent, NavbarComponent],
   imports: [
     CommonModule,
     RouterOutlet,
@@ -28,10 +24,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     RouterLink,
     RouterLinkActive,
   ],
-  exports: [
-    HeaderComponent,
-    FooterComponent,
-    NavbarComponent,
-  ],
+  exports: [HeaderComponent, FooterComponent, NavbarComponent],
 })
 export class CoreModule {}

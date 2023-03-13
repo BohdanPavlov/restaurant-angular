@@ -6,10 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./news-vote.component.scss'],
 })
 export class NewsVoteComponent {
-
   public isSubmitted: boolean = false;
 
-  public onSubmit () {
+  public onSubmit() {
     this.isSubmitted = true;
   }
 }

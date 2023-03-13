@@ -12,12 +12,12 @@ import {
 
 @Injectable()
 export class UpdateProductEffect {
-  updateProduct$ = createEffect(() =>
+  private updateProduct$ = createEffect(() =>
     this.actions$.pipe(
       ofType(updateProductAction),
       switchMap(({ product, id }) => {
         return this.menuService.updateProduct(product, id).pipe(
-          map((product) => {
+          map(product => {
             alert('Successfully updated!');
             return updateProductSuccessAction({ product });
           }),
@@ -25,13 +25,16 @@ export class UpdateProductEffect {
             return of(
               updateProductFailureAction({
                 errorMessage: errorResponse.message,
-              }),
+              })
             );
-          }),
+          })
         );
-      }),
-    ),
+      })
+    )
   );
 
-  constructor (private actions$: Actions, private menuService: MenuService) {}
+  public constructor(
+    private actions$: Actions,
+    private menuService: MenuService
+  ) {}
 }

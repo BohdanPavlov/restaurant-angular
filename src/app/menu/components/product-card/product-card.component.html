@@ -1,20 +1,27 @@
-<mat-card class='product-card'>
-  <img class='product-card__image' mat-card-image [src]='product.imageUrl' [alt]='product.title'/>
-  <mat-card-content class='product-card__content'>
-    <div class='product-card__info'>
-      <h3>{{product.title}}</h3>
-      <p>{{product.price}}</p>
+<mat-card class="product-card">
+  <img
+    class="product-card__image"
+    mat-card-image
+    [src]="product.imageUrl"
+    [alt]="product.title" />
+  <mat-card-content class="product-card__content">
+    <div class="product-card__info">
+      <h3>{{ product.title }}</h3>
+      <p>{{ product.price }}</p>
     </div>
-    <button class='product-card__details-btn' (click)='onShowProductDetails()'>Детальніше</button>
-    <div class='product-card__buttons'>
-      <button class='product-card__btn product-card__btn_category' (click)='onGetProductsByCategory()'>
-        {{product.category}}
+    <button class="product-card__details-btn" (click)="onShowProductDetails()">
+      Детальніше
+    </button>
+    <div class="product-card__buttons">
+      <button
+        class="product-card__btn product-card__btn_category"
+        (click)="onGetProductsByCategory()">
+        {{ product.category }}
       </button>
       <button
-        class='product-card__btn product-card__btn_edit'
-        (click)='onEditProduct()'
-        *ngIf='isAuth$ | async'
-      >
+        class="product-card__btn product-card__btn_edit"
+        (click)="onEditProduct()"
+        *ngIf="isAuth$ | async">
         Edit
       </button>
     </div>

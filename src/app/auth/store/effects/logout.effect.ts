@@ -6,17 +6,17 @@ import { logoutAction } from 'src/app/auth/store/actions/logout.action';
 
 @Injectable()
 export class LogoutEffect {
-  logout$ = createEffect(
+  private logout$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(logoutAction),
         tap(() => {
           localStorage.removeItem('accessToken');
           localStorage.removeItem('user');
-        }),
+        })
       ),
-    { dispatch: false },
+    { dispatch: false }
   );
 
-  constructor (private actions$: Actions) {}
+  public constructor(private actions$: Actions) {}
 }

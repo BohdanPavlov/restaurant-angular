@@ -33,5 +33,5 @@ export enum MenuActionTypes {
 
   ADD_INGREDIENT = '[Menu] Add ingredient',
 
-  DELETE_INGREDIENT = '[Menu] Delete ingredient'
+  DELETE_INGREDIENT = '[Menu] Delete ingredient',
 }

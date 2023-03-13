@@ -5,13 +5,12 @@ import { INews } from 'src/app/news/types/news.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NewsService {
+  public constructor(private http: HttpClient) {}
 
-  constructor (private http: HttpClient) { }
-
-  public fetchNews (): Observable<INews[]> {
+  public fetchNews(): Observable<INews[]> {
     const url = environment.apiBase + 'news';
     return this.http.get<INews[]>(url);
   }

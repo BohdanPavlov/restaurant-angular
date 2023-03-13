@@ -14,14 +14,14 @@ import { PersistenceService } from 'src/app/auth/services/persistence.service';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor (
+  public constructor(
     private persistenceService: PersistenceService,
-    private router: Router,
+    private router: Router
   ) {}
 
-  public canActivate (
+  public canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot,
+    state: RouterStateSnapshot
   ):
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>

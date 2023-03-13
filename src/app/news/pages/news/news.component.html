@@ -1,9 +1,10 @@
 <app-banner></app-banner>
-<ng-container *ngIf='(status$ | async) === "success"'>
+<ng-container *ngIf="(status$ | async) === 'success'">
   <app-news-item
-    *ngFor='let news of news$ | async'
-    [news]='news'
-  ></app-news-item>
+    *ngFor="let news of news$ | async"
+    [news]="news"></app-news-item>
 </ng-container>
-<mat-spinner *ngIf='(status$ | async) === "loading"' color='primary'></mat-spinner>
+<mat-spinner
+  *ngIf="(status$ | async) === 'loading'"
+  color="primary"></mat-spinner>
 <app-scroll-up></app-scroll-up>

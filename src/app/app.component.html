@@ -1,8 +1,7 @@
 <app-header></app-header>
 <app-navbar
-  *ngIf='currentRoute?.url !== "/login" && currentRoute?.url !== "/register"'
-  [currentRouteUrl]='currentRoute?.url'
-></app-navbar>
+  *ngIf="currentRoute?.url !== '/login' && currentRoute?.url !== '/register'"
+  [currentRouteUrl]="currentRoute?.urlAfterRedirects"></app-navbar>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
 <app-chat></app-chat>

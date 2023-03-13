@@ -7,12 +7,13 @@ import { NewsComponent } from 'src/app/news/pages/news/news.component';
 
 const routes: Routes = [
   {
-    path: '', redirectTo: '/menu', pathMatch: 'full',
+    path: '',
+    redirectTo: '/menu',
+    pathMatch: 'full',
   },
   {
     path: 'menu',
-    loadChildren: () => import('./menu/menu.module').then(
-      m => m.MenuModule),
+    loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule),
   },
   {
     path: 'login',

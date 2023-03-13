@@ -5,5 +5,5 @@ import { IUser } from 'src/app/auth/types/user.interface';
 
 export const setAuthUserAction = createAction(
   AuthActionTypes.SET_AUTH_USER,
-  props<{ user: IUser }>(),
+  props<{ user: IUser }>()
 );

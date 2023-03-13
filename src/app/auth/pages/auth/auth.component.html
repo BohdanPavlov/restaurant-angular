@@ -1,52 +1,54 @@
-<div class='auth'>
-  <div class='container auth-container'>
-    <div class='auth-field'>
-      <h2 class='auth-field__title'>{{isLoginMode ? 'Login' : 'Sign Up'}}</h2>
-      <app-validation-error *ngIf='errorMessage$ | async'>* {{errorMessage$ | async}}</app-validation-error>
-      <form class='auth-form' [formGroup]='authForm' (ngSubmit)='onSubmit()'>
-        <fieldset class='auth-form__wrapper'>
+<div class="auth">
+  <div class="container auth-container">
+    <div class="auth-field">
+      <h2 class="auth-field__title">{{ isLoginMode ? 'Login' : 'Sign Up' }}</h2>
+      <app-validation-error *ngIf="errorMessage$ | async"
+        >* {{ errorMessage$ | async }}</app-validation-error
+      >
+      <form class="auth-form" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+        <fieldset class="auth-form__wrapper">
           <div>
             <app-input
-              type='email'
-              placeholder='Email'
-              formControlName='email'
-              [control]='authForm.get("email")'>
+              type="email"
+              placeholder="Email"
+              formControlName="email"
+              [control]="authForm.get('email')">
             </app-input>
           </div>
-          <div *ngIf='!isLoginMode'>
+          <div *ngIf="!isLoginMode">
             <app-input
-              type='text'
-              placeholder='Username'
-              formControlName='username'
-              [control]='authForm.get("username")'>
+              type="text"
+              placeholder="Username"
+              formControlName="username"
+              [control]="authForm.get('username')">
             </app-input>
           </div>
           <div>
             <app-input
-              type='password'
-              placeholder='Password'
-              formControlName='password'
-              [control]='authForm.get("password")'>
+              type="password"
+              placeholder="Password"
+              formControlName="password"
+              [control]="authForm.get('password')">
             </app-input>
           </div>
-          <div *ngIf='!isLoginMode'>
+          <div *ngIf="!isLoginMode">
             <app-input
-              type='password'
-              placeholder='Confirm Password'
-              formControlName='confirmPassword'
-              [control]='authForm.get("confirmPassword")'>
+              type="password"
+              placeholder="Confirm Password"
+              formControlName="confirmPassword"
+              [control]="authForm.get('confirmPassword')">
             </app-input>
           </div>
-          <div class='auth-form__buttons'>
+          <div class="auth-form__buttons">
             <app-button
-              type='button'
-              classes='success-btn'
-              (click)='onToggleAuthMode()'
-              [text]='isLoginMode ? "Sign Up" : "Login"'>
+              type="button"
+              classes="success-btn"
+              (click)="onToggleAuthMode()"
+              [text]="isLoginMode ? 'Sign Up' : 'Login'">
             </app-button>
             <app-button
-              [disabled]='!!(authForm.invalid) || !!(isSubmitting$ | async)'
-              [text]='isLoginMode ? "Login" : "Sign Up"'>
+              [disabled]="!!authForm.invalid || !!(isSubmitting$ | async)"
+              [text]="isLoginMode ? 'Login' : 'Sign Up'">
             </app-button>
           </div>
         </fieldset>
@@ -54,5 +56,3 @@
     </div>
   </div>
 </div>
-
-

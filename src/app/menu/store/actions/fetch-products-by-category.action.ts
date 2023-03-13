@@ -5,15 +5,15 @@ import { MenuActionTypes } from 'src/app/menu/store/action-types';
 
 export const fetchProductsByCategoryAction = createAction(
   MenuActionTypes.FETCH_PRODUCTS_BY_CATEGORY,
-  props<{ category: string }>(),
+  props<{ category: string }>()
 );
 
 export const fetchProductsByCategorySuccessAction = createAction(
   MenuActionTypes.FETCH_PRODUCTS_BY_CATEGORY_SUCCESS,
-  props<{ products: IProduct[] }>(),
+  props<{ products: IProduct[] }>()
 );
 
 export const fetchProductsByCategoryFailureAction = createAction(
   MenuActionTypes.FETCH_PRODUCTS_BY_CATEGORY_FAILURE,
-  props<{ errorMessage: string }>(),
+  props<{ errorMessage: string }>()
 );

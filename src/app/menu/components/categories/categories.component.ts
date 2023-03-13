@@ -16,9 +16,9 @@ export class CategoriesComponent implements OnInit {
   public categories$!: Observable<ICategory[] | null>;
   public isAuth$!: Observable<boolean>;
 
-  constructor (private store: Store<AppStateInterface>) { }
+  public constructor(private store: Store<AppStateInterface>) {}
 
-  public ngOnInit (): void {
+  public ngOnInit(): void {
     this.categories$ = this.store.pipe(select(categoriesSelector));
     this.isAuth$ = this.store.pipe(select(isAuthSelector));
   }

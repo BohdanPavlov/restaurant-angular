@@ -11,13 +11,11 @@ import {
   loginFailureAction,
   loginSuccessAction,
 } from 'src/app/auth/store/actions/login.action';
-import {
-  AuthResponseInterface,
-} from 'src/app/auth/types/auth-response.interface';
+import { AuthResponseInterface } from 'src/app/auth/types/auth-response.interface';
 
 @Injectable()
 export class LoginEffect {
-  login$ = createEffect(() =>
+  private login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loginAction),
       switchMap(({ requestData }) => {
@@ -31,29 +29,29 @@ export class LoginEffect {
             return of(
               loginFailureAction({
                 errorMessage: errorResponse.error,
-              }),
+              })
             );
-          }),
+          })
         );
-      }),
-    ),
+      })
+    )
   );
 
-  redirectAfterSubmit$ = createEffect(
+  private redirectAfterSubmit$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(loginSuccessAction),
         tap(() => {
           this.router.navigate(['/menu']);
-        }),
+        })
       ),
-    { dispatch: false },
+    { dispatch: false }
   );
 
-  constructor (
+  public constructor(
     private actions$: Actions,
     private authService: AuthService,
     private persistenceService: PersistenceService,
-    private router: Router,
+    private router: Router
   ) {}
 }

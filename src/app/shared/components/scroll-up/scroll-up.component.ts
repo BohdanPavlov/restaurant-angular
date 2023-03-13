@@ -11,13 +11,11 @@ export class ScrollUpComponent {
   public faAngleUp = faAngleUp;
 
   @HostListener('window:scroll', [])
-
-  onWindowScroll () {
+  public onWindowScroll() {
     this.showButton = window.scrollY > 200;
   }
 
-  scrollToTop () {
+  public scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
 }

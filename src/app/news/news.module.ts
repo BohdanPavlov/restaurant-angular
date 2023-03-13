@@ -24,9 +24,7 @@ import { NewsComponent } from './pages/news/news.component';
     CommonModule,
     FormsModule,
     StoreModule.forFeature('news', reducer),
-    EffectsModule.forFeature([
-      FetchNewsEffect,
-    ]),
+    EffectsModule.forFeature([FetchNewsEffect]),
     SharedModule,
     MaterialModule,
   ],

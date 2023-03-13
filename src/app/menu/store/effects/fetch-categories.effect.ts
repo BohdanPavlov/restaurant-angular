@@ -1,37 +1,40 @@
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Injectable } from '@angular/core';
-import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { catchError, map, of, switchMap } from 'rxjs';
+import { MenuService } from 'src/app/menu/services/menu.service';
 
 import {
   fetchCategoriesAction,
   fetchCategoriesFailureAction,
   fetchCategoriesSuccessAction,
 } from 'src/app/menu/store/actions/fetch-categories.action';
-import { MenuService } from 'src/app/menu/services/menu.service';
 import { ICategory } from 'src/app/menu/types/category.interface';
 
 @Injectable()
 export class FetchCategoriesEffect {
-  fetchCategories$ = createEffect(() =>
+  private fetchCategories$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fetchCategoriesAction),
       switchMap(() => {
         return this.menuService.fetchCategories().pipe(
           map((categories: ICategory[]) => {
-            return fetchCategoriesSuccessAction({categories})
+            return fetchCategoriesSuccessAction({ categories });
           }),
           catchError((errorResponse: HttpErrorResponse) => {
             return of(
               fetchCategoriesFailureAction({
-                errorMessage: errorResponse.message
+                errorMessage: errorResponse.message,
               })
-            )
+            );
           })
-        )
+        );
       })
     )
-  )
+  );
 
-  constructor(private actions$: Actions, private menuService: MenuService) {}
+  public constructor(
+    private actions$: Actions,
+    private menuService: MenuService
+  ) {}
 }

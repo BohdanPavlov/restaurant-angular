@@ -15,7 +15,7 @@ const initialState: NewsStateInterface = {
 
 const newsReducer = createReducer(
   initialState,
-  on(fetchNewsAction, (state) => ({
+  on(fetchNewsAction, state => ({
     ...state,
     status: 'loading',
   })),
@@ -29,9 +29,9 @@ const newsReducer = createReducer(
     ...state,
     status: 'error',
     errorMessage: action.errorMessage,
-  })),
+  }))
 );
 
-export function reducer (state: NewsStateInterface, action: Action) {
+export function reducer(state: NewsStateInterface, action: Action) {
   return newsReducer(state, action);
 }

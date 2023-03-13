@@ -1,4 +1,4 @@
-@import "src/variables";
+@import 'src/variables';
 
 :host {
   ::ng-deep .add-ingredient-btn {
@@ -41,6 +41,10 @@
     gap: 5px;
     position: relative;
 
+    @media screen and (max-width: 500px) {
+      font-size: 1em;
+    }
+
     &::after {
       content: '*';
       position: absolute;
@@ -68,7 +72,7 @@
 
   &__text {
     text-align: center;
-    margin: 0;
+    margin: 0 0 5px 0;
   }
 
   &__submit-btn {
@@ -85,9 +89,16 @@
   display: flex;
   align-items: flex-end;
   gap: 30px;
+  @media screen and (max-width: 382px) {
+    gap: 10px;
+  }
 
   &__field {
     flex: 1;
+
+    @media screen and (max-width: 382px) {
+      width: 150px;
+    }
   }
 }
 
@@ -120,5 +131,3 @@
   border: 1px solid red;
   outline: none;
 }
-
-

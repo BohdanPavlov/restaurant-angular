@@ -1,6 +1,6 @@
 @import 'src/variables';
 
-:host {
+.nav {
   display: flex;
   justify-content: center;
   gap: 30px;
@@ -9,9 +9,6 @@
   background-color: $mainColor;
   color: $whiteColor;
   position: relative;
-  @media (max-width: 720px) {
-    margin-top: 50px;
-  }
 
   .menu-item {
     cursor: pointer;
@@ -22,5 +19,12 @@
 
   .active {
     color: $successColor;
+  }
+}
+
+.nav-menu {
+  @extend .nav;
+  @media (max-width: 720px) {
+    margin-top: 50px;
   }
 }

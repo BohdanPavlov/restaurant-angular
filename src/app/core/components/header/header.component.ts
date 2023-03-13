@@ -18,23 +18,28 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public currentRoute!: any;
   private destroy$: Subject<void> = new Subject<void>();
 
-  constructor (
-    private store: Store<AppStateInterface>, private router: Router) { }
+  public constructor(
+    private store: Store<AppStateInterface>,
+    private router: Router
+  ) {}
 
-  public ngOnInit (): void {
+  public ngOnInit(): void {
     this.user$ = this.store.pipe(select(userSelector));
-    this.router.events.pipe(filter(event => event instanceof NavigationEnd),
-      takeUntil(this.destroy$)).
-      subscribe(event => {
+    this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd),
+        takeUntil(this.destroy$)
+      )
+      .subscribe(event => {
         this.currentRoute = event;
       });
   }
 
-  public onLogout () {
+  public onLogout() {
     this.store.dispatch(logoutAction());
   }
 
-  public ngOnDestroy (): void {
+  public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }

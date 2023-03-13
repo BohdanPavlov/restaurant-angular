@@ -1,10 +1,8 @@
-import {
-  AbstractControl,
-  ValidationErrors,
-  ValidatorFn,
-} from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-export const numberInputValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+export const numberInputValidator: ValidatorFn = (
+  control: AbstractControl
+): ValidationErrors | null => {
   const value = control?.value;
 
   if (/^-?\d+$/.test(value)) {

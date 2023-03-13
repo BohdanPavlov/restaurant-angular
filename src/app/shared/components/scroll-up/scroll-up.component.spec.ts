@@ -8,9 +8,8 @@ describe('ScrollUpComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ScrollUpComponent ]
-    })
-    .compileComponents();
+      declarations: [ScrollUpComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ScrollUpComponent);
     component = fixture.componentInstance;

@@ -1,22 +1,22 @@
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Injectable } from '@angular/core';
-import { catchError, map, of, switchMap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { catchError, map, of, switchMap } from 'rxjs';
 
 import { MenuService } from 'src/app/menu/services/menu.service';
-import { IProduct } from 'src/app/menu/types/product.interface';
 import {
   fetchProductsByCategoryAction,
   fetchProductsByCategoryFailureAction,
   fetchProductsByCategorySuccessAction,
 } from 'src/app/menu/store/actions/fetch-products-by-category.action';
+import { IProduct } from 'src/app/menu/types/product.interface';
 
 @Injectable()
 export class FetchProductsByCategoryEffect {
-  fetchProductsByCategory$ = createEffect(() =>
+  private fetchProductsByCategory$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fetchProductsByCategoryAction),
-      switchMap(({category}) => {
+      switchMap(({ category }) => {
         return this.menuService.fetchProductsByCategory(category).pipe(
           map((products: IProduct[]) => {
             return fetchProductsByCategorySuccessAction({ products });
@@ -25,13 +25,16 @@ export class FetchProductsByCategoryEffect {
             return of(
               fetchProductsByCategoryFailureAction({
                 errorMessage: errorResponse.message,
-              }),
+              })
             );
-          }),
+          })
         );
-      }),
-    ),
+      })
+    )
   );
 
-  constructor (private actions$: Actions, private menuService: MenuService) {}
+  public constructor(
+    private actions$: Actions,
+    private menuService: MenuService
+  ) {}
 }

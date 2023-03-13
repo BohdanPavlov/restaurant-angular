@@ -1,5 +1,5 @@
-import {createAction} from '@ngrx/store'
+import { createAction } from '@ngrx/store';
 
-import {AuthActionTypes} from 'src/app/auth/store/action-types'
+import { AuthActionTypes } from 'src/app/auth/store/action-types';
 
-export const logoutAction = createAction(AuthActionTypes.LOGOUT)
+export const logoutAction = createAction(AuthActionTypes.LOGOUT);

@@ -1,16 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
 import { select, Store } from '@ngrx/store';
+import { Subject, takeUntil } from 'rxjs';
+import { setDetailsModalStatusAction } from 'src/app/menu/store/actions/set-details-modal-status.action';
+import { setSelectedProductAction } from 'src/app/menu/store/actions/set-selected-product.action';
+import { selectedProductSelector } from 'src/app/menu/store/selectors';
 
 import { IProduct } from 'src/app/menu/types/product.interface';
 import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
-import { selectedProductSelector } from 'src/app/menu/store/selectors';
-import {
-  setDetailsModalStatusAction
-} from 'src/app/menu/store/actions/set-details-modal-status.action';
-import {
-  setSelectedProductAction
-} from 'src/app/menu/store/actions/set-selected-product.action';
 
 @Component({
   selector: 'app-product-details-modal',
@@ -21,23 +17,23 @@ export class ProductDetailsModalComponent implements OnInit, OnDestroy {
   public selectedProduct: IProduct | null = null;
   private destroy = new Subject<any>();
 
-  constructor (private store: Store<AppStateInterface>) { }
+  public constructor(private store: Store<AppStateInterface>) {}
 
-  public ngOnInit (): void {
-    this.store.pipe(select(selectedProductSelector), takeUntil(this.destroy)).
-      subscribe(product => this.selectedProduct = product);
+  public ngOnInit(): void {
+    this.store
+      .pipe(select(selectedProductSelector), takeUntil(this.destroy))
+      .subscribe(product => (this.selectedProduct = product));
   }
 
-  public onCloseModal (event: MouseEvent): void {
+  public onCloseModal(event: MouseEvent): void {
     if (event.target === event.currentTarget) {
-      this.store.dispatch(setDetailsModalStatusAction({value: false}));
-      this.store.dispatch(setSelectedProductAction({product: null}));
+      this.store.dispatch(setDetailsModalStatusAction({ value: false }));
+      this.store.dispatch(setSelectedProductAction({ product: null }));
     }
   }
 
-  public ngOnDestroy (): void {
+  public ngOnDestroy(): void {
     this.destroy.next('');
     this.destroy.complete();
   }
-
 }

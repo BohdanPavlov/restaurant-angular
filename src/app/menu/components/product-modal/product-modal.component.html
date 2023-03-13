@@ -1,31 +1,39 @@
-<div class='modal' (click)='onProductModalClose($event)'>
-  <div class='modal-content content'>
-    <button class='content__close-btn' (click)='onProductModalClose($event)'>X</button>
-    <h2 class='content__title'>{{selectedProduct ? 'Update' : 'Add new'}} product</h2>
+<div class="modal" (click)="onProductModalClose($event)">
+  <div class="modal-content content">
+    <button class="content__close-btn" (click)="onProductModalClose($event)">
+      X
+    </button>
+    <h2 class="content__title">
+      {{ selectedProduct ? 'Update' : 'Add new' }} product
+    </h2>
     <form
-      [formGroup]='productForm'
-      (ngSubmit)='onSubmit()'
-      class='product-form'>
-      <label class='product-form__field'>
+      [formGroup]="productForm"
+      (ngSubmit)="onSubmit()"
+      class="product-form">
+      <label class="product-form__field">
         Title
         <app-input
-          type='text'
-          formControlName='title'
-          placeholder='Title...'
-          classes='product-field'
-          [control]='productForm.get("title")'>
+          type="text"
+          formControlName="title"
+          placeholder="Title..."
+          classes="product-field"
+          [control]="productForm.get('title')">
         </app-input>
       </label>
-      <label class='product-form__field'>
+      <label class="product-form__field">
         Description
         <textarea
-          [ngClass]='productForm.get("description")?.touched && productForm.get("description")?.invalid ? "error" : null'
-          formControlName='description'
-          placeholder='Description...'
-          class='product-form__control'
-        ></textarea>
+          [ngClass]="
+            productForm.get('description')?.touched &&
+            productForm.get('description')?.invalid
+              ? 'error'
+              : null
+          "
+          formControlName="description"
+          placeholder="Description..."
+          class="product-form__control"></textarea>
       </label>
-      <div class='validation'>
+      <div class="validation">
         <app-validation-error
           *ngIf='productForm.get("description")?.touched && productForm.get("description")?.errors?.["required"]'>
           * This field is required
@@ -35,75 +43,82 @@
           * Should be longer than 20 symbols
         </app-validation-error>
       </div>
-      <label class='product-form__field'>
+      <label class="product-form__field">
         Price
         <app-input
-          type='number'
-          formControlName='price'
-          placeholder='Price'
-          classes='product-field'
-          [control]='productForm.get("price")'
-        >
+          type="number"
+          formControlName="price"
+          placeholder="Price"
+          classes="product-field"
+          [control]="productForm.get('price')">
         </app-input>
       </label>
-      <label class='product-form__field'>
+      <label class="product-form__field">
         Category
         <select
-          [ngClass]='productForm.get("category")?.touched && productForm.get("category")?.invalid ? "error" : null'
-          formControlName='category'
-          class='product-form__control product-form__control_select'>
-          <option value='' selected disabled hidden>Select category</option>
-          <option *ngFor='let category of categories$ | async' [value]='category.id' selected>{{category.id}}</option>
+          [ngClass]="
+            productForm.get('category')?.touched &&
+            productForm.get('category')?.invalid
+              ? 'error'
+              : null
+          "
+          formControlName="category"
+          class="product-form__control product-form__control_select">
+          <option value="" selected disabled hidden>Select category</option>
+          <option
+            *ngFor="let category of categories$ | async"
+            [value]="category.id"
+            selected>
+            {{ category.id }}
+          </option>
         </select>
       </label>
-      <div class='validation'>
+      <div class="validation">
         <app-validation-error
           *ngIf='productForm.get("category")?.touched && productForm.get("category")?.errors?.["required"]'>
           * This field is required!
         </app-validation-error>
       </div>
-      <label class='product-form__field'>
+      <label class="product-form__field">
         Image Url
         <app-input
-          type='text'
-          formControlName='imageUrl'
-          placeholder='Image Url...'
-          classes='product-field'
-          [control]='productForm.get("imageUrl")'>
+          type="text"
+          formControlName="imageUrl"
+          placeholder="Image Url..."
+          classes="product-field"
+          [control]="productForm.get('imageUrl')">
         </app-input>
       </label>
-      <div class='ingredient'>
-        <label class='product-form__field ingredient__field'>
+      <div class="ingredient">
+        <label class="product-form__field ingredient__field">
           Add Ingredient
-          <input
-            type='text'
-            #ingredient
-            class='product-form__control'
-          >
+          <input type="text" #ingredient class="product-form__control" />
         </label>
         <app-button
-          (click)='onAddIngredient()'
-          type='button'
-          classes='add-ingredient-btn'
-          text='Add'
-        >
+          (click)="onAddIngredient()"
+          type="button"
+          classes="add-ingredient-btn"
+          text="Add">
         </app-button>
       </div>
-      <h2 class='product-form__text'>Ingredients</h2>
-      <p class='product-form__text' *ngIf='newProductsIngredients.length === 0'>Please add ingredients for this
-        product!</p>
-      <div class='new-ingredient' *ngFor='let ingredient of newProductsIngredients'>
-        <p class='new-ingredient__name'>{{ingredient}}</p>
+      <h2 class="product-form__text">Ingredients</h2>
+      <p class="product-form__text" *ngIf="newProductsIngredients.length === 0">
+        Please add ingredients for this product!
+      </p>
+      <div
+        class="new-ingredient"
+        *ngFor="let ingredient of newProductsIngredients">
+        <p class="new-ingredient__name">{{ ingredient }}</p>
         <button
-          type='button'
-          (click)='onDeleteIngredient(ingredient)'
-          class='new-ingredient__btn'>
+          type="button"
+          (click)="onDeleteIngredient(ingredient)"
+          class="new-ingredient__btn">
           delete
         </button>
       </div>
       <app-button
-        [disabled]='productForm.invalid || newProductsIngredients.length === 0'
-        [text]='selectedProduct ? "Update" : "Create"'>
+        [disabled]="productForm.invalid || newProductsIngredients.length === 0"
+        [text]="selectedProduct ? 'Update' : 'Create'">
       </app-button>
     </form>
   </div>

@@ -5,5 +5,5 @@ import { IProduct } from 'src/app/menu/types/product.interface';
 
 export const setSelectedProductAction = createAction(
   MenuActionTypes.SET_SELECTED_PRODUCT,
-  props<{product: IProduct | null}>()
-)
+  props<{ product: IProduct | null }>()
+);

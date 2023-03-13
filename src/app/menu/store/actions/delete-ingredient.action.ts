@@ -3,5 +3,5 @@ import { MenuActionTypes } from 'src/app/menu/store/action-types';
 
 export const deleteIngredientAction = createAction(
   MenuActionTypes.DELETE_INGREDIENT,
-  props<{ ingredient: string }>(),
+  props<{ ingredient: string }>()
 );

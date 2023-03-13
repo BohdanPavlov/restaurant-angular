@@ -5,7 +5,8 @@ import { MenuComponent } from 'src/app/menu/pages/menu/menu.component';
 
 const routes: Routes = [
   {
-    path: '', component: MenuComponent,
+    path: '',
+    component: MenuComponent,
   },
 ];
 

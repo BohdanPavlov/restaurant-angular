@@ -1,7 +1,7 @@
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Injectable } from '@angular/core';
-import { catchError, map, of, switchMap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { catchError, map, of, switchMap } from 'rxjs';
 
 import { MenuService } from 'src/app/menu/services/menu.service';
 import {
@@ -13,7 +13,7 @@ import { IProduct } from 'src/app/menu/types/product.interface';
 
 @Injectable()
 export class SearchProductsEffect {
-  searchProducts$ = createEffect(() =>
+  private searchProducts$ = createEffect(() =>
     this.actions$.pipe(
       ofType(searchProductsAction),
       switchMap(({ searchTerm }) => {
@@ -26,13 +26,16 @@ export class SearchProductsEffect {
             return of(
               searchProductsFailureAction({
                 errorMessage: errorResponse.message,
-              }),
+              })
             );
-          }),
+          })
         );
-      }),
-    ),
+      })
+    )
   );
 
-  constructor (private actions$: Actions, private menuService: MenuService) {}
+  public constructor(
+    private actions$: Actions,
+    private menuService: MenuService
+  ) {}
 }

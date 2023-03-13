@@ -12,20 +12,27 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $restaurant-angular-primary: mat.define-palette(mat.$orange-palette, 700);
-$restaurant-angular-accent: mat.define-palette(mat.$green-palette, A200, A100, A400);
+$restaurant-angular-accent: mat.define-palette(
+  mat.$green-palette,
+  A200,
+  A100,
+  A400
+);
 
 // The warn palette is optional (defaults to red).
 $restaurant-angular-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$restaurant-angular-theme: mat.define-light-theme((
-  color: (
-    primary: $restaurant-angular-primary,
-    accent: $restaurant-angular-accent,
-    warn: $restaurant-angular-warn,
+$restaurant-angular-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $restaurant-angular-primary,
+      accent: $restaurant-angular-accent,
+      warn: $restaurant-angular-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component

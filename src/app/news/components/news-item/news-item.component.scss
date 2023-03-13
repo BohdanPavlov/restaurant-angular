@@ -10,6 +10,9 @@
 
 .info {
   flex: 0 1 60%;
+  @media screen and (max-width: 700px) {
+    flex: 1 1 60%;
+  }
 
   &__title {
     margin: 15px 0;
@@ -20,6 +23,10 @@
     font-size: 1.2em;
     font-weight: 600;
     color: #555555;
+
+    @media screen and (max-width: 860px) {
+      font-size: 1em;
+    }
   }
 
   &__authors {
@@ -30,6 +37,9 @@
 
   &__span {
     font-size: 1.1em;
+    @media screen and (max-width: 860px) {
+      font-size: 1em;
+    }
   }
 
   &__selected-span {
@@ -37,5 +47,9 @@
     border-right: 2px solid grey;
     padding-right: 10px;
     font-size: 1.2em;
+
+    @media screen and (max-width: 860px) {
+      font-size: 1em;
+    }
   }
 }

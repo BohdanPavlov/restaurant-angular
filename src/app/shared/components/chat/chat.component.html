@@ -1,29 +1,26 @@
-<div *ngIf='isVisible' class='chatbox'>
-  <div class='header'>
-    <h4 class='header__title'>Chat support</h4>
+<div *ngIf="isVisible" class="chatbox">
+  <div class="header">
+    <h4 class="header__title">Chat support</h4>
   </div>
-  <div class='messages'>
-    <div class='messages__item messages__item_operator'>
-      Good day! If you have any questions, type it here ;)
+  <div class="messages">
+    <div class="messages__item messages__item_operator">
+      Good day! If you have any questions, type them here ;)
     </div>
     <div
-      class='messages__item messages__item_visitor'
-      *ngFor='let message of messages'>
-      {{message.message}}
+      class="messages__item messages__item_visitor"
+      *ngFor="let message of messages">
+      {{ message.message }}
     </div>
   </div>
-  <div class='footer'>
+  <div class="footer">
     <input
-      class='footer__input'
-      type='text'
-      placeholder='Write a message...'
-      [(ngModel)]='message'>
-    <button
-      type='button'
-      class='footer__send-btn'
-      (click)='sendMessage()'
-    >Send
+      class="footer__input"
+      type="text"
+      placeholder="Write a message..."
+      [(ngModel)]="message" />
+    <button type="button" class="footer__send-btn" (click)="sendMessage()">
+      Send
     </button>
   </div>
-  <div class='close' (click)='closeChat()'>x</div>
+  <div class="close" (click)="closeChat()">x</div>
 </div>
