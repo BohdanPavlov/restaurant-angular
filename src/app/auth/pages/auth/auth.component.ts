@@ -59,10 +59,34 @@ export class AuthComponent implements OnInit, OnDestroy {
     } else {
       this.authForm = this.fb.group(
         {
-          email: ['', [Validators.required, Validators.email]],
-          username: ['', [Validators.required, Validators.minLength(3)]],
-          password: ['', [Validators.required, Validators.minLength(6)]],
-          confirmPassword: ['', [Validators.required]],
+          email: [
+            '',
+            [
+              Validators.required,
+              Validators.email,
+              Validators.pattern('^[^\\s]*$'),
+            ],
+          ],
+          username: [
+            '',
+            [
+              Validators.required,
+              Validators.minLength(3),
+              Validators.pattern('^[^\\s]*$'),
+            ],
+          ],
+          password: [
+            '',
+            [
+              Validators.required,
+              Validators.minLength(6),
+              Validators.pattern('^[^\\s]*$'),
+            ],
+          ],
+          confirmPassword: [
+            '',
+            [Validators.required, Validators.pattern('^[^\\s]*$')],
+          ],
         },
         { validators: matchPasswordValidator }
       );

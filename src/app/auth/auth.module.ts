@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+
 import { AuthInterceptor } from 'src/app/auth/services/auth-interceptor.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { LoginEffect } from 'src/app/auth/store/effects/login.effect';
