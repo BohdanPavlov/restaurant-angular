@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { Observable, Subject, takeUntil } from 'rxjs';
 
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { loginAction } from 'src/app/auth/store/actions/login.action';
 import { registerAction } from 'src/app/auth/store/actions/register.action';
 import { switchAuthModeAction } from 'src/app/auth/store/actions/switch-auth-mode.action';
@@ -59,14 +59,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     } else {
       this.authForm = this.fb.group(
         {
-          email: [
-            '',
-            [
-              Validators.required,
-              Validators.email,
-              Validators.pattern('^\\S(.*\\S)?$'),
-            ],
-          ],
+          email: ['', [Validators.required, Validators.email]],
           username: [
             '',
             [
@@ -75,18 +68,8 @@ export class AuthComponent implements OnInit, OnDestroy {
               Validators.pattern('^\\S(.*\\S)?$'),
             ],
           ],
-          password: [
-            '',
-            [
-              Validators.required,
-              Validators.minLength(6),
-              Validators.pattern('^\\S(.*\\S)?$'),
-            ],
-          ],
-          confirmPassword: [
-            '',
-            [Validators.required, Validators.pattern('^\\S(.*\\S)?$')],
-          ],
+          password: ['', [Validators.required, Validators.minLength(6)]],
+          confirmPassword: ['', [Validators.required]],
         },
         { validators: matchPasswordValidator }
       );

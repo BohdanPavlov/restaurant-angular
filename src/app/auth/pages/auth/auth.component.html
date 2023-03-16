@@ -46,9 +46,7 @@
               (click)="onToggleAuthMode()"
               [text]="isLoginMode ? 'Sign Up' : 'Login'">
             </app-button>
-            <app-button
-              [disabled]="!!authForm.invalid || !!(isSubmitting$ | async)"
-              [text]="isLoginMode ? 'Login' : 'Sign Up'">
+            <app-button [text]="isLoginMode ? 'Login' : 'Sign Up'">
             </app-button>
           </div>
         </fieldset>
