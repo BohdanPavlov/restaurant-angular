@@ -11,12 +11,10 @@ import { map, Observable, Subject, takeUntil } from 'rxjs';
 import { numberInputValidator } from 'src/app/auth/validators/number-input.validator';
 
 import { addIngredientAction } from 'src/app/menu/store/actions/add-ingredient.action';
-import { createNewProductAction } from 'src/app/menu/store/actions/create-new-product.action';
 import { deleteIngredientAction } from 'src/app/menu/store/actions/delete-ingredient.action';
 import { setProductIngredientsAction } from 'src/app/menu/store/actions/set-product-ingredients.action';
 import { setProductModalStatusAction } from 'src/app/menu/store/actions/set-product-modal-status.action';
 import { setSelectedProductAction } from 'src/app/menu/store/actions/set-selected-product.action';
-import { updateProductAction } from 'src/app/menu/store/actions/update-product.action';
 import {
   categoriesSelector,
   newProductIngredientsSelector,
@@ -77,11 +75,19 @@ export class ProductModalComponent implements OnInit, OnDestroy {
     this.productForm = this.fb.group({
       title: [
         this.selectedProduct ? this.selectedProduct.title : '',
-        [Validators.required, Validators.minLength(6)],
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.pattern('^\\S(.*\\S)?$'),
+        ],
       ],
       description: [
         this.selectedProduct ? this.selectedProduct.info.description : '',
-        [Validators.required, Validators.minLength(20)],
+        [
+          Validators.required,
+          Validators.minLength(20),
+          Validators.pattern('^\\S(.*\\S)?$'),
+        ],
       ],
       price: [
         this.selectedProduct ? this.selectedProduct.price.split(' ')[0] : '',
@@ -93,7 +99,7 @@ export class ProductModalComponent implements OnInit, OnDestroy {
       ],
       imageUrl: [
         this.selectedProduct ? this.selectedProduct.imageUrl : '',
-        Validators.required,
+        [Validators.required, Validators.pattern('^\\S(.*\\S)?$')],
       ],
     });
   }
@@ -123,16 +129,18 @@ export class ProductModalComponent implements OnInit, OnDestroy {
       },
     };
 
-    if (this.selectedProduct) {
-      this.store.dispatch(
-        updateProductAction({
-          product: newProduct,
-          id: this.selectedProduct.id ? this.selectedProduct.id : 0,
-        })
-      );
-    } else {
-      this.store.dispatch(createNewProductAction({ newProduct }));
-    }
+    console.log(this.productForm);
+
+    // if (this.selectedProduct) {
+    //   this.store.dispatch(
+    //     updateProductAction({
+    //       product: newProduct,
+    //       id: this.selectedProduct.id ? this.selectedProduct.id : 0,
+    //     })
+    //   );
+    // } else {
+    //   this.store.dispatch(createNewProductAction({ newProduct }));
+    // }
   }
 
   public onProductModalClose(event: MouseEvent): void {

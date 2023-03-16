@@ -64,7 +64,7 @@ export class AuthComponent implements OnInit, OnDestroy {
             [
               Validators.required,
               Validators.email,
-              Validators.pattern('^[^\\s]*$'),
+              Validators.pattern('^\\S(.*\\S)?$'),
             ],
           ],
           username: [
@@ -72,7 +72,7 @@ export class AuthComponent implements OnInit, OnDestroy {
             [
               Validators.required,
               Validators.minLength(3),
-              Validators.pattern('^[^\\s]*$'),
+              Validators.pattern('^\\S(.*\\S)?$'),
             ],
           ],
           password: [
@@ -80,12 +80,12 @@ export class AuthComponent implements OnInit, OnDestroy {
             [
               Validators.required,
               Validators.minLength(6),
-              Validators.pattern('^[^\\s]*$'),
+              Validators.pattern('^\\S(.*\\S)?$'),
             ],
           ],
           confirmPassword: [
             '',
-            [Validators.required, Validators.pattern('^[^\\s]*$')],
+            [Validators.required, Validators.pattern('^\\S(.*\\S)?$')],
           ],
         },
         { validators: matchPasswordValidator }

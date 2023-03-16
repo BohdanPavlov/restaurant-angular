@@ -42,6 +42,10 @@
           *ngIf='productForm.get("description")?.touched && productForm.get("description")?.errors?.["minlength"]'>
           * Should be longer than 20 symbols
         </app-validation-error>
+        <app-validation-error
+          *ngIf='productForm.get("description")?.touched && productForm.get("description")?.errors?.["pattern"]'>
+          * Should be without spaces on the edges!
+        </app-validation-error>
       </div>
       <label class="product-form__field">
         Price
@@ -116,10 +120,7 @@
           delete
         </button>
       </div>
-      <app-button
-        [disabled]="productForm.invalid || newProductsIngredients.length === 0"
-        [text]="selectedProduct ? 'Update' : 'Create'">
-      </app-button>
+      <app-button [text]="selectedProduct ? 'Update' : 'Create'"> </app-button>
     </form>
   </div>
 </div>
