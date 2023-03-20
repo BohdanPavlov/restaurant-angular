@@ -24,14 +24,6 @@ export class InputComponent implements ControlValueAccessor {
   @Input() public control?: AbstractControl | null;
 
   public value!: string;
-  public errorMessages: Record<string, string> = {
-    required: '* The field is required!',
-    email: '* The email is invalid!',
-    minlength: '* Should be longer!',
-    passwordMismatch: '* Passwords do not match!',
-    notInteger: '* Number must be integer!',
-    pattern: '* Should be without spaces on the edges!',
-  };
 
   private onChange!: (value: string) => void;
   public onTouched!: () => void;

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { TranslateModule } from '@ngx-translate/core';
 import { CategoriesComponent } from 'src/app/menu/components/categories/categories.component';
 import { CategoryComponent } from 'src/app/menu/components/category/category.component';
 
@@ -50,6 +51,7 @@ import { MenuComponent } from './pages/menu/menu.component';
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
+    TranslateModule,
   ],
   providers: [MenuService],
 })

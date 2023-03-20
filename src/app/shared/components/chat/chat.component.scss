@@ -15,7 +15,6 @@
   opacity: 0;
   animation-name: fadeIn;
   animation-duration: 0.5s;
-  animation-delay: 1s;
   animation-fill-mode: forwards;
 
   @keyframes fadeIn {
@@ -112,5 +111,16 @@
   right: 15px;
   font-size: 2em;
   color: $whiteColor;
+  cursor: pointer;
+}
+
+.chat-icon {
+  position: fixed;
+  bottom: 20%;
+  right: 23px;
+  z-index: 10;
+  color: $mainColor;
+  border: none;
+  outline: none;
   cursor: pointer;
 }

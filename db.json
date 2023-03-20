@@ -152,11 +152,16 @@
     {
       "title": "Сирники смачні",
       "category": "bakery",
-      "price": "45 грн",
+      "price": "50 грн",
       "imageUrl": "https://bufet.ua/wp-content/uploads/2015/08/sirniki.jpg",
       "info": {
         "description": "Пухкі сирники з родзинками, посипані цукровою пудрою!",
-        "ingredients": ["Сир кисломолочний", "Мука", "Яйця", "Пудра"]
+        "ingredients": [
+          "Сир кисломолочний",
+          "Мука",
+          "Яйця",
+          "Пудра"
+        ]
       },
       "id": 9
     },
@@ -227,7 +232,10 @@
       "imageUrl": "https://bufet.ua/wp-content/uploads/2014/12/tea_green_category.jpg",
       "info": {
         "description": "Гарячий чай на Ваш вибір",
-        "ingredients": ["Чай пакетованйи", "Цукор 10 г"]
+        "ingredients": [
+          "Чай пакетованйи",
+          "Цукор 10 г"
+        ]
       }
     },
     {
@@ -238,7 +246,9 @@
       "imageUrl": "https://bufet.ua/wp-content/uploads/2014/04/limonad_b_category.jpg",
       "info": {
         "description": "Чувак, ти серйозно? Нашо тобі деталі про лимонад, це ж лимонад:)",
-        "ingredients": ["Лимонад"]
+        "ingredients": [
+          "Лимонад"
+        ]
       }
     },
     {
@@ -249,7 +259,9 @@
       "imageUrl": "https://bufet.ua/wp-content/uploads/2015/04/apelsinoviy_sok_b_category.jpg",
       "info": {
         "description": "Сік свіжовижатий в асортименті",
-        "ingredients": ["Сік (на вибір)"]
+        "ingredients": [
+          "Сік (на вибір)"
+        ]
       }
     },
     {

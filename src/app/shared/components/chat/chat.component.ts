@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { faCommentAlt } from '@fortawesome/free-solid-svg-icons';
 import { Subject } from 'rxjs';
 import { io, Socket } from 'socket.io-client';
 
@@ -10,6 +11,7 @@ import { io, Socket } from 'socket.io-client';
 export class ChatComponent implements OnInit, OnDestroy {
   private socket!: Socket;
   private destroy$: Subject<void> = new Subject<void>();
+  public faComment = faCommentAlt;
 
   public isVisible: boolean = false;
   public message!: string;
@@ -21,10 +23,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.socket.on('update', (messages: { message: string }[] | []) => {
       this.messages = messages;
     });
-
-    setTimeout(() => {
-      this.isVisible = true;
-    }, 1);
   }
 
   public sendMessage() {

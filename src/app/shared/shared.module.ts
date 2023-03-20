@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { ButtonComponent } from 'src/app/shared/components/button/button.component';
 import { ChatComponent } from 'src/app/shared/components/chat/chat.component';
@@ -28,6 +29,7 @@ import { MaterialModule } from 'src/app/shared/material.module';
     MaterialModule,
     FontAwesomeModule,
     FormsModule,
+    TranslateModule,
   ],
   exports: [
     ValidationErrorComponent,

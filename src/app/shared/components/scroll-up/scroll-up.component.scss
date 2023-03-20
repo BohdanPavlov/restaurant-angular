@@ -2,14 +2,14 @@
 
 .scroll-up {
   position: fixed;
-  bottom: 20px;
+  bottom: 40px;
   right: 20px;
-  z-index: 9999;
+  z-index: 10;
   background-color: $mainColor;
   color: $whiteColor;
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 15px;
+  padding: 15px 18px;
   border-radius: 50%;
 }

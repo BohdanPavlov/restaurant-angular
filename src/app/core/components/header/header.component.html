@@ -5,15 +5,23 @@
   *ngIf="
     currentRoute?.url === '/menu' || currentRoute?.url === '/'
   "></app-search>
-<div class="user" *ngIf="user$ | async">
-  <strong class="user__name">{{ (user$ | async)?.username }}</strong>
+<mat-select class="select-lang" [(ngModel)]="selectedOption">
+  <mat-option
+    *ngFor="let lang of languages"
+    [value]="lang"
+    (click)="translate.use(lang)">
+    {{ lang | uppercase }}
+  </mat-option>
+</mat-select>
+<div class="user" *ngIf="user$ | async; let user">
+  <strong class="user__name">{{ user.username }}</strong>
   <app-button
     type="button"
     classes="logout-btn"
     (click)="onLogout()"
-    text="Logout"></app-button>
+    [text]="'header.logout' | translate"></app-button>
 </div>
 <app-button
   [routerLink]="['/login']"
   *ngIf="(user$ | async) === null"
-  text="Authorize"></app-button>
+  [text]="'header.authorize' | translate"></app-button>

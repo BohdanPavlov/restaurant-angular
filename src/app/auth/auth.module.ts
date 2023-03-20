@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { AuthInterceptor } from 'src/app/auth/services/auth-interceptor.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
@@ -23,6 +24,7 @@ import { AuthComponent } from './pages/auth/auth.component';
     SharedModule,
     StoreModule.forFeature('auth', reducer),
     EffectsModule.forFeature([LoginEffect, RegisterEffect, LogoutEffect]),
+    TranslateModule,
   ],
   providers: [
     AuthService,

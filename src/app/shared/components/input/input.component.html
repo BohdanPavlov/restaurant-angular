@@ -10,7 +10,7 @@
   <div class="validation">
     <ng-container *ngIf="control?.invalid && control?.touched">
       <app-validation-error *ngFor="let err of control?.errors | keyvalue">
-        {{ errorMessages[err.key] }}
+        {{ 'validation.' + err.key | translate }}
       </app-validation-error>
     </ng-container>
   </div>

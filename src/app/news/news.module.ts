@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { TranslateModule } from '@ngx-translate/core';
 import { FetchNewsEffect } from 'src/app/news/store/effects/fetch-news.effect';
 
 import { reducer } from 'src/app/news/store/reducers';
@@ -27,6 +28,7 @@ import { NewsComponent } from './pages/news/news.component';
     EffectsModule.forFeature([FetchNewsEffect]),
     SharedModule,
     MaterialModule,
+    TranslateModule,
   ],
 })
 export class NewsModule {}

@@ -7,6 +7,8 @@ import {
   RouterLinkWithHref,
   RouterOutlet,
 } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { MaterialModule } from 'src/app/shared/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FooterComponent } from './components/footer/footer.component';
 
@@ -20,9 +22,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     RouterOutlet,
     FormsModule,
     SharedModule,
+    MaterialModule,
     RouterLinkWithHref,
     RouterLink,
     RouterLinkActive,
+    TranslateModule,
   ],
   exports: [HeaderComponent, FooterComponent, NavbarComponent],
 })

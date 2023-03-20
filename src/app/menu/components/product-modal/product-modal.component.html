@@ -4,24 +4,29 @@
       X
     </button>
     <h2 class="content__title">
-      {{ selectedProduct ? 'Update' : 'Add new' }} product
+      {{
+        selectedProduct
+          ? ('product-form.update' | translate)
+          : ('product-form.add' | translate)
+      }}
+      {{ 'product-form.product' | translate }}
     </h2>
     <form
       [formGroup]="productForm"
       (ngSubmit)="onSubmit()"
       class="product-form">
       <label class="product-form__field">
-        Title
+        {{ 'form.title' | translate }}
         <app-input
           type="text"
           formControlName="title"
-          placeholder="Title..."
+          [placeholder]="'product-form.placeholders.title' | translate"
           classes="product-field"
           [control]="productForm.get('title')">
         </app-input>
       </label>
       <label class="product-form__field">
-        Description
+        {{ 'form.description' | translate }}
         <textarea
           [ngClass]="
             productForm.get('description')?.touched &&
@@ -30,35 +35,35 @@
               : null
           "
           formControlName="description"
-          placeholder="Description..."
+          [placeholder]="'product-form.placeholders.description' | translate"
           class="product-form__control"></textarea>
       </label>
       <div class="validation">
         <app-validation-error
           *ngIf='productForm.get("description")?.touched && productForm.get("description")?.errors?.["required"]'>
-          * This field is required
+          {{ 'validation.required' | translate }}
         </app-validation-error>
         <app-validation-error
           *ngIf='productForm.get("description")?.touched && productForm.get("description")?.errors?.["minlength"]'>
-          * Should be longer than 20 symbols
+          {{ 'validation.minlength' | translate }}
         </app-validation-error>
         <app-validation-error
           *ngIf='productForm.get("description")?.touched && productForm.get("description")?.errors?.["pattern"]'>
-          * Should be without spaces on the edges!
+          {{ 'validation.pattern' | translate }}
         </app-validation-error>
       </div>
       <label class="product-form__field">
-        Price
+        {{ 'form.price' | translate }}
         <app-input
           type="number"
           formControlName="price"
-          placeholder="Price"
+          [placeholder]="'product-form.placeholders.price' | translate"
           classes="product-field"
           [control]="productForm.get('price')">
         </app-input>
       </label>
       <label class="product-form__field">
-        Category
+        {{ 'form.category' | translate }}
         <select
           [ngClass]="
             productForm.get('category')?.touched &&
@@ -68,59 +73,74 @@
           "
           formControlName="category"
           class="product-form__control product-form__control_select">
-          <option value="" selected disabled hidden>Select category</option>
+          <option value="" selected disabled hidden>
+            {{ 'product-form.category' | translate }}
+          </option>
           <option
             *ngFor="let category of categories$ | async"
             [value]="category.id"
             selected>
-            {{ category.id }}
+            {{ 'categories.' + category.id | translate }}
           </option>
         </select>
       </label>
       <div class="validation">
         <app-validation-error
           *ngIf='productForm.get("category")?.touched && productForm.get("category")?.errors?.["required"]'>
-          * This field is required!
+          {{ 'validation.required' | translate }}
         </app-validation-error>
       </div>
       <label class="product-form__field">
-        Image Url
+        {{ 'form.imageUrl' | translate }}
         <app-input
           type="text"
           formControlName="imageUrl"
-          placeholder="Image Url..."
+          [placeholder]="'product-form.placeholders.imageUrl' | translate"
           classes="product-field"
           [control]="productForm.get('imageUrl')">
         </app-input>
       </label>
       <div class="ingredient">
         <label class="product-form__field ingredient__field">
-          Add Ingredient
-          <input type="text" #ingredient class="product-form__control" />
+          {{ 'form.add' | translate }}
+          <input
+            type="text"
+            [value]="newIngredient"
+            (input)="onChangeInput($event)"
+            class="product-form__control" />
         </label>
         <app-button
+          [disabled]="!newIngredient"
           (click)="onAddIngredient()"
           type="button"
           classes="add-ingredient-btn"
-          text="Add">
+          [text]="'product-form.add-btn' | translate">
         </app-button>
       </div>
-      <h2 class="product-form__text">Ingredients</h2>
-      <p class="product-form__text" *ngIf="newProductsIngredients.length === 0">
-        Please add ingredients for this product!
+      <h2 class="product-form__text">
+        {{ 'product-form.ingredients' | translate }}
+      </h2>
+      <p class="product-form__text" *ngIf="newProductIngredients.length === 0">
+        {{ 'product-form.empty-message' | translate }}
       </p>
       <div
         class="new-ingredient"
-        *ngFor="let ingredient of newProductsIngredients">
+        *ngFor="let ingredient of newProductIngredients">
         <p class="new-ingredient__name">{{ ingredient }}</p>
         <button
           type="button"
           (click)="onDeleteIngredient(ingredient)"
           class="new-ingredient__btn">
-          delete
+          {{ 'product-form.delete' | translate }}
         </button>
       </div>
-      <app-button [text]="selectedProduct ? 'Update' : 'Create'"> </app-button>
+      <app-button
+        [disabled]="productForm.invalid || !newProductIngredients.length"
+        [text]="
+          selectedProduct
+            ? ('product-form.update' | translate)
+            : ('product-form.create' | translate)
+        "></app-button>
     </form>
   </div>
 </div>
