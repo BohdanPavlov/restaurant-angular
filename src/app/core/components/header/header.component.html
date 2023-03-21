@@ -14,7 +14,12 @@
   </mat-option>
 </mat-select>
 <div class="user" *ngIf="user$ | async; let user">
-  <strong class="user__name">{{ user.username }}</strong>
+  <strong class="user__name" *ngIf="!user.avatar">{{ user.username }}</strong>
+  <img
+    *ngIf="user.avatar"
+    class="user__avatar"
+    [src]="user.avatar"
+    alt="user logo" />
   <app-button
     type="button"
     classes="logout-btn"

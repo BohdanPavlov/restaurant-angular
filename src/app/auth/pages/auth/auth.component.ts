@@ -14,6 +14,7 @@ import {
 } from 'src/app/auth/store/selectors';
 import { AuthRequestDataInterface } from 'src/app/auth/types/auth-request-data.interface';
 import { matchPasswordValidator } from 'src/app/auth/validators/match-password.validator';
+import { ConvertToBase64 } from 'src/app/shared/classes/convertToBase64';
 
 import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
 
@@ -22,18 +23,24 @@ import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
 })
-export class AuthComponent implements OnInit, OnDestroy {
+export class AuthComponent
+  extends ConvertToBase64
+  implements OnInit, OnDestroy
+{
   public authForm!: FormGroup;
   public isSubmitting$!: Observable<boolean>;
   public errorMessage$!: Observable<string>;
   public isLoginMode!: boolean;
+  public avatarImageCode: string | null = null;
   private destroy$ = new Subject();
 
   public constructor(
     private fb: FormBuilder,
     private store: Store<AppStateInterface>,
     private router: Router
-  ) {}
+  ) {
+    super();
+  }
 
   public ngOnInit(): void {
     this.initializeValues();
@@ -76,6 +83,18 @@ export class AuthComponent implements OnInit, OnDestroy {
     }
   }
 
+  public onImgInputChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+
+    const file: File = (target.files as FileList)[0];
+
+    this.convertToBase64(file)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(imageCode => {
+        this.avatarImageCode = imageCode;
+      });
+  }
+
   public onSubmit(): void {
     const requestData: AuthRequestDataInterface = this.authForm.value;
     if (this.isLoginMode) {
@@ -87,6 +106,7 @@ export class AuthComponent implements OnInit, OnDestroy {
             email: requestData.email,
             password: requestData.password,
             username: requestData.username,
+            avatar: this.avatarImageCode,
           },
         })
       );

@@ -26,10 +26,17 @@
 
 .user {
   display: flex;
-  gap: 30px;
+  justify-content: space-between;
+  gap: 20px;
   align-items: center;
   @media (max-width: 410px) {
     gap: 10px;
+  }
+
+  &__avatar {
+    flex: 0 0 auto;
+    height: 50px;
+    border-radius: 30%;
   }
 
   &__name {

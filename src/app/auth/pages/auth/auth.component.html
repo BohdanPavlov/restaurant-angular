@@ -45,6 +45,15 @@
               [control]="authForm.get('confirmPassword')">
             </app-input>
           </div>
+          <label *ngIf="!isLoginMode" class="avatar">
+            {{ 'auth.avatar' | translate }}
+            <input type="file" (change)="onImgInputChange($event)" />
+            <img
+              class="avatar__image"
+              [src]="avatarImageCode"
+              alt="Product image"
+              *ngIf="avatarImageCode" />
+          </label>
           <div class="auth-form__buttons">
             <app-button
               type="button"
@@ -57,6 +66,9 @@
               ">
             </app-button>
             <app-button
+              [disabled]="
+                this.authForm.invalid || !!(this.isSubmitting$ | async)
+              "
               [text]="
                 isLoginMode
                   ? ('auth.buttons.login' | translate)

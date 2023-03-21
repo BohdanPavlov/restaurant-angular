@@ -45,3 +45,17 @@
     }
   }
 }
+
+.avatar {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  border: 1px dashed $blackColor;
+  padding: 5px 10px;
+
+  &__image {
+    max-width: 150px;
+  }
+}
