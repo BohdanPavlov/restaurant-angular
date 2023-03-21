@@ -1,16 +1,19 @@
 @import 'src/variables';
 
-.banner {
+:host {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  background-color: #b0cb1f;
 
-  .title {
-    font-size: 2em;
-    color: $whiteColor;
-    margin: 0;
+  .banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: #b0cb1f;
+
+    .title {
+      font-size: 2em;
+      color: $whiteColor;
+      margin: 0;
+    }
   }
 }

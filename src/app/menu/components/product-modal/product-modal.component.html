@@ -25,7 +25,7 @@
           [control]="productForm.get('title')">
         </app-input>
       </label>
-      <label class="product-form__field">
+      <label class="product-form__field product-form__field_with-star">
         {{ 'form.description' | translate }}
         <textarea
           [ngClass]="
@@ -62,7 +62,7 @@
           [control]="productForm.get('price')">
         </app-input>
       </label>
-      <label class="product-form__field">
+      <label class="product-form__field product-form__field_with-star">
         {{ 'form.category' | translate }}
         <select
           [ngClass]="
@@ -90,7 +90,8 @@
           {{ 'validation.required' | translate }}
         </app-validation-error>
       </div>
-      <label class="product-form__field">
+      <label
+        class="product-form__field product-form__field_with-star add-product-image">
         {{ 'form.imageUrl' | translate }}
         <input
           type="file"
