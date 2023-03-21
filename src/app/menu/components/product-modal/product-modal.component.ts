@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
-import { map, Observable, Subject, takeUntil } from 'rxjs';
+import { map, Observable, Subject, Subscriber, takeUntil } from 'rxjs';
 
 import { numberInputValidator } from 'src/app/auth/validators/number-input.validator';
 import { addIngredientAction } from 'src/app/menu/store/actions/add-ingredient.action';
@@ -18,6 +18,7 @@ import {
 } from 'src/app/menu/store/selectors';
 import { ICategory } from 'src/app/menu/types/category.interface';
 import { IProduct } from 'src/app/menu/types/product.interface';
+import { ConvertToBase64 } from 'src/app/shared/classes/convertToBase64';
 
 import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
 
@@ -26,18 +27,24 @@ import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
   templateUrl: './product-modal.component.html',
   styleUrls: ['./product-modal.component.scss'],
 })
-export class ProductModalComponent implements OnInit, OnDestroy {
+export class ProductModalComponent
+  extends ConvertToBase64
+  implements OnInit, OnDestroy
+{
   public productForm!: FormGroup;
   public categories$!: Observable<ICategory[] | null>;
   public newProductIngredients!: string[];
   public selectedProduct!: IProduct | null;
   public newIngredient: string = '';
+  public selectedImageCode: string | null = null;
   private destroy$: Subject<any> = new Subject<any>();
 
   public constructor(
     private store: Store<AppStateInterface>,
     private fb: FormBuilder
-  ) {}
+  ) {
+    super();
+  }
 
   public ngOnInit(): void {
     this.initializeValues();
@@ -63,6 +70,9 @@ export class ProductModalComponent implements OnInit, OnDestroy {
       .pipe(select(selectedProductSelector), takeUntil(this.destroy$))
       .subscribe(selectedProduct => {
         this.selectedProduct = selectedProduct;
+        this.selectedImageCode = selectedProduct?.imageUrl
+          ? selectedProduct.imageUrl
+          : null;
       });
   }
 
@@ -92,10 +102,7 @@ export class ProductModalComponent implements OnInit, OnDestroy {
         this.selectedProduct ? this.selectedProduct.category : '',
         Validators.required,
       ],
-      imageUrl: [
-        this.selectedProduct ? this.selectedProduct.imageUrl : '',
-        [Validators.required, Validators.pattern('^\\S(.*\\S)?$')],
-      ],
+      imageUrl: [null, [Validators.required]],
     });
   }
 
@@ -116,12 +123,24 @@ export class ProductModalComponent implements OnInit, OnDestroy {
     this.store.dispatch(deleteIngredientAction({ ingredient }));
   }
 
+  public onImgInputChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+
+    const file: File = (target.files as FileList)[0];
+
+    this.convertToBase64(file)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(imageCode => {
+        this.selectedImageCode = imageCode;
+      });
+  }
+
   public onSubmit() {
     const newProduct: IProduct = {
       title: this.productForm.value.title,
       category: this.productForm.value.category,
       price: this.productForm.value.price + ' грн',
-      imageUrl: this.productForm.value.imageUrl,
+      imageUrl: this.selectedImageCode ? this.selectedImageCode : '',
       info: {
         description: this.productForm.value.description,
         ingredients: this.newProductIngredients,

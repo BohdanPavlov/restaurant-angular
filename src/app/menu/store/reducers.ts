@@ -147,6 +147,7 @@ const menuReducer = createReducer(
       ...state,
       products: state.products ? [...state.products, action.product] : null,
       isProductModalOpened: false,
+      newProductIngredients: [],
     })
   ),
   on(updateProductSuccessAction, (state, action): MenuStateInterface => {

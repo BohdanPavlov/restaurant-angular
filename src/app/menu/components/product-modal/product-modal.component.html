@@ -92,13 +92,27 @@
       </div>
       <label class="product-form__field">
         {{ 'form.imageUrl' | translate }}
-        <app-input
-          type="text"
-          formControlName="imageUrl"
-          [placeholder]="'product-form.placeholders.imageUrl' | translate"
-          classes="product-field"
-          [control]="productForm.get('imageUrl')">
-        </app-input>
+        <input
+          type="file"
+          (change)="onImgInputChange($event)"
+          formControlName="imageUrl" />
+        <div class="validation">
+          <app-validation-error
+            *ngIf='productForm.get("imageUrl")?.touched && productForm.get("imageUrl")?.errors?.["required"]'>
+            {{ 'validation.required' | translate }}
+          </app-validation-error>
+        </div>
+        <img
+          [src]="selectedImageCode"
+          alt="Product image"
+          *ngIf="selectedImageCode" />
+        <!--        <app-input-->
+        <!--          type="text"-->
+        <!--          formControlName="imageUrl"-->
+        <!--          [placeholder]="'product-form.placeholders.imageUrl' | translate"-->
+        <!--          classes="product-field"-->
+        <!--          [control]="productForm.get('imageUrl')">-->
+        <!--        </app-input>-->
       </label>
       <div class="ingredient">
         <label class="product-form__field ingredient__field">
