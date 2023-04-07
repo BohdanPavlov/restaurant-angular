@@ -1,0 +1,29 @@
+<mat-card class="product-card">
+  <img
+    class="product-card__image"
+    mat-card-image
+    [src]="environment.apiBase + product.oldImg"
+    [alt]="product.title" />
+  <mat-card-content class="product-card__content">
+    <div class="product-card__info">
+      <h3>{{ product.title }}</h3>
+      <p>{{ product.price }}</p>
+    </div>
+    <button class="product-card__details-btn" (click)="onShowProductDetails()">
+      {{ 'product-card.details' | translate }}
+    </button>
+    <div class="product-card__buttons">
+      <button
+        class="product-card__btn product-card__btn_category"
+        (click)="onGetProductsByCategory()">
+        {{ 'categories.' + product.category | translate }}
+      </button>
+      <button
+        class="product-card__btn product-card__btn_edit"
+        (click)="onEditProduct()"
+        *ngIf="isAuth$ | async">
+        {{ 'product-card.edit' | translate }}
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

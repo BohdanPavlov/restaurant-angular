@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "moduleResolution": "node",
+    "target": "es6",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  }
+}

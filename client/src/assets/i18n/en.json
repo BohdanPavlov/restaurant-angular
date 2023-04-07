@@ -1,0 +1,94 @@
+{
+  "lang": {
+    "en": "Eng",
+    "ua": "Ua"
+  },
+  "header": {
+    "authorize": "Authorize",
+    "find": "Find",
+    "logout": "Logout",
+    "search": {
+      "label": "Search by product title",
+      "placeholder": "What do you want to find?"
+    }
+  },
+  "navbar": {
+    "menu": "Menu",
+    "news": "News",
+    "add": "Add Product"
+  },
+  "categories": {
+    "all": "all",
+    "pizza": "pizza",
+    "salad": "salad",
+    "burgers": "burgers",
+    "bakery": "bakery",
+    "drinks": "drinks"
+  },
+  "product-card": {
+    "details": "Details",
+    "edit": "Edit"
+  },
+  "product-form": {
+    "add": "Add new",
+    "update": "Update",
+    "product": "product",
+    "placeholders": {
+      "title": "Title...",
+      "description": "Description...",
+      "price": "Price...",
+      "imageUrl": "Image Url..."
+    },
+    "category": "Select category",
+    "add-btn": "Add",
+    "ingredients": "Ingredients",
+    "empty-message": "Please add ingredients for this product!",
+    "create": "Create",
+    "delete": "delete"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "avatar": "Add your avatar",
+    "buttons": {
+      "login": "Login",
+      "signUp": "Sign Up"
+    }
+  },
+  "form": {
+    "title": "Title",
+    "description": "Description",
+    "price": "Price",
+    "category": "Category",
+    "imageUrl": "Image Url",
+    "add": "Add Ingredient",
+    "email": "Email",
+    "username": "Username",
+    "password": "Password",
+    "confirmPassword": "Confirm Password"
+  },
+  "footer": {
+    "rights": "@ all rights reserved"
+  },
+  "chat": {
+    "title": "Chat Support",
+    "message": "Write a message...",
+    "greeting": "Good day! If you have any questions, type them here ;)",
+    "send": "Send"
+  },
+  "validation": {
+    "required": "* This field is required!",
+    "email": "* The email is invalid!",
+    "minlength": "* Should be longer!",
+    "passwordMismatch": "* Passwords do not match!",
+    "notInteger": "* Number must be integer!",
+    "pattern": "* Should be without spaces on the edges!"
+  },
+  "news": {
+    "question": "Did you like this news?",
+    "yes": "Yes",
+    "no": "No",
+    "feedback": "Thank you for your feedback!",
+    "submit": "Submit"
+  }
+}
