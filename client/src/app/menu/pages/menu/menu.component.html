@@ -5,7 +5,7 @@
   color="primary"></mat-spinner>
 <div
   *ngIf="
-    (products$ | async) === null && (productsStatus$ | async) === 'success'
+    (products$ | async)?.length === 0 && (productsStatus$ | async) === 'success'
   "
   class="products-not-found">
   No products was found!

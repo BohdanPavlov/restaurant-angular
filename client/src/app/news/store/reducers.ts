@@ -8,7 +8,7 @@ import {
 import { NewsStateInterface } from 'src/app/news/types/news-state.interface';
 
 const initialState: NewsStateInterface = {
-  news: null,
+  news: [],
   status: 'idle',
   errorMessage: '',
 };

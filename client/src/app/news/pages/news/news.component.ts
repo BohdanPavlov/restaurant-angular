@@ -13,7 +13,7 @@ import { AppStateInterface } from 'src/app/shared/types/app-state.interface';
   styleUrls: ['./news.component.scss'],
 })
 export class NewsComponent implements OnInit {
-  public news$!: Observable<INews[] | null>;
+  public news$!: Observable<INews[]>;
   public status$!: Observable<string>;
 
   public constructor(private store: Store<AppStateInterface>) {}

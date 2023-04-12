@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./date.component.scss'],
 })
 export class DateComponent {
-  @Input() public date: string = '';
+  @Input() public date: string | null = '';
 }

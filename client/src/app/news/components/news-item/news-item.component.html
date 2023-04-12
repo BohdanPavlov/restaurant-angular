@@ -1,4 +1,4 @@
-<app-date [date]="news.date"></app-date>
+<app-date [date]="news.createdAt | date : 'dd.mm'"></app-date>
 <div class="info">
   <div>
     <img [src]="news.imgUrl" [alt]="news.title" />

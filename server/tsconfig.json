@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
+    "target": "es2018",
+    "module": "commonjs",
     "esModuleInterop": true,
-    "outDir": "dist",
+    "outDir": "./dist",
+    "rootDir": ".",
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    },
-    "moduleResolution": "node",
-    "target": "es6",
+    "moduleResolution": "Node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
-  }
+  },
+  "exclude": ["prisma"]
 }

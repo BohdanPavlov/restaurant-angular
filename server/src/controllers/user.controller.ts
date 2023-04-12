@@ -10,10 +10,10 @@ import 'reflect-metadata';
 import jwt from 'jsonwebtoken';
 import { Response } from 'express';
 
-import { User } from '@/models';
-import { loggingAfter, loggingBefore } from '@/middleware/middleware';
-import ApiError from '@/error/ApiError';
-import { AuthResponse, LoginData, RegisterData } from '@/types/user.types';
+import { prisma } from '../database';
+import { loggingAfter, loggingBefore } from '../middleware/middleware';
+import ApiError from '../error/ApiError';
+import { AuthResponse, LoginData, RegisterData } from '../types/user.types';
 
 const generateJwt = (id, email) => {
 	return jwt.sign({
@@ -33,8 +33,7 @@ export class UserController {
 		@Body() { email, password }: LoginData,
 		@Res() res: Response
 	): Promise<AuthResponse | ApiError> {
-		const user: any = await User.findOne({
-			raw: true,
+		const user = await prisma.user.findFirst({
 			where: { email }
 		});
 
@@ -54,7 +53,7 @@ export class UserController {
 
 		return {
 			user: {
-				id: user.id,
+				id: +user.id,
 				email: user.email,
 				username: user.username
 			},
@@ -72,8 +71,7 @@ export class UserController {
 			return ApiError.badRequest('Invalid email or password!');
 		}
 
-		const candidate = await User.findOne({
-			raw: true,
+		const candidate = await prisma.user.findFirst({
 			where: { email }
 		});
 
@@ -84,20 +82,23 @@ export class UserController {
 
 		const hashPassword = await bcrypt.hash(password, 5);
 
-		const user: any = await User.create({
-			email,
-			password: hashPassword,
-			username,
+		const user: any = await prisma.user.create({
+			data: {
+				email,
+				password: hashPassword,
+				username,
+			},
+			select: {
+				id: true,
+				email: true,
+				username: true
+			}
 		});
 
 		const token = generateJwt(user.id, user.email);
 
 		return {
-			user: {
-				id: user.id,
-				email: user.email,
-				username: user.username
-			},
+			user,
 			accessToken: token
 		};
 	}

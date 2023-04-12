@@ -1,4 +1,3 @@
-import { Category, Product } from '@/models';
 import * as fs from 'fs';
 import * as path from 'path';
 import {
@@ -11,8 +10,9 @@ import {
 	Req,
 	UseInterceptor,
 } from 'routing-controllers';
-import { Op } from 'sequelize';
 import * as uuid from 'uuid';
+
+import { prisma } from '../database';
 
 @Controller()
 @UseInterceptor(function (action: Action, content: any) {
@@ -21,7 +21,7 @@ import * as uuid from 'uuid';
 			id: product.id,
 			title: product.title,
 			description: product.description,
-			category: product['category.name'],
+			category: product.category.name,
 			category_id: product.category_id,
 			price: product.price,
 			oldImg: product.imageUrl,
@@ -32,7 +32,7 @@ import * as uuid from 'uuid';
 			id: content.id,
 			title: content.title,
 			description: content.description,
-			category: content['category.name'],
+			category: content.category.name,
 			category_id: content.category_id,
 			price: content.price,
 			oldImg: content.imageUrl,
@@ -45,9 +45,10 @@ import * as uuid from 'uuid';
 export class ProductController {
 	@Get('/products')
 	async getAllProducts () {
-		return await Product.findAll({
-			raw: true,
-			include: [Category],
+		return prisma.products.findMany({
+			include: {
+				category: true,
+			},
 		});
 	}
 
@@ -55,12 +56,13 @@ export class ProductController {
 	async searchProducts (
 		@Param('title') title: string,
 	) {
-		return await Product.findAll({
-			raw: true,
+		return prisma.products.findMany({
 			where: {
-				title: { [Op.like]: `%${title}%` },
+				title: { contains: title },
 			},
-			include: [Category],
+			include: {
+				category: true,
+			}
 		});
 	}
 
@@ -74,22 +76,22 @@ export class ProductController {
 		const fileName: string = uuid.v4() + '.jpg';
 		newImg.mv(path.join(__dirname, '..', 'public', fileName));
 
-		await Product.create({
-			title,
-			description,
-			category_id,
-			ingredients,
-			price,
-			imageUrl: fileName,
-		});
-
-		return await Product.findOne({
-			raw: true,
-			where: { title },
-			include: [
-				{
-					model: Category,
-				}],
+		return prisma.products.create({
+			data: {
+				title,
+				description,
+				category: {
+					connect: {
+						id: Number(category_id),
+					},
+				},
+				ingredients,
+				price,
+				imageUrl: fileName,
+			},
+			include: {
+				category: true
+			}
 		});
 	}
 
@@ -105,11 +107,9 @@ export class ProductController {
 			const filepath: string = path.join(__dirname, '..', 'public',
 				product.oldImg);
 			fs.unlink(filepath, (err) => {
-				if (err) {
-					console.error(`Failed to delete image: ${err}`);
-				} else {
-					console.log('Image has been deleted successfully!');
-				}
+				err
+					? console.error(`Failed to delete image: ${err}`)
+					: console.log('Image has been deleted successfully!');
 			});
 
 			const fileName: string = uuid.v4() + '.jpg';
@@ -119,15 +119,27 @@ export class ProductController {
 			product.imageUrl = product.oldImg;
 		}
 
-		await Product.update(product, { where: { id } });
+		await prisma.products.update({
+			where: { id: Number(id) },
+			data: {
+				title: product.title,
+				description: product.description,
+				category: {
+					connect: {
+						id: Number(product.category_id),
+					},
+				},
+				ingredients: product.ingredients,
+				price: product.price,
+				imageUrl: product.imageUrl,
+			},
+		});
 
-		return await Product.findOne({
-			raw: true,
-			where: { id },
-			include: [
-				{
-					model: Category,
-				}],
+		return prisma.products.findFirst({
+			where: { id: Number(id) },
+			include: {
+				category: true
+			}
 		});
 	}
 
@@ -135,15 +147,15 @@ export class ProductController {
 	async getProductsByCategory (
 		@Param('category') category: string,
 	) {
-		return await Product.findAll({
-			raw: true,
-			include: [
-				{
-					model: Category,
-					where: {
-						name: category,
-					},
-				}],
+		return prisma.products.findMany({
+			where: {
+				category: {
+					name: category,
+				},
+			},
+			include: {
+				category: true
+			}
 		});
 	}
 }

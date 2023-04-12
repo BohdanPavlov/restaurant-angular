@@ -32,7 +32,7 @@ import { MenuStateInterface } from 'src/app/menu/types/menu-state.interface';
 
 const initialState: MenuStateInterface = {
   categories: null,
-  products: null,
+  products: [],
   categoriesStatus: 'idle',
   productsStatus: 'idle',
   categoriesErrorMessage: '',
@@ -60,7 +60,7 @@ const menuReducer = createReducer(
     (state): MenuStateInterface => ({
       ...state,
       productsStatus: 'loading',
-      products: null,
+      products: [],
     })
   ),
   on(
@@ -79,7 +79,7 @@ const menuReducer = createReducer(
     (state, action): MenuStateInterface => ({
       ...state,
       productsStatus: 'success',
-      products: action.products.length > 0 ? action.products : null,
+      products: action.products.length > 0 ? action.products : [],
       productsErrorMessage: '',
     })
   ),
@@ -145,7 +145,7 @@ const menuReducer = createReducer(
     createNewProductSuccessAction,
     (state, action): MenuStateInterface => ({
       ...state,
-      products: state.products ? [...state.products, action.product] : null,
+      products: state.products ? [...state.products, action.product] : [],
       isProductModalOpened: false,
       newProductIngredients: [],
     })
