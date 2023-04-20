@@ -4,8 +4,8 @@
       <h2 class="auth-field__title">
         {{
           isLoginMode
-            ? ('auth.login' | translate)
-            : ('auth.register' | translate)
+            ? ('AUTH.LOGIN' | translate)
+            : ('AUTH.REGISTER' | translate)
         }}
       </h2>
       <app-validation-error *ngIf="errorMessage$ | async"
@@ -16,7 +16,7 @@
           <div>
             <app-input
               type="email"
-              [placeholder]="'form.email' | translate"
+              [placeholder]="'FORM.EMAIL' | translate"
               formControlName="email"
               [control]="authForm.get('email')">
             </app-input>
@@ -24,7 +24,7 @@
           <div *ngIf="!isLoginMode">
             <app-input
               type="text"
-              placeholder="{{ 'form.username' | translate }}"
+              placeholder="{{ 'FORM.USERNAME' | translate }}"
               formControlName="username"
               [control]="authForm.get('username')">
             </app-input>
@@ -32,7 +32,7 @@
           <div>
             <app-input
               type="password"
-              [placeholder]="'form.password' | translate"
+              [placeholder]="'FORM.PASSWORD' | translate"
               formControlName="password"
               [control]="authForm.get('password')">
             </app-input>
@@ -40,13 +40,13 @@
           <div *ngIf="!isLoginMode">
             <app-input
               type="password"
-              [placeholder]="'form.confirmPassword' | translate"
+              [placeholder]="'FORM.CONFIRM_PASSWORD' | translate"
               formControlName="confirmPassword"
               [control]="authForm.get('confirmPassword')">
             </app-input>
           </div>
           <label *ngIf="!isLoginMode" class="avatar">
-            {{ 'auth.avatar' | translate }}
+            {{ 'AUTH.AVATAR' | translate }}
             <input type="file" (change)="onImgInputChange($event)" />
             <img
               class="avatar__image"
@@ -61,8 +61,8 @@
               (click)="onToggleAuthMode()"
               [text]="
                 isLoginMode
-                  ? ('auth.buttons.signUp' | translate)
-                  : ('auth.buttons.login' | translate)
+                  ? ('AUTH.BUTTONS.SIGN_UP' | translate)
+                  : ('AUTH.BUTTONS.LOGIN' | translate)
               ">
             </app-button>
             <app-button
@@ -71,8 +71,8 @@
               "
               [text]="
                 isLoginMode
-                  ? ('auth.buttons.login' | translate)
-                  : ('auth.buttons.signUp' | translate)
+                  ? ('AUTH.BUTTONS.LOGIN' | translate)
+                  : ('AUTH.BUTTONS.SIGN_UP' | translate)
               ">
             </app-button>
           </div>

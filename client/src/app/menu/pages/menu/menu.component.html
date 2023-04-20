@@ -8,7 +8,7 @@
     (products$ | async)?.length === 0 && (productsStatus$ | async) === 'success'
   "
   class="products-not-found">
-  No products was found!
+  {{ 'MENU.PRODUCTS_NOT_FOUND' | translate }}
 </div>
 <app-product-details-modal
   *ngIf="isDetailsModalOpened$ | async"></app-product-details-modal>

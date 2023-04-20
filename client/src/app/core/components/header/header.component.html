@@ -24,9 +24,9 @@
     type="button"
     classes="logout-btn"
     (click)="onLogout()"
-    [text]="'header.logout' | translate"></app-button>
+    [text]="'HEADER.LOGOUT' | translate"></app-button>
 </div>
 <app-button
   [routerLink]="['/login']"
   *ngIf="(user$ | async) === null"
-  [text]="'header.authorize' | translate"></app-button>
+  [text]="'HEADER.AUTHORIZE' | translate"></app-button>

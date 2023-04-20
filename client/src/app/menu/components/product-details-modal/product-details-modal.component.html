@@ -1,9 +1,9 @@
 <div class="modal" (click)="onCloseModal($event)">
   <div class="modal-content content">
-    <h2 class="content__title">{{ 'product-card.details' | translate }}</h2>
+    <h2 class="content__title">{{ 'PRODUCT_CARD.DETAILS' | translate }}</h2>
     <div class="content__name">{{ selectedProduct?.title }}</div>
     <p class="content__description">{{ selectedProduct?.description }}</p>
-    <h3 class="content__title">{{ 'product-form.ingredients' | translate }}</h3>
+    <h3 class="content__title">{{ 'PRODUCT_FORM.INGREDIENTS' | translate }}</h3>
     <div
       class="content__ingredient"
       *ngFor="let ingredient of selectedProduct?.ingredients">

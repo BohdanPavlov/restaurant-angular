@@ -1,94 +1,97 @@
 {
-  "lang": {
-    "en": "Eng",
-    "ua": "Ua"
+  "LANG": {
+    "EN": "Eng",
+    "UA": "Ua"
   },
-  "header": {
-    "authorize": "Authorize",
-    "find": "Find",
-    "logout": "Logout",
-    "search": {
-      "label": "Search by product title",
-      "placeholder": "What do you want to find?"
+  "HEADER": {
+    "AUTHORIZE": "Authorize",
+    "FIND": "Find",
+    "LOGOUT": "Logout",
+    "SEARCH": {
+      "LABEL": "Search by product title",
+      "PLACEHOLDER": "What do you want to find?"
     }
   },
-  "navbar": {
-    "menu": "Menu",
-    "news": "News",
-    "add": "Add Product"
+  "NAVBAR": {
+    "MENU": "Menu",
+    "NEWS": "News",
+    "ADD": "Add Product"
   },
-  "categories": {
-    "all": "all",
-    "pizza": "pizza",
-    "salad": "salad",
-    "burgers": "burgers",
-    "bakery": "bakery",
-    "drinks": "drinks"
+  "CATEGORIES": {
+    "ALL": "all",
+    "PIZZA": "pizza",
+    "SALAD": "salad",
+    "BURGERS": "burgers",
+    "BAKERY": "bakery",
+    "DRINKS": "drinks"
   },
-  "product-card": {
-    "details": "Details",
-    "edit": "Edit"
+  "MENU": {
+    "PRODUCTS_NOT_FOUND": "No products was found!"
   },
-  "product-form": {
-    "add": "Add new",
-    "update": "Update",
-    "product": "product",
-    "placeholders": {
-      "title": "Title...",
-      "description": "Description...",
-      "price": "Price...",
-      "imageUrl": "Image Url..."
+  "PRODUCT_CARD": {
+    "DETAILS": "Details",
+    "EDIT": "Edit"
+  },
+  "PRODUCT_FORM": {
+    "ADD": "Add new",
+    "UPDATE": "Update",
+    "PRODUCT": "product",
+    "PLACEHOLDERS": {
+      "TITLE": "Title...",
+      "DESCRIPTION": "Description...",
+      "PRICE": "Price...",
+      "IMAGE_URL": "Image Url..."
     },
-    "category": "Select category",
-    "add-btn": "Add",
-    "ingredients": "Ingredients",
-    "empty-message": "Please add ingredients for this product!",
-    "create": "Create",
-    "delete": "delete"
+    "CATEGORY": "Select category",
+    "ADD_BTN": "Add",
+    "INGREDIENTS": "Ingredients",
+    "EMPTY_MESSAGE": "Please add ingredients for this product!",
+    "CREATE": "Create",
+    "DELETE": "delete"
   },
-  "auth": {
-    "login": "Login",
-    "register": "Register",
-    "avatar": "Add your avatar",
-    "buttons": {
-      "login": "Login",
-      "signUp": "Sign Up"
+  "AUTH": {
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+    "AVATAR": "Add your avatar",
+    "BUTTONS": {
+      "LOGIN": "Login",
+      "SIGN_UP": "Sign Up"
     }
   },
-  "form": {
-    "title": "Title",
-    "description": "Description",
-    "price": "Price",
-    "category": "Category",
-    "imageUrl": "Image Url",
-    "add": "Add Ingredient",
-    "email": "Email",
-    "username": "Username",
-    "password": "Password",
-    "confirmPassword": "Confirm Password"
+  "FORM": {
+    "TITLE": "Title",
+    "DESCRIPTION": "Description",
+    "PRICE": "Price",
+    "CATEGORY": "Category",
+    "IMAGE_URL": "Image Url",
+    "ADD": "Add Ingredient",
+    "EMAIL": "Email",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Confirm Password"
   },
-  "footer": {
-    "rights": "@ all rights reserved"
+  "FOOTER": {
+    "RIGHTS": "@ all rights reserved"
   },
-  "chat": {
-    "title": "Chat Support",
-    "message": "Write a message...",
-    "greeting": "Good day! If you have any questions, type them here ;)",
-    "send": "Send"
+  "CHAT": {
+    "TITLE": "Chat Support",
+    "MESSAGE": "Write a message...",
+    "GREETING": "Good day! If you have any questions, type them here ;)",
+    "SEND": "Send"
   },
-  "validation": {
-    "required": "* This field is required!",
-    "email": "* The email is invalid!",
-    "minlength": "* Should be longer!",
-    "passwordMismatch": "* Passwords do not match!",
-    "notInteger": "* Number must be integer!",
-    "pattern": "* Should be without spaces on the edges!"
+  "VALIDATION": {
+    "REQUIRED": "* This field is required!",
+    "EMAIL": "* The email is invalid!",
+    "MIN_LENGTH": "* Should be longer!",
+    "PASSWORD_MISMATCH": "* Passwords do not match!",
+    "NOT_INTEGER": "* Number must be integer!",
+    "PATTERN": "* Should be without spaces on the edges!"
   },
-  "news": {
-    "question": "Did you like this news?",
-    "yes": "Yes",
-    "no": "No",
-    "feedback": "Thank you for your feedback!",
-    "submit": "Submit"
+  "NEWS": {
+    "QUESTION": "Did you like this news?",
+    "YES": "Yes",
+    "NO": "No",
+    "FEEDBACK": "Thank you for your feedback!",
+    "SUBMIT": "Submit"
   }
 }

@@ -2,4 +2,4 @@
   type="button"
   classes="category"
   (click)="onGetProductsByCategory()"
-  [text]="'categories.' + category.name | translate"></app-button>
+  [text]="'CATEGORIES.' + category.name.toUpperCase() | translate"></app-button>

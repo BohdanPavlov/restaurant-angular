@@ -1,13 +1,13 @@
 <form class="search-form" [formGroup]="searchForm" (ngSubmit)="onSearch()">
   <mat-form-field class="search-form__field" color="primary">
-    <mat-label>{{ 'header.search.label' | translate }}</mat-label>
+    <mat-label>{{ 'HEADER.SEARCH.LABEL' | translate }}</mat-label>
     <input
       matInput
       type="text"
-      [placeholder]="'header.search.placeholder' | translate"
+      [placeholder]="'HEADER.SEARCH.PLACEHOLDER' | translate"
       formControlName="searchTerm" />
   </mat-form-field>
   <app-button
-    [text]="'header.find' | translate"
+    [text]="'HEADER.FIND' | translate"
     classes="search-btn"></app-button>
 </form>

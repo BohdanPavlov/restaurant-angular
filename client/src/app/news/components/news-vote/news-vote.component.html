@@ -1,17 +1,17 @@
 <form class="vote" (ngSubmit)="onSubmit()" *ngIf="!isSubmitted">
-  <h3 class="vote__title">{{ 'news.question' | translate }}</h3>
+  <h3 class="vote__title">{{ 'NEWS.QUESTION' | translate }}</h3>
   <div class="vote__radio">
     <label>
-      {{ 'news.yes' | translate }}
+      {{ 'NEWS.YES' | translate }}
       <input type="radio" name="vote" value="Yes" checked />
     </label>
     <label>
-      {{ 'news.no' | translate }}
+      {{ 'NEWS.NO' | translate }}
       <input type="radio" name="vote" value="No" />
     </label>
   </div>
-  <app-button [text]="'news.submit' | translate"></app-button>
+  <app-button [text]="'NEWS.SUBMIT' | translate"></app-button>
 </form>
 <h3 class="vote__title" *ngIf="isSubmitted">
-  {{ 'news.feedback' | translate }}
+  {{ 'NEWS.FEEDBACK' | translate }}
 </h3>

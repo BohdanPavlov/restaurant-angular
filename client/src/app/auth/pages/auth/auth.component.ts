@@ -83,7 +83,7 @@ export class AuthComponent
     }
   }
 
-  public onImgInputChange(event: Event) {
+  public onImgInputChange(event: Event): void {
     const target: HTMLInputElement = event.target as HTMLInputElement;
 
     const file: File = (target.files as FileList)[0];
